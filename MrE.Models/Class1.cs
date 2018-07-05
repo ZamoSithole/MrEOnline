@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MrE.Services
+namespace MrE.Models
 {
     public class Class1
     {

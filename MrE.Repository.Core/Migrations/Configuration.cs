@@ -1,18 +1,18 @@
-namespace MrEOnline.Migrations
+namespace MrE.Repository.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<MrEOnline.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DataStoreContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(MrEOnline.Models.ApplicationDbContext context)
+        protected override void Seed(DataStoreContext context)
         {
             //  This method will be called after migrating to the latest version.
 
