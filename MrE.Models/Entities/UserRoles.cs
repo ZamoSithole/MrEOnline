@@ -8,7 +8,7 @@ using MrE.Models.Abstractions;
 namespace MrE.Models.Entities
 {
     [Table("UserRoles")]
-    public class UseRoles :ICreatable, IDeletable,IUpdatable
+    public class UserRoles :ICreatable, IDeletable,IUpdatable
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 

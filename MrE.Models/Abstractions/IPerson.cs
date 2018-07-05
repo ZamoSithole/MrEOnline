@@ -12,6 +12,6 @@ namespace MrE.Models.Abstractions
         string Password { get; set; }
         Contact Contact { get; set; }
         Status Status { get; set; }
-        UseRoles UseRoles { get; set; }
+        UserRoles UseRoles { get; set; }
     }
 }

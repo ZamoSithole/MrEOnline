@@ -17,6 +17,6 @@ namespace MrE.Models.Entities
         [Display(Name = "Role")]
         public string Name { get; set; }
 
-        public virtual ICollection<UseRoles> UseRoles { get; set; }
+        public virtual ICollection<UserRoles> UseRoles { get; set; }
     }
 }

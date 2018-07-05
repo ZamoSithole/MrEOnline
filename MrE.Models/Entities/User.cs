@@ -30,9 +30,11 @@ namespace MrE.Models.Entities
         public Status Status { get; set; }
 
         public int UserRoleID { get; set; }
-        public UseRoles UseRoles { get; set; }
+        public UserRoles UseRoles { get; set; }
         //public virtual ICollection<UseRoles> UseRoles { get; set; }
-
+        public virtual ICollection<Contact> ContactsCreated { get; set; }
+        public virtual ICollection<Status> StatusesCreated { get; set; }
+        public virtual ICollection<Address> AddressCreated { get; set; }
         public bool IsDeleted { get; set; }
 
         [ForeignKey("UserCreated")]

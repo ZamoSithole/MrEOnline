@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MrE.Models
+namespace ClassLibrary1
 {
     public class Class1
     {

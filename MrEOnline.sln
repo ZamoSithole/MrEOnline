@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrEOnline", "MrEOnline\MrEOnline.csproj", "{95B3D7B0-7A82-4978-8AE2-8FD251B0D17A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrE.Models", "MrE.Models\MrE.Models.csproj", "{10756BE8-79DB-4CD1-8EE1-547941F0A6B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MrE.Models", "MrE.Models\MrE.Models.csproj", "{10756BE8-79DB-4CD1-8EE1-547941F0A6B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrE.Repository", "MrE.Repository\MrE.Repository.csproj", "{D387A5AA-B981-4C0D-B8BE-C67AB4D0C38E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MrE.Repository", "MrE.Repository\MrE.Repository.csproj", "{D387A5AA-B981-4C0D-B8BE-C67AB4D0C38E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrE.Services", "MrE.Services\MrE.Services.csproj", "{36657E51-952C-4330-8CFF-0CC5CFC18326}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MrE.Services", "MrE.Services\MrE.Services.csproj", "{36657E51-952C-4330-8CFF-0CC5CFC18326}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
