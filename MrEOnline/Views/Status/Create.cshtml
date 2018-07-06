@@ -1,0 +1,17 @@
+﻿@model MrE.Models.Entities.Status
+
+@{
+    ViewBag.Title = "Add Status";
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+           @Html.Partial("_Form")
+        }
+    </div>
+</div>
+

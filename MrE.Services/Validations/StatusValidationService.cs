@@ -16,15 +16,16 @@ namespace MrE.Services.Validations
         {
             base.ValidateInsert(targetObject);
 
-            if (items != null && !items.Any(elem => string.Compare(elem.Name, targetObject.Name) == 0))
+            if (items != null && items.Any(elem => string.Compare(elem.Name, targetObject.Name) == 0))
                 ValidationExceptionService.Add(Guid.NewGuid().ToString(), "Unable to insert Status, there's already a Status with the same name.");
             ValidationExceptionService.ThrowException();
         }
+
         public override void ValidateUpdate(Status targetObject, IEnumerable<Status> items)
         {
             base.ValidateUpdate(targetObject);
 
-            if (items != null && !items.Any(elem => elem.StatusID != targetObject.StatusID && string.Compare(elem.Name, targetObject.Name) == 0))
+            if (items != null && items.Any(elem => elem.Id != targetObject.Id && string.Compare(elem.Name, targetObject.Name) == 0))
                 ValidationExceptionService.Add(Guid.NewGuid().ToString(), "Unable to update Status, there's already a Status with the same name.");
             ValidationExceptionService.ThrowException();
         }

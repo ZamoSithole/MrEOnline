@@ -4,15 +4,16 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using MrE.Models.Abstractions;
+using MrEOnline.Models;
 
 namespace MrE.Models.Entities
 {
     [Table("Addresses")]
-    public class Address : ICreatable, IDeletable, IUpdatable
+    public class Address : IBaseEntity<int>, ICreatable, IDeletable, IUpdatable
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        public int AddressID { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Street Number")]
         public int? StreetNumber { get; set; }
@@ -26,21 +27,11 @@ namespace MrE.Models.Entities
         [Display(Name = "Area Code")]
         public string AreaCode { get; set; }
 
-        public bool IsDeleted { get; set; }
-        [ForeignKey("UserCreated")]
-        public int UserCreatedID { get; set; }
-        public User UserCreated { get; set; }
-        public DateTime DateCreated { get; set; }
+        public DateTime DateCreated { get; set;}
 
-        [ForeignKey("UserUpdated")]
-        public int? UserUpdateID { get; set; }
-        public User UserUpdated { get; set; }
+        public bool IsDeleted { get; set;}
+        public DateTime? DateDeleted { get; set;}
+
         public DateTime? DateUpdated { get; set; }
-
-        [ForeignKey("UserDeleted")]
-        public int? UserDeletedID { get; set; }
-        public User UserDeleted { get; set; }
-        public DateTime? DateDeleted { get; set; }
-
     }
 }

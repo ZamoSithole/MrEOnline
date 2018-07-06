@@ -1,9 +1,8 @@
 namespace MrE.Repository.Migrations
 {
+    using MrE.Models.Entities;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DataStoreContext>
     {
@@ -14,10 +13,12 @@ namespace MrE.Repository.Migrations
 
         protected override void Seed(DataStoreContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.Statuses.AddOrUpdate(
+                p => p.Name,
+                new Status { Name = "Pending", DateCreated = DateTime.Now, IsDeleted = false }
+                );
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            context.SaveChanges();
         }
     }
 }

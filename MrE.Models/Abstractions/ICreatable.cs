@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using MrE.Models.Entities;
+using MrEOnline.Models;
 
 namespace MrE.Models.Abstractions
 {
+
     public interface ICreatable
     {
-        User UserCreated { get; set; }
-        int UserCreatedID { get; set; }
+        //User CreatedBy { get; set; }
+        //string CreatedById { get; set; }
         DateTime DateCreated { get; set; }
     }
 }

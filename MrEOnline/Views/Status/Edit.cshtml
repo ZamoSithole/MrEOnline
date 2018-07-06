@@ -1,0 +1,20 @@
+﻿@model MrE.Models.Entities.Status
+
+@{
+    ViewBag.Title = "Edit Status";
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(m => m.DateCreated)
+            @Html.HiddenFor(m => m.DateUpdated)
+            @Html.HiddenFor(m => m.IsDeleted)
+
+            @Html.Partial("_Form")
+        }
+    </div>
+</div>

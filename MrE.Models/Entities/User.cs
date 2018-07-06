@@ -1,56 +1,37 @@
-﻿using MrE.Models.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using MrE.Models.Entities;
 
-
-namespace MrE.Models.Entities
+namespace MrEOnline.Models
 {
-    [Table("Users")]
-    public class User : IPerson, ICreatable, IDeletable, IUpdatable
+    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    public class User : IdentityUser
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Add custom user claims here
+            return userIdentity;
+        }
 
-        public int UserID { get; set; }
-        [Display(Name = "FirstName"), Required(ErrorMessage = "Fill out Name")]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessage = "Surname is required")]
-        public string Surname { get; set; }
-
-        [Display(Name = "Password")]
-        [StringLength(8, MinimumLength = 8, ErrorMessage = "Password should be 8 characters")]
-        [DataType(DataType.Password, ErrorMessage = "Less than 8 characters "), Required(ErrorMessage = "Password Required")]
-        public string Password { get; set; }
-        public int ContactID { get; set; }
-        public Contact Contact { get; set; }
-        public int StatusID { get; set; }
-        public Status Status { get; set; }
-
-        public int UserRoleID { get; set; }
-        public UserRoles UseRoles { get; set; }
-        //public virtual ICollection<UseRoles> UseRoles { get; set; }
         public virtual ICollection<Contact> ContactsCreated { get; set; }
         public virtual ICollection<Status> StatusesCreated { get; set; }
         public virtual ICollection<Address> AddressCreated { get; set; }
-        public bool IsDeleted { get; set; }
+        public virtual ICollection<Member> MembersCreated { get; set; }
 
-        [ForeignKey("UserCreated")]
-        public int UserCreatedID { get; set; }
-        public User UserCreated { get; set; }
-        public DateTime DateCreated { get; set; }
+        public virtual ICollection<Contact> ContactsUpdated { get; set; }
+        public virtual ICollection<Status> StatusesUpdated { get; set; }
+        public virtual ICollection<Address> AddressUpdated { get; set; }
+        public virtual ICollection<Member> MembersUpdated { get; set; }
 
-        [ForeignKey("UserUpdated")]
-        [Display(Name = "Date Updated")]
-        public DateTime? DateUpdated { get; set; }
-        public int? UserUpdateID { get; set; }
-        public User UserUpdated { get; set; }
+        public virtual ICollection<Contact> ContactsDeleted { get; set; }
+        public virtual ICollection<Status> StatusesDeleted { get; set; }
+        public virtual ICollection<Address> AddressDeleted { get; set; }
+        public virtual ICollection<Member> MembersDeleted { get; set; }
 
-        [ForeignKey("UserDeleted")]
-        public int? UserDeletedID { get; set; }
-        public User UserDeleted { get; set; }
-        public DateTime? DateDeleted { get; set; }
     }
 }

@@ -1,19 +1,16 @@
 ﻿using MrE.Models.Abstractions;
+using MrEOnline.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace MrE.Models.Entities
 {
     [Table("Contacts")]
-    public class Contact : ICreatable, IDeletable, IUpdatable
+    public class Contact : IBaseEntity<int>, ICreatable, IDeletable, IUpdatable
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-       
-
-        public int ContactID { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]              
+        public int Id { get; set; }
         public int? AddressID { get; set; }
         public virtual Address Address { get; set; }
 
@@ -26,20 +23,10 @@ namespace MrE.Models.Entities
 
         public string ContactNumber { get; set; }
 
-        [ForeignKey("UserCreated")]
-        public int UserCreatedID { get; set; }
-        public User UserCreated { get; set; }
         public DateTime DateCreated { get; set; }
-
         public bool IsDeleted { get; set; }
-        [ForeignKey("UserUpdated")]
-        public int? UserUpdateID { get; set; }
-        public User UserUpdated { get; set; }
-        public DateTime? DateUpdated { get; set; }
-
-        [ForeignKey("UserDeleted")]
-        public int? UserDeletedID { get; set; }
-        public User UserDeleted { get; set; }
         public DateTime? DateDeleted { get; set; }
+        
+        public DateTime? DateUpdated { get; set; }
     }
 }

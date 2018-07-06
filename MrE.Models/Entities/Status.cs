@@ -4,32 +4,26 @@ using System.Text;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using MrE.Models.Abstractions;
+using MrEOnline.Models;
 
 namespace MrE.Models.Entities
 {
     [Table("Statuses")]
-    public class Status : ICreatable, IDeletable, IUpdatable
+    public class Status : IBaseEntity<int>, ICreatable, IDeletable, IUpdatable
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int StatusID { get; set; }
-        [Display(Name = " Status")]
+        public int Id { get; set; }
+        [Display(Name = " Status"), Required(ErrorMessage ="Status name is required.")]
         public string Name { get; set; }
         public string Description { get; set; }
 
         public bool IsDeleted { get; set; }
-        [ForeignKey("UserCreated")]
-        public int UserCreatedID { get; set; }
-        public User UserCreated { get; set; }
+
         public DateTime DateCreated { get; set; }
 
-        [ForeignKey("UserUpdated")]
         public DateTime? DateUpdated { get; set; }
-        public int? UserUpdateID { get; set; }
-        public User UserUpdated { get; set; }
 
-        [ForeignKey("UserDeleted")]
-        public int? UserDeletedID { get; set; }
-        public User UserDeleted { get; set; }
+        [Display(Name = "Date Deleted")]
         public DateTime? DateDeleted { get; set; }
     }
 }

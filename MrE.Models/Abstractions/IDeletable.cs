@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MrE.Models.Entities;
+using MrEOnline.Models;
 
 namespace MrE.Models.Abstractions
 {
@@ -9,7 +7,7 @@ namespace MrE.Models.Abstractions
     {
         bool IsDeleted { get; set; }
         DateTime? DateDeleted { get; set; }
-        int? UserDeletedID { get; set; }
-        User UserDeleted { get; set; }
+        //string DeletedById { get; set; }
+        //User DeletedBy { get; set; }
     }
 }
