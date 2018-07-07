@@ -15,14 +15,19 @@ namespace MrE.Models.Entities
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int Id { get; set; }
-
+        [Display(Name = " Title"), Required(ErrorMessage = "Status name is required.")]
         public string Title { get; set; }
+        [Display(Name = " Description"), Required(ErrorMessage = "Description is required.")]
         public string Description { get; set; }
+        [Display(Name = " Genre"), Required(ErrorMessage = "Genre is required.")]
         public string Genre { get; set; }
+        [Display(Name = " Rental Price"), Required(ErrorMessage = "RentalnPrice is required.")]
         public string RentalPrice { get; set; }
-        DateTime ICreatable.DateCreated { get; set; }
-        bool IDeletable.IsDeleted { get ; set; }
-        DateTime? IDeletable.DateDeleted { get; set; }
-        DateTime? IUpdatable.DateUpdated { get; set ; }
+
+        public bool IsDeleted { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime? DateUpdated { get; set; }
+        [Display(Name = "Date Deleted")]
+        public DateTime? DateDeleted { get; set; }
     }
 }

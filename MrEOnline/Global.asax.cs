@@ -37,6 +37,10 @@ namespace MrEOnline
             builder.RegisterType<ValidationExceptionService>().As<IValidationExceptionService>();
             builder.RegisterType<StatusValidationService>().As<IValidationService<Status>>().InstancePerRequest();
             builder.RegisterType<StatusService>().As<IService<Status>>().InstancePerRequest();
+            builder.RegisterType<VideoValidationService>().As<IValidationService<Video>>().InstancePerRequest();
+
+            builder.RegisterType<VideoService>().As<IService<Video>>().InstancePerRequest();
+
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(builder.Build()));
         }

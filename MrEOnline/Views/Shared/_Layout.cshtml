@@ -6,7 +6,8 @@
     <title>@ViewBag.Title - Mr. E Online Rental</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @Scripts.Render("~/Content/jquery.fileupload.css")
+    @Scripts.Render("~/Scripts/jquery.fileupload.js")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -41,6 +42,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery.fileupload.js" )
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
         $(function(){

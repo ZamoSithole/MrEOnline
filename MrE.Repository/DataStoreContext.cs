@@ -12,6 +12,8 @@ namespace MrE.Repository
         public DbSet<Contact> Contacts { get; set; }             
         public DbSet<Status> Statuses { get; set; }               
         public DbSet<Member> Members { get; set; }
+
+        public DbSet<Video> Videos { get; set; }
        
         public DataStoreContext() : base("DefaultConnection")
         {

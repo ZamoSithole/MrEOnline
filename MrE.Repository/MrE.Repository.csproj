@@ -70,6 +70,14 @@
     <Compile Include="Migrations\201807061248474_ChangeNameInStatusToRequired.Designer.cs">
       <DependentUpon>201807061248474_ChangeNameInStatusToRequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807071428401_AddingVideo.cs" />
+    <Compile Include="Migrations\201807071428401_AddingVideo.Designer.cs">
+      <DependentUpon>201807071428401_AddingVideo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807072007501_CorrectedDatesInVideoModel.cs" />
+    <Compile Include="Migrations\201807072007501_CorrectedDatesInVideoModel.Designer.cs">
+      <DependentUpon>201807072007501_CorrectedDatesInVideoModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -98,6 +106,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807061248474_ChangeNameInStatusToRequired.resx">
       <DependentUpon>201807061248474_ChangeNameInStatusToRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807071428401_AddingVideo.resx">
+      <DependentUpon>201807071428401_AddingVideo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807072007501_CorrectedDatesInVideoModel.resx">
+      <DependentUpon>201807072007501_CorrectedDatesInVideoModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
