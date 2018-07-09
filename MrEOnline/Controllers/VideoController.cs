@@ -3,10 +3,8 @@ using MrE.Services.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,13 +13,7 @@ namespace MrEOnline.Controllers
     
     public class VideoController : Controller
     {
-        public IService<Genre> GenreService { get; set; }
-        
-            public IService<Video> VideoService { get; set; }
-        public VideoController(IService<Genre> genreService)
-        {
-        GenreService = genreService;
-        }
+        public IService<Video> VideoService { get; set; }
 
         public VideoController(IService<Video> videoService)
         {
@@ -32,11 +24,6 @@ namespace MrEOnline.Controllers
         {
             var videos = VideoService.Get();
             return View(videos);
-        }
-        private async Task SetUpSelectList(MrE.Models.Entities.Video video = null)
-        {
-            var genres = await GenreService.Get().ToListAsync();
-            ViewData["GenreSelectList"] = new SelectList(genres, "Genre_Id", "Name");
         }
         public ActionResult Create()
         {

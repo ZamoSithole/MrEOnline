@@ -19,7 +19,8 @@ namespace MrEOnline.Controllers
         // GET: Genre
         public ActionResult Index()
         {
-            return View();
+            var genres = GenreService.Get();
+            return View(genres);
         }
         [HttpGet]
         public JsonResult GetGenres()

@@ -24,7 +24,7 @@ namespace MrE.Models.Entities
         public Genre Genre { get; set; }
 
         [Display(Name = " Rental Price"), Required(ErrorMessage = "RentalnPrice is required.")]
-        public string RentalPrice { get; set; }
+        public decimal RentalPrice { get; set; }
 
         public bool IsDeleted { get; set; }
  

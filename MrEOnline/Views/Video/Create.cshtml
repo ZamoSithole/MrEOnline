@@ -5,11 +5,11 @@
 }
 
 <h2>Create</h2>
-
-@using (Html.BeginForm()) 
+<script src="~/Scripts/lodash.js"></script>
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Video</h4>
         <hr />
@@ -30,11 +30,12 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.GenreID, "GenreID", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group required">
+            <label class="control-label  col-md-2">Genre</label>
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.GenreID, ((SelectList)ViewData["GenreSelectList"]), "Select Option", htmlAttributes: new { @class = "form-control", @required = true })
-                @*@Html.DropDownList("GenreID", null, htmlAttributes: new { @class = "form-control" })*@
+                @*@Html.DropDownListFor(m => m.GenreID, (ViewData["GenreSelectList"] as SelectList), "Select Option", htmlAttributes: new { @class = "form-control", @required = true })*@
+                @*@Html.DropDownListFor(m => m.GenreID, ((SelectList)ViewData["GenreSelectList"]), "Select Option", htmlAttributes: new { @class = "form-control", @required = true })*@
+                <select id="genre-select" name="GenreID" class="form-control" required></select>
                 @Html.ValidationMessageFor(model => model.GenreID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -42,44 +43,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RentalPrice, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RentalPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.RentalPrice, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @step = "0.01", @value = "0" } })
                 @Html.ValidationMessageFor(model => model.RentalPrice, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsDeleted, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsDeleted)
-                    @Html.ValidationMessageFor(model => model.IsDeleted, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateUpdated, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateUpdated, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateUpdated, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateDeleted, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateDeleted, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateDeleted, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -92,3 +61,32 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+@section Scripts
+{
+    <script>
+        //$(function () {
+        //    debugger;
+        //    $.ajax({
+        //        url: "/Genre/GetGenres",
+        //        Type:"POST",
+        //        success: function (result) {
+        //            alert(result);
+        //        }
+        //    })
+        //});
+        debugger;
+ $.get('@Url.Action("GetGenres", "Genre")')
+     .done(function (genres) {
+                    $('#genre-select').empty().append("<option value=''>Select Genre</option>")
+                        .append(
+                        _.map(_.filter(genres, function (elem) {
+                            //return elem.Name == "Approved" || elem.Name === "Rejected";
+                        }), function (genre) {
+                            return '<option value="' + genre.GenreID + '">' + genre.Name + '</option>';
+                        })
+                        );
+                });
+        //})
+
+    </script>
+}

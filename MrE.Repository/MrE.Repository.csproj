@@ -81,13 +81,17 @@
     <Compile Include="Migrations\201807091232309_ChangedGenreEntity.Designer.cs">
       <DependentUpon>201807091232309_ChangedGenreEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807091238481_ChangedVideoEntity.cs" />
-    <Compile Include="Migrations\201807091238481_ChangedVideoEntity.Designer.cs">
-      <DependentUpon>201807091238481_ChangedVideoEntity.cs</DependentUpon>
+    <Compile Include="Migrations\201807091353334_ChangedVideoEntity.cs" />
+    <Compile Include="Migrations\201807091353334_ChangedVideoEntity.Designer.cs">
+      <DependentUpon>201807091353334_ChangedVideoEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807091305372_ChangedVideoEntity1.cs" />
-    <Compile Include="Migrations\201807091305372_ChangedVideoEntity1.Designer.cs">
-      <DependentUpon>201807091305372_ChangedVideoEntity1.cs</DependentUpon>
+    <Compile Include="Migrations\201807091410270_RevertVideoEntity.cs" />
+    <Compile Include="Migrations\201807091410270_RevertVideoEntity.Designer.cs">
+      <DependentUpon>201807091410270_RevertVideoEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807092032500_ChangedVideoEntityRentalPrice.cs" />
+    <Compile Include="Migrations\201807092032500_ChangedVideoEntityRentalPrice.Designer.cs">
+      <DependentUpon>201807092032500_ChangedVideoEntityRentalPrice.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
@@ -127,11 +131,14 @@
     <EmbeddedResource Include="Migrations\201807091232309_ChangedGenreEntity.resx">
       <DependentUpon>201807091232309_ChangedGenreEntity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807091238481_ChangedVideoEntity.resx">
-      <DependentUpon>201807091238481_ChangedVideoEntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807091353334_ChangedVideoEntity.resx">
+      <DependentUpon>201807091353334_ChangedVideoEntity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807091305372_ChangedVideoEntity1.resx">
-      <DependentUpon>201807091305372_ChangedVideoEntity1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807091410270_RevertVideoEntity.resx">
+      <DependentUpon>201807091410270_RevertVideoEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807092032500_ChangedVideoEntityRentalPrice.resx">
+      <DependentUpon>201807092032500_ChangedVideoEntityRentalPrice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
