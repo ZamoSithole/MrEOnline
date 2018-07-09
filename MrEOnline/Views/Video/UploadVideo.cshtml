@@ -1,0 +1,78 @@
+﻿@model MrE.Models.Entities.Video
+
+@{
+    ViewBag.Title = "UploadVideo";
+}
+
+<h2>UploadVideo</h2>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Video</h4>
+        <hr />
+     
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Create" class="btn btn-default create" />
+                <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Upload Video file...</span>
+                    <!-- The file input field used as target for the file upload widget -->
+                    @*<input id="file" type="file" name="file" accept=".csv" />*@
+                    @Html.TextBox("file", "", new { type = "file" })
+                </span>
+                <input class="btn btn-default" id="btnUpload" value="upload" type="button" />
+                <a class="btn btn-danger" href="@Url.Action("index")">Cancel</a>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script>
+        //$(function () {
+        //    $('.create').on('click', function () {
+
+        //        //var fileUpload = ('#file', $('input[type=file]')[0].files[0]);
+        //        //var files = fileUpload.files;
+        //        var fileUpload = $("#file").get(0);
+        //        var uploadFile = new FormData();
+
+        //        for (var i = 0; i < fileUpload.length; i++) {
+        //            filename = files[i].name;
+        //            uploadFile.append(files[i].name, files[i]);
+        //        }
+        //        var formData = new FormData();
+        //        formData.append('#fileupload', $('input[type=file]')[0].files[0]);
+
+        //        var url = "/Video/Upload"
+        //        debugger;
+        //        $.ajax({
+        //            url: "/Video/UploadVideo",
+        //            data: uploadFile,
+        //            type: 'POST',
+        //            contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+        //            processData: false,
+        //            success: function (result) {
+        //                debugger;
+        //            }
+
+        //        });
+        //    })
+        //});
+        //    //$("#fileupload").on('change', function () {
+
+
+        //    //})
+
+        //})
+        ////$(function () {
+
+        ////});
+</script>

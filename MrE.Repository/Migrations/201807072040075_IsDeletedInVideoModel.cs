@@ -3,7 +3,7 @@ namespace MrE.Repository.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CorrectedDatesInVideoModel : DbMigration
+    public partial class IsDeletedInVideoModel : DbMigration
     {
         public override void Up()
         {

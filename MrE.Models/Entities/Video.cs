@@ -25,8 +25,10 @@ namespace MrE.Models.Entities
         public string RentalPrice { get; set; }
 
         public bool IsDeleted { get; set; }
+ 
         public DateTime DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
+
         [Display(Name = "Date Deleted")]
         public DateTime? DateDeleted { get; set; }
     }

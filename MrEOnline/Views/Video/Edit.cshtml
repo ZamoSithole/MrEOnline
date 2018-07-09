@@ -1,18 +1,22 @@
 ﻿@model MrE.Models.Entities.Video
 
 @{
-    ViewBag.Title = "Add Video";
+    ViewBag.Title = "Edit Video";
 }
+<link href="~/Content/jquery.fileupload.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.fileupload.js"></script>
+
 <div class="panel panel-default">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">
         @using (Html.BeginForm())
         {
+            @Html.HiddenFor(m => m.DateCreated)
+            @Html.HiddenFor(m => m.DateUpdated)
+            @Html.HiddenFor(m => m.IsDeleted)
+
             @Html.Partial("_Form")
         }
     </div>
 </div>
-@*<script src="~/Scripts/jquery-3.3.1.js"></script>*@
-
-

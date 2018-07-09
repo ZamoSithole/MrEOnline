@@ -7,13 +7,13 @@ namespace MrE.Repository.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CorrectedDatesInVideoModel : IMigrationMetadata
+    public sealed partial class IsDeletedInVideoModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CorrectedDatesInVideoModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(IsDeletedInVideoModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807072007501_CorrectedDatesInVideoModel"; }
+            get { return "201807072040075_IsDeletedInVideoModel"; }
         }
         
         string IMigrationMetadata.Source
