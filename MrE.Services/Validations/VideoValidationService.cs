@@ -18,7 +18,10 @@ namespace MrE.Services.Validations
             base.ValidateInsert(targetObject);
 
             if (items != null && items.Any(elem => string.Compare(elem.Title, targetObject.Title) == 0))
-                ValidationExceptionService.Add(Guid.NewGuid().ToString(), "Unable to insert Status, there's already a Status with the same name.");
+                ValidationExceptionService.Add(Guid.NewGuid().ToString(), "Unable to insert Video, there's already a Video with the same name.");
+            ValidationExceptionService.ThrowException();
+            if (items != null && items.Any(elem => decimal.Compare(elem.RentalPrice, targetObject.RentalPrice) >= 0))
+                ValidationExceptionService.Add(Guid.NewGuid().ToString(), "Unable to insert Rental Price of 0.");
             ValidationExceptionService.ThrowException();
         }
 
