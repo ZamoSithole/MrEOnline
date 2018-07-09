@@ -56,7 +56,6 @@
     <Compile Include="Abstractions\IDataAuditor.cs" />
     <Compile Include="Abstractions\IDataStoreBase.cs" />
     <Compile Include="Abstractions\IRepository.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="DataStoreContext.cs" />
     <Compile Include="Migrations\201807060704577_EntityRefactoring.cs" />
     <Compile Include="Migrations\201807060704577_EntityRefactoring.Designer.cs">
@@ -77,6 +76,14 @@
     <Compile Include="Migrations\201807072040075_IsDeletedInVideoModel.cs" />
     <Compile Include="Migrations\201807072040075_IsDeletedInVideoModel.Designer.cs">
       <DependentUpon>201807072040075_IsDeletedInVideoModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807091116387_AddedGenreEntity.cs" />
+    <Compile Include="Migrations\201807091116387_AddedGenreEntity.Designer.cs">
+      <DependentUpon>201807091116387_AddedGenreEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807091136583_ChangedGenreEntity.cs" />
+    <Compile Include="Migrations\201807091136583_ChangedGenreEntity.Designer.cs">
+      <DependentUpon>201807091136583_ChangedGenreEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
@@ -112,6 +119,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807072040075_IsDeletedInVideoModel.resx">
       <DependentUpon>201807072040075_IsDeletedInVideoModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807091116387_AddedGenreEntity.resx">
+      <DependentUpon>201807091116387_AddedGenreEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807091136583_ChangedGenreEntity.resx">
+      <DependentUpon>201807091136583_ChangedGenreEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

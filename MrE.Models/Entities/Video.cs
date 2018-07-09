@@ -20,7 +20,9 @@ namespace MrE.Models.Entities
         [Display(Name = " Description"), Required(ErrorMessage = "Description is required.")]
         public string Description { get; set; }
         [Display(Name = " Genre"), Required(ErrorMessage = "Genre is required.")]
-        public string Genre { get; set; }
+        public int GenreId { get; set; }
+        public Genre Genre { get; set; }
+
         [Display(Name = " Rental Price"), Required(ErrorMessage = "RentalnPrice is required.")]
         public string RentalPrice { get; set; }
 
