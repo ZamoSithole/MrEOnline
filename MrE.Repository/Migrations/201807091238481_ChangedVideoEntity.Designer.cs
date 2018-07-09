@@ -7,13 +7,13 @@ namespace MrE.Repository.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddedGenreEntity : IMigrationMetadata
+    public sealed partial class ChangedVideoEntity : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedGenreEntity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangedVideoEntity));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807091116387_AddedGenreEntity"; }
+            get { return "201807091238481_ChangedVideoEntity"; }
         }
         
         string IMigrationMetadata.Source
