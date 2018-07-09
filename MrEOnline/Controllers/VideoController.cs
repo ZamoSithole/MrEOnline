@@ -158,7 +158,7 @@ namespace MrEOnline.Controllers
             //}
             //return Json("No files selected.");
         }
-        [HttpPost]
+      
         public ActionResult Edit(int id)
         {
             var videos = VideoService.GetByKey(id);

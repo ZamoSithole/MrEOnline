@@ -3,9 +3,7 @@
 @{
     ViewBag.Title = "Edit Video";
 }
-<link href="~/Content/jquery.fileupload.css" rel="stylesheet" />
-<script src="~/Scripts/jquery-3.3.1.js"></script>
-<script src="~/Scripts/jquery.fileupload.js"></script>
+
 
 <div class="panel panel-default">
     <div class="panel-heading">@ViewBag.Title</div>
@@ -15,6 +13,7 @@
             @Html.HiddenFor(m => m.DateCreated)
             @Html.HiddenFor(m => m.DateUpdated)
             @Html.HiddenFor(m => m.IsDeleted)
+            @Html.HiddenFor(m => m.DateDeleted)
 
             @Html.Partial("_Form")
         }
