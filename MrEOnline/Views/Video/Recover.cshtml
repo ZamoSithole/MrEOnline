@@ -1,12 +1,12 @@
 ﻿@model MrE.Models.Entities.Video
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Recover";
 }
 
-<h2>Delete</h2>
+<h2>Recover</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Are you sure you want to Recover this?</h3>
 <div>
     <h4>Video</h4>
     <hr />
@@ -81,8 +81,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Recover" class="btn btn-success" /> |
+            <a class="btn btn-primary" href="@Url.Action( "Index")">Back</a>
         </div>
     }
 </div>

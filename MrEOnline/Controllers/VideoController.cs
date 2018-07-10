@@ -14,20 +14,21 @@ namespace MrEOnline.Controllers
     public class VideoController : Controller
     {
         public IService<Video> VideoService { get; set; }
-
-        public VideoController(IService<Video> videoService)
+        public IService<Genre> GenreService { get; set; }
+        public VideoController(IService<Video> videoService, IService<Genre> genreService)
         {
             VideoService = videoService;
+            GenreService = genreService;
         }
         // GET: Video
         public ActionResult Index()
         {
             var videos = VideoService.Get();
+            var genres = GenreService.Get();
             return View(videos);
         }
         public ActionResult Create()
         {
-
             return View();
         }
         [HttpPost]
@@ -221,6 +222,33 @@ namespace MrEOnline.Controllers
             }
             return View(video);
         }
+        public ActionResult Recover(int id)
+        {
+            var videos = VideoService.GetByKey(id);
+            if (videos == null) return HttpNotFound("Video Information cannot be found.");
+
+            return View(videos);
+        }
+        [HttpPost]
+        public ActionResult Recover(Video video, int id)
+        {
+            var existing = VideoService.GetByKey(id);
+            if (existing == null) return HttpNotFound("Cannot find the item to be recovered.");
+            try
+            {
+                VideoService.Recover(existing);
+                return RedirectToAction("index");
+            }
+            catch (Exception exception)
+            {
+                if (exception is ValidationException)
+                    ModelState.AddModelError("", exception.ToString());
+                else
+                    ModelState.AddModelError("", "There was an error processing your request, please try again later!!");
+            }
+            return View(video);
+        }
+        //[HttpGet]
 
     }
 }
