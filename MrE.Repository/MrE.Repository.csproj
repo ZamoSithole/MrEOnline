@@ -77,17 +77,9 @@
     <Compile Include="Migrations\201807072040075_IsDeletedInVideoModel.Designer.cs">
       <DependentUpon>201807072040075_IsDeletedInVideoModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807091232309_ChangedGenreEntity.cs" />
-    <Compile Include="Migrations\201807091232309_ChangedGenreEntity.Designer.cs">
-      <DependentUpon>201807091232309_ChangedGenreEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807092032500_ChangedVideoEntityRentalPrice.cs" />
-    <Compile Include="Migrations\201807092032500_ChangedVideoEntityRentalPrice.Designer.cs">
-      <DependentUpon>201807092032500_ChangedVideoEntityRentalPrice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807101258276_ChangedVideoEntityRentalPriceErrorMessage.cs" />
-    <Compile Include="Migrations\201807101258276_ChangedVideoEntityRentalPriceErrorMessage.Designer.cs">
-      <DependentUpon>201807101258276_ChangedVideoEntityRentalPriceErrorMessage.cs</DependentUpon>
+    <Compile Include="Migrations\201807101411178_VideoEntity.cs" />
+    <Compile Include="Migrations\201807101411178_VideoEntity.Designer.cs">
+      <DependentUpon>201807101411178_VideoEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
@@ -124,14 +116,8 @@
     <EmbeddedResource Include="Migrations\201807072040075_IsDeletedInVideoModel.resx">
       <DependentUpon>201807072040075_IsDeletedInVideoModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807091232309_ChangedGenreEntity.resx">
-      <DependentUpon>201807091232309_ChangedGenreEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807092032500_ChangedVideoEntityRentalPrice.resx">
-      <DependentUpon>201807092032500_ChangedVideoEntityRentalPrice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807101258276_ChangedVideoEntityRentalPriceErrorMessage.resx">
-      <DependentUpon>201807101258276_ChangedVideoEntityRentalPriceErrorMessage.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807101411178_VideoEntity.resx">
+      <DependentUpon>201807101411178_VideoEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

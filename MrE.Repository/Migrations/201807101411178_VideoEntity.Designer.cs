@@ -7,13 +7,13 @@ namespace MrE.Repository.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ChangedVideoEntityRentalPriceErrorMessage : IMigrationMetadata
+    public sealed partial class VideoEntity : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangedVideoEntityRentalPriceErrorMessage));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(VideoEntity));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807101258276_ChangedVideoEntityRentalPriceErrorMessage"; }
+            get { return "201807101411178_VideoEntity"; }
         }
         
         string IMigrationMetadata.Source
