@@ -24,6 +24,7 @@ namespace MrE.Models.Entities
         public Genre Genre { get; set; }
 
         [Display(Name = " Rental Price"), Required(ErrorMessage = "RentalnPrice is required.")]
+        [DataType(DataType.Currency, ErrorMessage = "Less than zero ")]
         public decimal RentalPrice { get; set; }
 
         public bool IsDeleted { get; set; }

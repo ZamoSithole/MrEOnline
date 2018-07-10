@@ -42,8 +42,8 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.RentalPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RentalPrice, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @step = "0.01", @value = "0" } })
+            <div class="col-md-10" id="rental">
+                @Html.EditorFor(model => model.RentalPrice, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "1", @value = "0"} })
                 @Html.ValidationMessageFor(model => model.RentalPrice, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -73,7 +73,6 @@
 
      })
   });
-
 
     </script>
 }
