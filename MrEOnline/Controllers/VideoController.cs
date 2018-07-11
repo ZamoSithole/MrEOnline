@@ -3,6 +3,7 @@ using MrE.Services.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -23,7 +24,7 @@ namespace MrEOnline.Controllers
         // GET: Video
         public ActionResult Index()
         {
-            var videos = VideoService.Get();
+            var videos = VideoService.Get().Include(m => m.Genre);
             var genres = GenreService.Get();
             return View(videos);
         }
