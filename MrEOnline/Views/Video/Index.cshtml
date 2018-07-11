@@ -39,47 +39,98 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RentalPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateUpdated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateDeleted)
-        </td>
-        <td>
+    @foreach (var item in Model)
+    {
+        var style = string.Empty;
+        if (item.IsDeleted) { style = "class=grayout"; }
+        <tr @style>
+            <td>
+                <label class="label"></label>
+                @Html.DisplayFor(modelItem => item.Genre.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalPrice)
+            </td>
+            <td>
+                @if (item.IsDeleted)
+                {
+                    @Html.Raw("Yes")
+                }
+                else
+                {
+                    @Html.Raw("No")
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateUpdated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDeleted)
+            </td>
+            <td>
 
-            @if (item.IsDeleted)
-            {
-                <a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-list-alt fa-2x"></i></a>
-                <a href="@Url.Action("Recover",  new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Recover"><i class="fa fa-check fa-2x"></i></a>
-            }
-            else
-            {
-                <a href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit fa-2x"></i></a>
-                <a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-list-alt fa-2x"></i></a>
-                <a href="@Url.Action("Delete", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o fa-2x"></i></a>
-            }
-        </td>
-    </tr>
-}
+                @if (item.IsDeleted)
+                {
+                    <a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-list-alt fa-2x"></i></a>
+                    <a href="@Url.Action("Recover",  new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Recover"><i class="fa fa-check fa-2x"></i></a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit fa-2x"></i></a>
+                    <a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-list-alt fa-2x"></i></a>
+                    <a href="@Url.Action("Delete", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o fa-2x"></i></a>
+                }
+            </td>
+        </tr>
+    }
 
 </table>
+<script src="~/Scripts/lodash.js"></script>
+@section Scripts
+{
+    <script>
+        var RealGenre = [];
+ $.get('@Url.Action("GetGenres", "Genre")').done(function (genre) {
+     $('#genre-select').empty().append("<option value=''>Select Genre</option>")
+     RealGenre.push(genre);
+     $.each(genre, function (i, item) {
+         $('#genre-select').append($('<option>', {
+             value: item.Id,
+             text: item.Name
+         }));
+
+     })
+  });
+        debugger;
+        var GenreID
+        $.get('@Url.Action("GetVideoInfo", "Video")').done(function (video) {
+            console.log(video);
+     //$('#genre-select').empty().append("<option value=''>Select Genre</option>")
+            $.each(video, function (i, item) {
+                 GenreID = item.Id
+                console.log(GenreID);
+                console.log(RealGenre);
+                //$.each(RealGenre, function (i, item) {
+                var list = _.filter(RealGenre, GenreID)
+                console.log(list);
+                //})
+                $('.label').text(GenreID)
+             //$('#genre-select').append($('<option>', {
+             //    value: GenreID,
+             //   text: item.Name
+             // }));
+
+           })
+        });
+
+    </script>
+}

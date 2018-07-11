@@ -248,7 +248,11 @@ namespace MrEOnline.Controllers
             }
             return View(video);
         }
-        //[HttpGet]
+        [HttpGet]
+        public JsonResult GetVideoInfo()
+        {
+            return Json(VideoService.Get().ToList(), JsonRequestBehavior.AllowGet);
+        }
 
     }
 }
