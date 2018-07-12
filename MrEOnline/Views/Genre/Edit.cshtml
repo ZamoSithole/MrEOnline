@@ -1,9 +1,11 @@
-﻿@model MrE.Models.Entities.Genre
+﻿@using MrEOnline.Models;
+@model MrE.Models.Entities.Genre
 
 @{
     ViewBag.Title = "Edit Genre";
 }
 
+@Html.Partial("_Feedback", (ViewBag.ViewMessage as ViewMessage))
 <div class="panel panel-default">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">

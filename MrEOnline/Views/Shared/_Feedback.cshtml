@@ -1,0 +1,36 @@
+﻿@using MrEOnline.Models;
+
+@model ViewMessage
+
+@if (Model != null)
+{
+    switch (Model.Type)
+    {
+        case ViewMessageType.Error:
+            <div class="alert alert-danger snackbar" role="alert">
+                <p>
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;
+                    <span class="message">@Html.Raw(Model.Message)</span>
+                </p>
+            </div>
+            break;
+        case ViewMessageType.Success:
+            <div class="alert alert-success snackbar" role="alert">
+                <p>
+                    <i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;
+                    <span class="message">@Html.Raw(Model.Message)</span>
+                </p>
+            </div>
+            break;
+        case ViewMessageType.Warning:
+            <div class="alert alert-warning snackbar" role="alert">
+                <p>
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;
+                    <span class="message">@Html.Raw(Model.Message)</span>
+                </p>
+            </div>
+            break;
+        default:
+            break;
+    }
+}

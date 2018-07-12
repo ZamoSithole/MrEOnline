@@ -25,6 +25,8 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a class="subMenuClass">Menu</a>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -42,11 +44,12 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-   
+   @Scripts.Render("~/bundles/application")
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
+            showSnack(20000);
         });
     </script>
 </body>

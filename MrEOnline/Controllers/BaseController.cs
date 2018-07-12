@@ -1,5 +1,7 @@
 ﻿using MrE.Models;
+using MrE.Models.Abstractions;
 using MrE.Services.Abstractions;
+using MrEOnline.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,28 +46,41 @@ namespace MrEOnline.Controllers
         public async Task<ActionResult> Create(T item)
         {
             await SetupSelectList();
-
+            var viewMessage = new ViewMessage();
             if (!ModelState.IsValid) return View(item);
             try
             {
                 PrimaryService.Insert(item);
+                viewMessage.Message = "Successfully saved your changes.";
+                viewMessage.Type = ViewMessageType.Success;
 
-                return RedirectToAction("index");
+                return RedirectToAction("Edit", new {
+                    id = (item as IBaseEntity<int>).Id,
+                    message =viewMessage.Message,
+                    messageType = viewMessage.Type
+                });
             }
             catch (Exception exception)
             {
+               
+                viewMessage.Type = ViewMessageType.Success;
                 if (exception is ValidationException)
-                    ModelState.AddModelError("", exception.ToString());
+                    viewMessage.Message = exception.ToString();
                 else
-                    ModelState.AddModelError("", "There was an error processing your request, please try again later!!");
+                    viewMessage.Message = "There was an error processing your request, please try again later!!";
             }
             return View(item);
         }
-        public async Task<ActionResult> Edit(int id)
+
+        public async Task<ActionResult> Edit(int id, string message = null, ViewMessageType? messageType = null)
         {
             var dataQuery = PrimaryService.GetByKey(id);
             await SetupSelectList();
             if (dataQuery == null) return HttpNotFound("Could not find the video you are looking for.");
+
+            if (!string.IsNullOrEmpty(message) && messageType.HasValue)
+                ViewBag.ViewMessage = new ViewMessage(message, messageType.Value);
+
             return View(dataQuery);
         }
         [HttpPost]

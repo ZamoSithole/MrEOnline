@@ -1,9 +1,10 @@
-﻿@model MrE.Models.Entities.Video
+﻿@using MrEOnline.Models;
+@model MrE.Models.Entities.Video
 
 @{
     ViewBag.Title = "Edit Video";
 }
-
+@Html.Partial("_Feedback", (ViewBag.ViewMessage as ViewMessage))
 <div class="panel panel-default">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">

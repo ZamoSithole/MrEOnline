@@ -1,10 +1,11 @@
-﻿@model MrE.Models.Entities.Status
+﻿@using MrEOnline.Models;
+@model MrE.Models.Entities.Status
 
 @{
     ViewBag.Title = "Edit Status";
 }
 
-
+@Html.Partial("_Feedback", (ViewBag.ViewMessage as ViewMessage))
 <div class="panel panel-default">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">
