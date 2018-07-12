@@ -1,7 +1,7 @@
-﻿@model MrE.Models.Entities.Video
+﻿@model MrE.Models.Entities.Genre
 
 @{
-    ViewBag.Title = "Edit Video";
+    ViewBag.Title = "Edit Genre";
 }
 
 <div class="panel panel-default">
@@ -10,14 +10,15 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(m => m.DateCreated)
             @Html.HiddenFor(m => m.DateUpdated)
             @Html.HiddenFor(m => m.IsDeleted)
             @Html.HiddenFor(m => m.DateDeleted)
 
-            @Html.Partial("_Form")
-        }
+            @Html.Partial("_ViewForm")
 
+        }
     </div>
 </div>

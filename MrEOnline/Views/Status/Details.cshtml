@@ -4,63 +4,15 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Status</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateCreated)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateUpdated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateUpdated)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateDeleted)
-        </dd>
-
-    </dl>
+<div class="panel panel-info">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @Html.Partial("_Details")
+        <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary">
+            <i class="fa fa-save"></i>&nbsp;Edit
+        </a>
+        <a href="@Url.Action("index")" class="btn btn-default">
+            <i class="fa fa-chevron-circle-left"></i>&nbsp;Back
+        </a>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

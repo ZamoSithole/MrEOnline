@@ -3,29 +3,36 @@ using MrE.Services.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace MrEOnline.Controllers
 {
-    public class GenreController : Controller
+    public class GenreController : BaseController<Genre>
     {
         protected IService<Genre> GenreService { get; set; }
 
         public GenreController(IService<Genre> genreService)
+            :base (genreService)
         {
             GenreService = genreService;
         }
+
         // GET: Genre
-        public ActionResult Index()
-        {
-            var genres = GenreService.Get();
-            return View(genres);
-        }
         [HttpGet]
         public JsonResult GetGenres()
         {
             return Json(GenreService.Get().ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+        protected override void TransformQuery(ref IQueryable<Genre> dataQuery)
+        {
+        }
+
+        protected override async Task SetupSelectList()
+        {
+            await Task.Delay(0);
         }
     }
 }

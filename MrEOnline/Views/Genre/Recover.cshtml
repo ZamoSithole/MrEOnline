@@ -1,21 +1,20 @@
-﻿@model MrE.Models.Entities.Status
+﻿@model MrE.Models.Entities.Genre
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Recover";
 }
-
-<div class="panel panel-danger">
+<div class="panel panel-warning">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">
-        <div class="alert alert-danger">
+        <div class="alert alert-warning">
             <p>
-                <i class="fa fa-exclamation-triangle"></i>&nbsp;Are you sure you want to delete the information below?
+                <i class="fa fa-question-circle-o"></i>&nbsp;Are you sure you want to recover the information below?
             </p>
         </div>
         @using (Html.BeginForm())
         {
             @Html.Partial("_Details")
-            <button type="submit" class="btn btn-danger">
+            <button type="submit" class="btn btn-success">
                 <i class="fa fa-thumbs-o-up"></i>&nbsp;Yes, please
             </button>
             <a href="@Url.Action("index")" class="btn btn-default">

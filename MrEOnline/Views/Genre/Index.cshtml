@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create")" class="btn btn-default">Create</a>
 </p>
 <table class="table">
     <tr>
@@ -29,37 +29,48 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @if (item.IsDeleted)
-            {
-                @Html.Raw("Yes")
-            }
-            else
-            {
-                @Html.Raw("No")
-            }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateUpdated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateDeleted)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            @Html.ActionLink("Recover","Recover", new { id=item.Id})
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        var style = string.Empty;
+        if (item.IsDeleted) { style = "class=grayout"; }
+        <tr @style>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (item.IsDeleted)
+                {
+                    @Html.Raw("Yes")
+                }
+                else
+                {
+                    @Html.Raw("No")
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateUpdated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDeleted)
+            </td>
+            <td>
+
+                @if (item.IsDeleted)
+                {
+                    <a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-list-alt fa-2x"></i></a>
+                    <a href="@Url.Action("Recover",  new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Recover"><i class="fa fa-check fa-2x"></i></a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit fa-2x"></i></a>
+                    <a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-list-alt fa-2x"></i></a>
+                    <a href="@Url.Action("Delete", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o fa-2x"></i></a>
+                }
+            </td>
+        </tr>
+    }
 
 </table>

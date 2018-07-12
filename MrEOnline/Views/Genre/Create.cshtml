@@ -1,17 +1,18 @@
-﻿@model MrE.Models.Entities.Video
+﻿@model MrE.Models.Entities.Genre
 
 @{
-    ViewBag.Title = "Create Video";
+    ViewBag.Title = "Create";
 }
 
-<script src="~/Scripts/lodash.js"></script>
 <div class="panel panel-default">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">
+
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-            @Html.Partial("_Form")
+            @Html.Partial("_ViewForm")
         }
     </div>
 </div>
+

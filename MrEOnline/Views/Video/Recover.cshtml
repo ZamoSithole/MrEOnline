@@ -4,85 +4,23 @@
     ViewBag.Title = "Recover";
 }
 
-<h2>Recover</h2>
-
-<h3>Are you sure you want to Recover this?</h3>
-<div>
-    <h4>Video</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Genre.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Genre.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RentalPrice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RentalPrice)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateCreated)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateUpdated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateUpdated)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateDeleted)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Recover" class="btn btn-success" /> |
-            <a class="btn btn-primary" href="@Url.Action( "Index")">Back</a>
+<div class="panel panel-warning">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        <div class="alert alert-warning">
+            <p>
+                <i class="fa fa-question-circle-o"></i>&nbsp;Are you sure you want to recover the information below?
+            </p>
         </div>
-    }
+        @using (Html.BeginForm())
+        {
+            @Html.Partial("_Details")
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-thumbs-o-up"></i>&nbsp;Yes, please
+            </button>
+            <a href="@Url.Action("index")" class="btn btn-default">
+                <i class="fa fa-thumbs-o-down"></i>&nbsp;No, please
+            </a>
+        }
+    </div>
 </div>
