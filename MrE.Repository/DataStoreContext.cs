@@ -15,6 +15,8 @@ namespace MrE.Repository
         public DbSet<Genre> Genres { get; set; }
 
         public DbSet<Video> Videos { get; set; }
+        public DbSet<Title> Titles { get; set; }
+        public DbSet<Cast> Casts { get; set; }
        
         public DataStoreContext() : base("DefaultConnection")
         {

@@ -1,4 +1,5 @@
 ﻿using MrE.Models.Entities;
+using MrE.Services;
 using MrE.Services.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,12 @@ namespace MrEOnline.Controllers
     public class VideoController : BaseController<Video>
     {
         public IService<Genre> GenreService { get; set; }
+        public IService<Title> TitleService { get; set; }
         public VideoController(IService<Video> videoService, IService<Genre> genreService)
             :base (videoService)
         {
             GenreService = genreService;
+            
         }
         public ActionResult UploadVideo()
         {

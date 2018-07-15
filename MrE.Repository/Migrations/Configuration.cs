@@ -24,8 +24,16 @@ namespace MrE.Repository.Migrations
                 new Genre { Name = "Romance", DateCreated = DateTime.Now, IsDeleted = false },
                 new Genre { Name = "Comedy", DateCreated = DateTime.Now, IsDeleted = false }
                 );
-
+            context.Titles.AddOrUpdate(
+                p => p.Name,
+                 new Title { Name = "Producer", DateCreated = DateTime.Now },
+                 new Title { Name = "Director", DateCreated = DateTime.Now },
+                 new Title { Name = "Actor", DateCreated = DateTime.Now },
+                 new Title { Name = "Editor", DateCreated = DateTime.Now },
+                 new Title { Name = "Screenwriter", DateCreated = DateTime.Now }
+                 );
             context.SaveChanges();
         }
+
     }
 }

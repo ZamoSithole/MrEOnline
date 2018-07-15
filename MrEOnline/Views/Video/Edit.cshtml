@@ -4,7 +4,10 @@
 @{
     ViewBag.Title = "Edit Video";
 }
-@Html.Partial("_Feedback", (ViewBag.ViewMessage as ViewMessage))
+@if (ViewData["ViewMessage"] != null)
+{
+    @Html.Partial("_Feedback", (ViewData["ViewMessage"] as ViewMessage))
+}
 <div class="panel panel-default">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">

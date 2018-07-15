@@ -29,6 +29,23 @@
             @Html.EditorFor(model => model.RentalPrice, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.RentalPrice, "", new { @class = "text-danger" })
         </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.AgeRestriction, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.AgeRestriction, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AgeRestriction, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.MoviePhoto, htmlAttributes: new { @class = "control-label" })
+            <div>
+                <input type="file" id="Photo" name="upload" />
+            </div>
+            @*<span class="btn btn-success fileinput-button">
+            <i class="fa fa-plus"></i>
+            <span>Upload Photo...</span>
+            <input type="file" id="Photo" name="upload" />
+        </span>*@
+            @Html.ValidationMessageFor(model => model.MoviePhoto, "", new { @class = "text-danger" })
+        </div>
     </div>
     <button type="submit" class="btn btn-primary">
         <i class="fa fa-save"></i>&nbsp;Save
@@ -36,4 +53,5 @@
     <a href="@Url.Action("index")" class="btn btn-default">
         <i class="fa fa-times-circle"></i>&nbsp;Cancel
     </a>
+    <a href="@Url.Action("Create","Cast")" class="btn btn-info"><i class="fa fa-user-plus"></i>&nbsp;Add Cast</a>
 </div>

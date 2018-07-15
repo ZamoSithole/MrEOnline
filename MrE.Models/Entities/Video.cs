@@ -26,6 +26,11 @@ namespace MrE.Models.Entities
         [Display(Name = " Rental Price"), Required(ErrorMessage = "RentalnPrice is required.")]
         [DataType(DataType.Currency, ErrorMessage = "Less than zero ")]
         public decimal RentalPrice { get; set; }
+        [Display(Name = "Age Restriction"), Required(ErrorMessage = "Age Restriction is required.")]
+        public string AgeRestriction { get; set; }
+
+        public virtual ICollection<Cast> Casts { get; set; }
+        public byte[] MoviePhoto { get; set; }
 
         public bool IsDeleted { get; set; }
  

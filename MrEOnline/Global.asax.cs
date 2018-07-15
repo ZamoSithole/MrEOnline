@@ -41,6 +41,10 @@ namespace MrEOnline
             builder.RegisterType<VideoService>().As<IService<Video>>().InstancePerRequest();
             builder.RegisterType<GenreValidationService>().As<IValidationService<Genre>>().InstancePerRequest();
             builder.RegisterType<GenreService>().As<IService<Genre>>().InstancePerRequest();
+            builder.RegisterType<TitleValidationService>().As<IValidationService<Title>>().InstancePerRequest();
+            builder.RegisterType<TitleService>().As<IService<Title>>().InstancePerRequest();
+            builder.RegisterType<CastValidationService>().As<IValidationService<Cast>>().InstancePerRequest();
+            builder.RegisterType<CastService>().As<IService<Cast>>().InstancePerRequest();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(builder.Build()));
         }

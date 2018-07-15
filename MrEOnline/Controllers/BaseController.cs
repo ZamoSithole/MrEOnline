@@ -5,6 +5,7 @@ using MrEOnline.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 
 namespace MrEOnline.Controllers
@@ -75,24 +76,33 @@ namespace MrEOnline.Controllers
         public async Task<ActionResult> Edit(int id, string message = null, ViewMessageType? messageType = null)
         {
             var dataQuery = PrimaryService.GetByKey(id);
+            
             await SetupSelectList();
             if (dataQuery == null) return HttpNotFound("Could not find the video you are looking for.");
 
             if (!string.IsNullOrEmpty(message) && messageType.HasValue)
-                ViewBag.ViewMessage = new ViewMessage(message, messageType.Value);
+                ViewData["ViewMessage"] = new ViewMessage(message, messageType.Value);
 
             return View(dataQuery);
         }
         [HttpPost]
         public async Task<ActionResult> Edit(T item)
         {
+            var viewMessage = new ViewMessage();
             await SetupSelectList();
             if (!ModelState.IsValid) return View(item);
             try
             {
                 PrimaryService.Update(item);
-
-                return RedirectToAction("index");
+                viewMessage.Message = "Successfully saved your changes.";
+                viewMessage.Type = ViewMessageType.Success;
+                //return RedirectToAction("edit");
+                return RedirectToAction("Edit", new
+                {
+                    id = (item as IBaseEntity<int>).Id,
+                    message = viewMessage.Message,
+                    messageType = viewMessage.Type
+                });
             }
             catch (Exception exception)
             {
