@@ -11,9 +11,16 @@
 <div class="panel panel-default">
     <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">
-        <div class="row">
-            <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.Data)" height="350px" width="100%" />
-        </div>
+        @if (Model.Data == null)
+        {
+
+        }
+        else
+        {
+            <div class="row">
+                <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.Data)" height="350px" width="100%" />
+            </div>
+        }
         <br />
         <div>
 

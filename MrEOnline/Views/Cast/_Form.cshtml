@@ -21,9 +21,10 @@
         @Html.ValidationMessageFor(model => model.TitleId, "", new { @class = "text-danger" })
     </div>
     <button type="submit" value="Create" class="btn btn-info">
-    <i class="fa fa-save"></i>&nbsp;Save</button>
-    @*  *@
-    <a href="@Url.Action("Edit","video",new { Model.Id })" class="btn btn-default"> 
-    <i class="fa fa-times-circle"></i>&nbsp;Cancel</a>
+        <i class="fa fa-save"></i>&nbsp;Save
+    </button>
+    <a href="@Url.Action("Edit","Video",new {id= Model.VideoId, })" class="btn btn-default">
+        <i class="fa fa-times-circle"></i>&nbsp;Cancel
+    </a>
 
 </div>

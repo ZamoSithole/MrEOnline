@@ -57,21 +57,37 @@ namespace MrEOnline.Tests.UnitTests
             Assert.AreEqual(value, (model as IEnumerable<Video>).Count(), "failed to return correct number of statuses");
         }
 
-        //[Test]
-        //public async Task CreateShouldInsert()
-        //{
-        //    var controller = AutoMock.Create<VideoController>();
-        //    var indexResult = await controller.Create();
-        //    //DataStore.Add(new Video { Id = 4, Title = "The Hitman's Bodyguarding", Description = "", RentalPrice = 40, GenreID = 1, AgeRestriction = "16", DateCreated = DateTime.Now, IsDeleted = false });
+        [Test]
+        public async Task CreateShouldInsert()
+        {
 
-        //    Assert.IsInstanceOf<ViewResult>(indexResult);
-        //    var model = (indexResult as ViewResult).Model;
+            int newKey = 2;
+            var VideoInfo = new Video { Id = newKey,
+                Title = "The Hitman's Bodyguard",
+                Description = "", RentalPrice = 40,
+                GenreID = 1, AgeRestriction = "16",
+                DateCreated = DateTime.Now,
+                IsDeleted = false };
+            MockRepository.Setup(m => m.GetByKey(newKey))
+                .Returns(() =>
+                {
+                    return DataStore.SingleOrDefault(e => e.Id == newKey);
+                });
 
-        //    Assert.IsInstanceOf<IEnumerable<Video>>(model);
-        //    Assert.NotNull((model as IEnumerable<Video>), "A null model is not expected");
+            MockRepository.Setup(m => m.Insert(VideoInfo))
+                .Callback((Video video) =>
+                {
+                    DataStore.Add(video);
+                });
 
-        //    //DataStore.Remove()
-        //}
+            MockRepository.Setup(m => m.CommitChanges()).Returns(1);
+
+            var controller = AutoMock.Create<VideoController>();
+            var indexResult = await controller.Create();
+
+            Assert.NotNull(VideoInfo);
+
+        }
 
         [TearDown]
         public void Teardown()

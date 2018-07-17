@@ -3,9 +3,15 @@
 <div class="panel panel-default">
     @*<div class="panel-heading">@ViewBag.Title</div>*@
     <div class="panel-body">
+
         <p>
-            <a href="@Url.Action("Create")" class="btn btn-default">Create</a>
+            @foreach (var item in Model)
+            {
+                
+                <a href="@Url.Action("Create", new { VideoID = item.VideoId})" class="btn btn-default">Create</a>
+            }
         </p>
+
         <table class="table">
             <tr>
                 <th>

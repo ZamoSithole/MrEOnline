@@ -21,10 +21,19 @@ namespace MrEOnline.Tests.UnitTests
     {
         private AutoMock AutoMock { get; set; }
         private Mock<IRepository<Status>> MockRepository { get; set; }
+        private List<Status> DataStore { get; set; }
 
         [SetUp]
         public void Setup()
         {
+            DataStore = new List<Status>()
+            {
+                new Status {Id = 1, Name = "Pending", DateCreated = DateTime.Now, IsDeleted = false },
+                 new Status {Id = 2, Name = "In-Progress", DateCreated = DateTime.Now, IsDeleted = true, DateUpdated = DateTime.Now.AddDays(2), DateDeleted = DateTime.Now.AddDays(5) },
+                 new Status {Id = 3, Name = "Active", DateCreated = DateTime.Now, IsDeleted = false, DateUpdated = DateTime.Now.AddDays(2) }
+
+            };
+
             AutoMock = AutoMock.GetLoose();
             MockRepository = new Mock<IRepository<Status>>();
             MockRepository.Setup(m => m.Get()).Returns(GetData());
@@ -48,7 +57,28 @@ namespace MrEOnline.Tests.UnitTests
             Assert.NotNull((model as IEnumerable<Status>), "A null model is not expected");
             Assert.AreEqual(value, (model as IEnumerable<Status>).Count(), "failed to return correct number of statuses");
         }
+        [Test]
+        public async Task CreateShouldInsert()
+        {
+            int newKey = 2;
+            var StatusName = new Status { Id = newKey, Name = "InActive" };
+            MockRepository.Setup(m => m.GetByKey(newKey))
+                .Returns(() =>
+                {
+                    return DataStore.SingleOrDefault(e => e.Id == newKey);
+                });
 
+            MockRepository.Setup(m => m.Insert(StatusName))
+                .Callback((Status status) =>
+                {
+                    DataStore.Add(status);
+                });
+            MockRepository.Setup(m => m.CommitChanges()).Returns(1);
+            var controller = AutoMock.Create<GenreController>();
+            var indexResult = await controller.Create();
+
+            Assert.NotNull(StatusName);
+        }
         [TearDown]
         public void Teardown()
         {
@@ -56,12 +86,7 @@ namespace MrEOnline.Tests.UnitTests
         }
         private IQueryable<Status> GetData()
         {
-            return (new List<Status>()
-            {
-                 new Status {Id = 1, Name = "Pending", DateCreated = DateTime.Now, IsDeleted = false },
-                 new Status {Id = 2, Name = "In-Progress", DateCreated = DateTime.Now, IsDeleted = true, DateUpdated = DateTime.Now.AddDays(2), DateDeleted = DateTime.Now.AddDays(5) },
-                 new Status {Id = 3, Name = "Active", DateCreated = DateTime.Now, IsDeleted = false, DateUpdated = DateTime.Now.AddDays(2) }
-            }).AsQueryable();
+            return DataStore.AsQueryable();
         }
     }
 }

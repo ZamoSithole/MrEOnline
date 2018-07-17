@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestDoubles.cs" />
+    <Compile Include="UnitTests\CastControllerTests.cs" />
     <Compile Include="UnitTests\GenreControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTests\StatusControllerTests.cs" />

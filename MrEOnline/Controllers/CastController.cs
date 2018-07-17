@@ -24,7 +24,7 @@ namespace MrEOnline.Controllers
             await SetupSelectList();
             if (videoId.HasValue)
                 return View(new Cast { VideoId = videoId.Value });
-            return View("Create");
+            return View();
         }
         public ActionResult IndexPartial(int videoId)
         {

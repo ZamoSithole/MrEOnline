@@ -100,9 +100,11 @@
                                 }
                                 else
                                 {
-                                    <li> <a href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit fa-2x"></i>&nbsp;Edit</a></li>
-                                    <li><a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-list-alt fa-2x"></i>&nbsp;Details</a></li>
-                                    <li><a href="@Url.Action("Delete", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o fa-2x"></i>&nbsp;Delete</a></li>
+                                    <li><a href="@Url.Action("Edit", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i>&nbsp;Edit</a></li>
+                                    <li><a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-list-alt"></i>&nbsp;Details</a></li>
+                                    <li><a href="@Url.Action("Delete", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o"></i>&nbsp;Delete</a></li>
+                                    <li><a href="@Url.Action("UploadData", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="upload"><i class="fa fa-upload"></i>&nbsp;Upload</a></li>
+                                    <li><a href="@Url.Action("Create","Cast", new { VideoID = item.Id })" data-toggle="tooltip" data-placement="top" title="cast"><i class="fa fa-user-plus"></i>&nbsp;Cast</a></li>
                                 }
                             </ul>
                         </div>
