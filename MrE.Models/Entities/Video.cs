@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace MrE.Models.Entities
 {
     [Table("Video")]
-    public class Video : IBaseEntity<int>, ICreatable, IDeletable,IUpdatable
+    public class Video : IBaseEntity<int>, ICreatable, IDeletable,IUpdatable, IUploadable
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
@@ -30,7 +30,9 @@ namespace MrE.Models.Entities
         public string AgeRestriction { get; set; }
 
         public virtual ICollection<Cast> Casts { get; set; }
-        public byte[] MoviePhoto { get; set; }
+
+        [Column("MoviePhoto")]
+        public byte[] Data { get; set; }
 
         public bool IsDeleted { get; set; }
  

@@ -1,0 +1,30 @@
+﻿@using MrEOnline.Models;
+@model MrE.Models.Entities.Cast
+
+@{
+    ViewBag.Title = "Edit Cast Member";
+}
+@if (ViewData["ViewMessage"] != null)
+{
+    @Html.Partial("_Feedback", (ViewData["ViewMessage"] as ViewMessage))
+}
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(m => m.DateCreated)
+            @Html.HiddenFor(m => m.DateUpdated)
+            @Html.HiddenFor(m => m.IsDeleted)
+            @Html.HiddenFor(m => m.DateDeleted)
+
+            @Html.Partial("_Form")
+
+
+        }
+    </div>
+</div>

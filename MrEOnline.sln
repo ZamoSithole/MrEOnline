@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrE.Models", "MrE.Models\Mr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrE.Services", "MrE.Services\MrE.Services.csproj", "{FE265159-EBAD-49CD-9E35-73F6E693D223}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrEOnline.Tests", "MrEOnline.Tests\MrEOnline.Tests.csproj", "{1216689E-C8B0-4A3A-BB04-7A9F022CA51C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FE265159-EBAD-49CD-9E35-73F6E693D223}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE265159-EBAD-49CD-9E35-73F6E693D223}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE265159-EBAD-49CD-9E35-73F6E693D223}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1216689E-C8B0-4A3A-BB04-7A9F022CA51C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1216689E-C8B0-4A3A-BB04-7A9F022CA51C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1216689E-C8B0-4A3A-BB04-7A9F022CA51C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1216689E-C8B0-4A3A-BB04-7A9F022CA51C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

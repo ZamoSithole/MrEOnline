@@ -22,13 +22,13 @@ namespace MrEOnline.Controllers
 
         public virtual async Task<ActionResult> Index()
         {
-            await SetupSelectList();
             var dataQuery = PrimaryService.Get();
 
             TransformQuery(ref dataQuery);
 
             return View(dataQuery);
         }
+
         public async Task<ActionResult> Details(int id)
         {
             await SetupSelectList();
@@ -38,7 +38,7 @@ namespace MrEOnline.Controllers
             return View(dataQuery);
 
         }
-        public virtual async Task<ActionResult> Create()
+        public virtual async Task<ActionResult> Create(int? foreignKey = null)
         {
             await SetupSelectList();
             return View();
@@ -49,21 +49,23 @@ namespace MrEOnline.Controllers
             await SetupSelectList();
             var viewMessage = new ViewMessage();
             if (!ModelState.IsValid) return View(item);
+
             try
             {
                 PrimaryService.Insert(item);
                 viewMessage.Message = "Successfully saved your changes.";
                 viewMessage.Type = ViewMessageType.Success;
 
-                return RedirectToAction("Edit", new {
+                return RedirectToAction("Edit", new
+                {
                     id = (item as IBaseEntity<int>).Id,
-                    message =viewMessage.Message,
+                    message = viewMessage.Message,
                     messageType = viewMessage.Type
                 });
             }
             catch (Exception exception)
             {
-               
+
                 viewMessage.Type = ViewMessageType.Success;
                 if (exception is ValidationException)
                     viewMessage.Message = exception.ToString();
@@ -73,6 +75,61 @@ namespace MrEOnline.Controllers
             return View(item);
         }
 
+        private static void HandleUploads(T item, HttpPostedFileBase upload)
+        {
+            if (upload != null && upload.ContentLength > 0)
+            {
+                using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                {
+                    if (item is IUploadable) (item as IUploadable).Data = reader.ReadBytes(upload.ContentLength);
+                }
+            }
+        }
+        public async Task<ActionResult> UploadData(int id)
+        {
+            var dataQuery = PrimaryService.GetByKey(id);
+            await SetupSelectList();
+            if (dataQuery == null) return HttpNotFound("Could not find the video you are looking for.");
+
+            return View(dataQuery);
+        }
+        [HttpPost]
+        public async Task<ActionResult> UploadData(T item, HttpPostedFileBase upload)
+        {
+            if (upload != null && upload.ContentLength > 0)
+            {
+                using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                {
+                    if (item is IUploadable) (item as IUploadable).Data = reader.ReadBytes(upload.ContentLength);
+                }
+            }
+            var viewMessage = new ViewMessage();
+            await SetupSelectList();
+            if (!ModelState.IsValid) return View(item);
+            try
+            {
+                PrimaryService.Update(item);
+                viewMessage.Message = "Successfully saved your changes.";
+                viewMessage.Type = ViewMessageType.Success;
+
+                return RedirectToAction("Edit", new
+                {
+                    id = (item as IBaseEntity<int>).Id,
+                    message = viewMessage.Message,
+                    messageType = viewMessage.Type
+                });
+            }
+            catch (Exception exception)
+            {
+
+                if (exception is ValidationException)
+                    ModelState.AddModelError("", exception.ToString());
+                else
+                    ModelState.AddModelError("", "There was an error processing your request, please try again later!!");
+            }
+
+            return View(item);
+        }
         public async Task<ActionResult> Edit(int id, string message = null, ViewMessageType? messageType = null)
         {
             var dataQuery = PrimaryService.GetByKey(id);

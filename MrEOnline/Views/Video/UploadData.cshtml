@@ -1,0 +1,54 @@
+﻿@model MrE.Models.Entities.Video
+
+@{
+    ViewBag.Title = "Upload Image";
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("UploadData", "Video", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(m => m.GenreID)
+            @Html.HiddenFor(m => m.Description)
+            @Html.HiddenFor(m => m.Title)
+            @Html.HiddenFor(m => m.DateCreated)
+            @Html.HiddenFor(m => m.DateUpdated)
+            @Html.HiddenFor(m => m.IsDeleted)
+            @Html.HiddenFor(m => m.DateDeleted)
+            @Html.HiddenFor(m => m.RentalPrice)
+            @Html.HiddenFor(m => m.AgeRestriction)
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+                <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Select files...</span>
+                    <!-- The file input field used as target for the file upload widget -->
+                    <input type="file" id="Photo" name="upload" />
+                </span>
+                @*<div>
+                        <input type="file" id="Photo" name="upload" />
+                    </div>*@
+                @*@Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+
+            </div>
+            <button type="submit" value="Save" class="btn btn-info">
+                <i class="fa fa-save"></i>&nbsp;Save
+            </button>
+            <a href=" @Url.Action("Index")" class="btn btn-default">
+                <i class="fa fa-times-circle"></i>&nbsp;Cancel
+            </a>
+        }
+    </div>
+</div>

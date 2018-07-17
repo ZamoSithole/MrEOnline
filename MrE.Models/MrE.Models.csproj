@@ -58,6 +58,7 @@
     <Compile Include="Abstractions\IDeletable.cs" />
     <Compile Include="Abstractions\IPerson.cs" />
     <Compile Include="Abstractions\IUpdatable.cs" />
+    <Compile Include="Abstractions\IUploadable.cs" />
     <Compile Include="DataOperation.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Cast.cs" />

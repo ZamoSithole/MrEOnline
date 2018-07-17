@@ -18,11 +18,12 @@ namespace MrEOnline.Controllers
     {
         public IService<Genre> GenreService { get; set; }
         public IService<Title> TitleService { get; set; }
+        public IService<Video> VideoService { get; set; }
         public VideoController(IService<Video> videoService, IService<Genre> genreService)
             :base (videoService)
         {
             GenreService = genreService;
-            
+            VideoService = videoService;
         }
         public ActionResult UploadVideo()
         {
@@ -48,7 +49,7 @@ namespace MrEOnline.Controllers
                 return View();
             }                       
         }
-
+        
         protected override void TransformQuery(ref IQueryable<Video> dataQuery)
         {
             dataQuery = dataQuery.Include(m => m.Genre);

@@ -2,6 +2,10 @@
 
 <div>
     <div class="row">
+        <img src="data:image/png;base64,@System.Convert.ToBase64String(Model.Data)" height="350px" width="100%" />
+    </div>
+    <br />
+    <div class="row">
         <div class="form-group col-md-6">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
             @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", @disabled = true } })
