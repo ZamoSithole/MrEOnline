@@ -47,7 +47,6 @@ namespace MrEOnline.Services.Abstractions
 
             if (item is IUpdatable) (item as IUpdatable).DateUpdated = DateTime.Now;
 
-            item = CopyToCurrentValues(item);
             Repository.Update(item);
 
             return Repository.CommitChanges() > 0 ? item : null;
@@ -61,7 +60,6 @@ namespace MrEOnline.Services.Abstractions
                 auditable.IsDeleted = true;
                 auditable.DateDeleted = DateTime.Now;
 
-                item = CopyToCurrentValues(item);
                 return Update(item);
             }
             return null;
@@ -81,18 +79,7 @@ namespace MrEOnline.Services.Abstractions
             return Update(item);
         }
 
-        /// <summary>
-        /// Copies property values from the supplied entity to the targeted entity. Used during <see cref="Update(T)"/> when audit tracking is performed. 
-        /// </summary>
-        /// <param name="entity">The source entity to copied.</param>
-        /// <returns>The copied entity.</returns>
-        protected T CopyToCurrentValues(T entity)
-        {
-            var entityEntry = Repository.GetEntityEntry(GetByKey((entity as IBaseEntity<int>).Id));
-            entityEntry.CurrentValues.SetValues(entity);
-
-            return entityEntry.Entity;
-        }
+        
 
         public virtual void Dispose() => Repository?.Dispose();
 

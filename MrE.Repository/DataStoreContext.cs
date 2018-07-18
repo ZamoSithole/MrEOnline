@@ -26,6 +26,14 @@ namespace MrE.Repository
             Configuration.ProxyCreationEnabled = false;
         }
 
+        public virtual object Update(object item) {
+            if (Entry(item).State == EntityState.Detached) {
+                Set(item.GetType()).Attach(item);
+                Entry(item).State = EntityState.Modified;
+            }
+            return item;
+        }
+
         protected override void OnModelCreating(DbModelBuilder builder)
         {
             base.OnModelCreating(builder);

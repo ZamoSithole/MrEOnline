@@ -25,7 +25,10 @@ namespace MrE.Services.Validations
 
         public override void ValidateUpdate(Cast targetObject, IEnumerable<Cast> items)
         {
-            throw new NotImplementedException();
+            base.ValidateUpdate(targetObject);
+            if (items.Any(e => e.Id != targetObject.Id & (e.VideoId == targetObject.VideoId & e.FullName.CompareTo(targetObject.FullName) == 0)))
+                ValidationExceptionService.Add("", "Unable to update Cast.");
+            ValidationExceptionService.ThrowException();
         }
     }
 }
