@@ -14,35 +14,37 @@ namespace MrEOnline.Controllers
     {
         public IService<Title> TitleService { get; set; }
         public CastController(IService<Cast> castService, IService<Title> titleService)
-            : base(castService)
-        {
+            : base(castService) {
             TitleService = titleService;
         }
 
-        public override async Task<ActionResult> Create(int? videoId = null)
-        {
+        public override async Task<ActionResult> Create(int? videoId = null) {
             await SetupSelectList();
             if (videoId.HasValue)
                 return View(new Cast { VideoId = videoId.Value });
             return View();
         }
-        public ActionResult IndexPartial(int videoId)
-        {
+        public ActionResult IndexPartial(int videoId) {
 
             var dataQuery = PrimaryService.Get().Where(e => e.VideoId == videoId);
-           
+
             if (dataQuery.Count() < 1)
-              return new HttpNotFoundResult();
+                return new HttpNotFoundResult();
             return PartialView("_IndexPartial", dataQuery);
         }
-        protected override void TransformQuery(ref IQueryable<Cast> dataQuery)
-        {
+        public ActionResult CastCheckoutIndexPartial(int videoId) {
+            var dataQuery = PrimaryService.Get().Where(e => e.VideoId == videoId);
+
+            if (dataQuery.Count() < 1)
+                return new HttpNotFoundResult();
+            return PartialView("_CastCheckoutIndexPartial", dataQuery);
+        }
+        protected override void TransformQuery(ref IQueryable<Cast> dataQuery) {
             dataQuery = dataQuery.Include(m => m.Video);
             dataQuery = dataQuery.Include(m => m.Title);
         }
 
-        protected override async Task SetupSelectList()
-        {
+        protected override async Task SetupSelectList() {
             ViewBag.TitleSelectList = new SelectList(await TitleService.Get().ToListAsync(), "Id", "Name");
         }
     }

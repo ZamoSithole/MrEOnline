@@ -17,6 +17,8 @@ namespace MrE.Repository
         public virtual DbSet<Video> Videos { get; set; }
         public virtual DbSet<Title> Titles { get; set; }
         public virtual DbSet<Cast> Casts { get; set; }
+
+        public virtual DbSet<CheckOut> CheckOuts { get; set; }
        
         public DataStoreContext() : base("DefaultConnection")
         {

@@ -31,6 +31,7 @@ namespace MrE.Models.Entities
 
         public virtual ICollection<Cast> Casts { get; set; }
 
+        [Display(Name = "Movie")]
         [Column("MoviePhoto")]
         public byte[] Data { get; set; }
 

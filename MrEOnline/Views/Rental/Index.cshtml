@@ -1,0 +1,125 @@
+﻿@model IEnumerable<MrE.Models.Entities.Video>
+
+@{
+    ViewBag.Title = "Movies";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
+    <div class="panel-body">
+
+        <p>
+            <a href="@Url.Action("Create")" class="btn btn-success"> <i class="fa fa-shopping-cart"></i>&nbsp;Check Out</a>
+            <span style="color:Red" id="Amount"></span>
+        </p>
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Data)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Genre.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RentalPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AgeRestriction)
+                    </th>
+
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.IsDeleted)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateCreated)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateUpdated)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateDeleted)
+                        </th>*@
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @if (item.Data == null) {
+                                <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+                            } else {
+                                <div class="">
+                                    <img src="data:image/png;base64,@System.Convert.ToBase64String( item.Data)" width="100%" height="auto" style="display:block" class="img-responsive" />
+                                </div>
+                            }
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Genre.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td class="ellipsis" data-toggle="tooltip" data-placement="bottom" data-container="body" title="@item.Description">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RentalPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AgeRestriction)
+                        </td>
+
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.IsDeleted)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateCreated)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateUpdated)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateDeleted)
+                            </td>*@
+                        <td>
+                            <a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-list-alt fa-2x"></i></a>
+                            @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                            <a href="" data-toggle="tooltip" data-placement="top" title="Rent" class="btnRent"><i class="fa fa-shopping-basket fa-2x"></i></a>
+                            @*@Html.ActionLink("Rent", "Rent", new { id = item.Id })*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        var Total = 0;
+        $(".table").on('click', '.btnRent', function (e) {
+            e.preventDefault();
+            var currentRow = $(this).closest("tr"); 
+            var col3 = currentRow.find("td:eq(4)").text(); // get current row 3rd TD
+            RentalPrice = col3.replace('R', '');
+            console.log(RentalPrice);
+            
+            Total = Total + parseInt(RentalPrice);
+            $('#Amount').text('R' + Total + '.00')
+        })
+        //$('.btnRent').on('click', function (e) {
+        //    e.preventDefault();
+        //    var Test = $('.table tbody tr td:nth-child(2)')
+        //    console.log(Test);
+        //    var amount = item.RentalPrice
+        //    $('#Amount').append(amount)
+        //})
+    </script>
+    }
