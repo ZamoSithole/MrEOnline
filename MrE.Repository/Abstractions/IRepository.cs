@@ -66,7 +66,5 @@ namespace MrE.Repository.Abstractions
         int CommitChanges();
 
         Task<int> CommitChangesAsync();
-
-        DbEntityEntry<T> GetEntityEntry(T item);
     }
 }

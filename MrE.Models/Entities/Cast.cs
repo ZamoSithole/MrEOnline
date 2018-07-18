@@ -42,5 +42,11 @@ namespace MrE.Models.Entities
 
         [Display(Name = "Date Deleted")]
         public DateTime? DateDeleted { get; set; }
+
+        [NotMapped]public string FullName {
+            get {
+                return $"{FirstName} {LastName}";
+            }
+        }
     }
 }
