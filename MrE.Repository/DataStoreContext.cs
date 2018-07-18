@@ -8,15 +8,15 @@ namespace MrE.Repository
 {
     public class DataStoreContext : IdentityDbContext<User>
     {       
-        public DbSet<Address> Addresses { get; set; }
-        public DbSet<Contact> Contacts { get; set; }             
-        public DbSet<Status> Statuses { get; set; }               
-        public DbSet<Member> Members { get; set; }
-        public DbSet<Genre> Genres { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Status> Statuses { get; set; }
+        public virtual DbSet<Member> Members { get; set; }
+        public virtual DbSet<Genre> Genres { get; set; }
 
-        public DbSet<Video> Videos { get; set; }
-        public DbSet<Title> Titles { get; set; }
-        public DbSet<Cast> Casts { get; set; }
+        public virtual DbSet<Video> Videos { get; set; }
+        public virtual DbSet<Title> Titles { get; set; }
+        public virtual DbSet<Cast> Casts { get; set; }
        
         public DataStoreContext() : base("DefaultConnection")
         {
