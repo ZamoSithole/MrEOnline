@@ -11,115 +11,88 @@
             <a href="@Url.Action("Create")" class="btn btn-success"> <i class="fa fa-shopping-cart"></i>&nbsp;Check Out</a>
             <span style="color:Red" id="Amount"></span>
         </p>
-        <div class="table-responsive">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Data)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Genre.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Title)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Description)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.RentalPrice)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.AgeRestriction)
-                    </th>
 
-                    @*<th>
-                            @Html.DisplayNameFor(model => model.IsDeleted)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DateCreated)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DateUpdated)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DateDeleted)
-                        </th>*@
-                    <th></th>
-                </tr>
+        @foreach (var item in Model) {
+            <div class="row" style="margin-bottom: 19px;">
+                <div class="col-md-6">
+                    @if (item.Data == null) {
+                        <i class="fa fa-picture-o fa-5x" aria-hidden="true" style=" font-size: 13em; "></i>
+                    } else {
+                        <div class="">
+                            <img src="data:image/png;base64,@System.Convert.ToBase64String( item.Data)" width="100%" height="auto" style="display:block" class="img-responsive" />
+                        </div>
+                    }
+                    <hr />
+                </div>
 
-                @foreach (var item in Model) {
-                    <tr>
-                        <td>
-                            @if (item.Data == null) {
-                                <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
-                            } else {
-                                <div class="">
-                                    <img src="data:image/png;base64,@System.Convert.ToBase64String( item.Data)" width="100%" height="auto" style="display:block" class="img-responsive" />
-                                </div>
-                            }
+                <div class="col-md-6">
+                    <div>
+                        <label class="control-label">Title :</label>
+                        @Html.DisplayFor(model => item.Title)
+                    </div>
+                    <div>
+                        <label class="control-label">Genre :</label>
+                        @Html.DisplayFor(model => item.Genre.Name)
+                    </div>
+                    <div>
+                        <label class="control-label">Description :</label>
+                        @Html.DisplayFor(model => item.Description)
 
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Genre.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td class="ellipsis" data-toggle="tooltip" data-placement="bottom" data-container="body" title="@item.Description">
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.RentalPrice)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AgeRestriction)
-                        </td>
+                    </div>
+                    <div>
+                        <label class="control-label">Age Restriction :</label>
+                        @Html.DisplayFor(model => item.AgeRestriction)
+                    </div>
+                    <div>
+                        <label class="control-label">Rental Price :</label>
+                        @Html.DisplayFor(model => item.RentalPrice)
+                    </div>
+                    <div>
+                        <a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details" class="btn btn-info"><i class="fa fa-list-alt fa-2x"></i>&nbsp;Details</a>
+                        <a href="" data-toggle="tooltip" data-placement="top" title="Rent" class="btnRent btn btn-success" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice">
+                            <i class="fa fa-shopping-basket fa-2x"></i>
+                            &nbsp;Rent
+                        </a>
+                        <a class="btnCheck btn btn-default" data-toggle="tooltip" data-placement="top" title="Yes" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" disabled style=" display:none"><i class="fa fa-check fa-2x" style="color: green;"></i></a>
+                        <a class="pull-right btnCancel" data-toggle="tooltip" data-placement="top" title="Cancel" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" style="cursor:pointer; display: none"><i class="fa fa-close fa-2x" style="color:red"></i></a>
 
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.IsDeleted)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DateCreated)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DateUpdated)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DateDeleted)
-                            </td>*@
-                        <td>
-                            <a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details"><i class="fa fa-list-alt fa-2x"></i></a>
-                            @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
-                            <a href="" data-toggle="tooltip" data-placement="top" title="Rent" class="btnRent"><i class="fa fa-shopping-basket fa-2x"></i></a>
-                            @*@Html.ActionLink("Rent", "Rent", new { id = item.Id })*@
-                        </td>
-                    </tr>
-                }
 
-            </table>
-        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
     </div>
 </div>
+
 @section Scripts{
     <script type="text/javascript">
         var Total = 0;
-        $(".table").on('click', '.btnRent', function (e) {
+        $(".btnRent").on('click', function (e) {
             e.preventDefault();
-            var currentRow = $(this).closest("tr"); 
-            var col3 = currentRow.find("td:eq(4)").text(); // get current row 3rd TD
-            RentalPrice = col3.replace('R', '');
-            console.log(RentalPrice);
-            
-            Total = Total + parseInt(RentalPrice);
+            var currentRow = $(this).attr("data-RentalPrice");
+            console.log(currentRow)
+            Total = Total + parseInt(currentRow);
             $('#Amount').text('R' + Total + '.00')
-        })
-        //$('.btnRent').on('click', function (e) {
-        //    e.preventDefault();
-        //    var Test = $('.table tbody tr td:nth-child(2)')
-        //    console.log(Test);
-        //    var amount = item.RentalPrice
-        //    $('#Amount').append(amount)
-        //})
+            $(this).hide();
+            $('.btnCancel').show();
+            $('.btnCheck').show();
+        });
+        var newTotal = 0
+        $('.btnCancel').on('click', function (e) {
+            e.preventDefault();
+            var currentRow = $(this).attr("data-RentalPrice");
+            var checkOutAmount = $('#Amount').text();
+            console.log(checkOutAmount)
+            substitude = checkOutAmount.replace('R', '');
+            console.log(substitude)
+            newTotal = substitude - parseInt(currentRow);
+            console.log(newTotal)
+            $('#Amount').text('R' + newTotal + '.00')
+            $('.btnRent').show();
+            $('.btnCancel').hide();
+            $('.btnCheck').hide();
+        });
+
     </script>
-    }
+}

@@ -34,7 +34,6 @@ namespace MrEOnline.Controllers
         }
         public ActionResult CastCheckoutIndexPartial(int videoId) {
             var dataQuery = PrimaryService.Get().Where(e => e.VideoId == videoId);
-
             if (dataQuery.Count() < 1)
                 return new HttpNotFoundResult();
             return PartialView("_CastCheckoutIndexPartial", dataQuery);
