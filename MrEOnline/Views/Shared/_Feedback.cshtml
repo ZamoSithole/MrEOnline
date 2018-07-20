@@ -7,7 +7,7 @@
     switch (Model.Type)
     {
         case ViewMessageType.Error:
-            <div class="alert alert-danger snackbar" role="alert">
+            <div class="alert alert-danger" role="alert">
                 <p>
                     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;
                     <span class="message">@Html.Raw(Model.Message)</span>
@@ -23,7 +23,7 @@
             </div>
             break;
         case ViewMessageType.Warning:
-            <div class="alert alert-warning snackbar" role="alert">
+            <div class="alert alert-warning" role="alert">
                 <p>
                     <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;
                     <span class="message">@Html.Raw(Model.Message)</span>

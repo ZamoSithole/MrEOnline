@@ -73,16 +73,16 @@ footer{
 /* The snackbar - position it at the bottom and in the middle of the screen */
 .snackbar {
     visibility: hidden; /* Hidden by default. Visible on click */
-    min-width: 250px; /* Set a default minimum width */
-    margin-left: -125px; /* Divide value of min-width by 2 */
+    /*min-width: 250px;*/ /* Set a default minimum width */
+    /*margin-left: -125px;*/ /* Divide value of min-width by 2 */
     background-color: white; /* Black background color */
     text-align: center; /* Centered text */
     border-radius: 2px; /* Rounded borders */
     padding: 16px; /* Padding */
     position: fixed; /* Sit on top of the screen */
     z-index: 1; /* Add a z-index if needed */
-    left: 50%; /* Center the snackbar */
-    bottom: 30px; /* 30px from the bottom */
+    /*left: 50%;*/ /* Center the snackbar */
+    /*bottom: 30px;*/ /* 30px from the bottom */
 }
 
     /* Show the snackbar when clicking on a button (class added with JavaScript) */
@@ -142,3 +142,9 @@ However, delay the fade out process for 2.5 seconds */
         opacity: 0;
     }
 }
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /*width: 50%;*/
+} 
