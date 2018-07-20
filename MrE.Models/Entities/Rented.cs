@@ -8,16 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MrE.Models.Entities {
-    [Table("Rented")]
-    public class CheckOut : IBaseEntity<int>, ICreatable, IUpdatable {
+    [Table("Rentals")]
+    public class Rental : IBaseEntity<int>, ICreatable, IUpdatable {
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int Id { get; set; }
-        public int VideoId { get; set;}
+        public int VideoId { get; set; }
         public Video Video { get; set; }
-        public int MemberID { get; set; }
+        public int MemberId { get; set; }
         public Member Member { get; set; }
+        public int StatusId { get; set; }
+        public Status Status { get; set; }
         public bool IsCheckedOut { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }

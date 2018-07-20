@@ -62,11 +62,11 @@
     <Compile Include="DataOperation.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Cast.cs" />
-    <Compile Include="Entities\CheckOut.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\Human.cs" />
     <Compile Include="Entities\Member.cs" />
+    <Compile Include="Entities\Rented.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Status.cs" />
     <Compile Include="Entities\Title.cs" />

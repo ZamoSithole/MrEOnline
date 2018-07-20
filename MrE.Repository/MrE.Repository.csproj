@@ -89,13 +89,21 @@
     <Compile Include="Migrations\201807131012409_updatedCastModelagain.Designer.cs">
       <DependentUpon>201807131012409_updatedCastModelagain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807181301244_DataStoreContextChanged.cs" />
-    <Compile Include="Migrations\201807181301244_DataStoreContextChanged.Designer.cs">
-      <DependentUpon>201807181301244_DataStoreContextChanged.cs</DependentUpon>
+    <Compile Include="Migrations\201807191141280_DataStoreContextChanged.cs" />
+    <Compile Include="Migrations\201807191141280_DataStoreContextChanged.Designer.cs">
+      <DependentUpon>201807191141280_DataStoreContextChanged.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807181305229_DataStoreContextChanged1.cs" />
-    <Compile Include="Migrations\201807181305229_DataStoreContextChanged1.Designer.cs">
-      <DependentUpon>201807181305229_DataStoreContextChanged1.cs</DependentUpon>
+    <Compile Include="Migrations\201807201244285_AddRentalModel.cs" />
+    <Compile Include="Migrations\201807201244285_AddRentalModel.Designer.cs">
+      <DependentUpon>201807201244285_AddRentalModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807201301006_RenamedisCheckedOutToIsCheckedOut.cs" />
+    <Compile Include="Migrations\201807201301006_RenamedisCheckedOutToIsCheckedOut.Designer.cs">
+      <DependentUpon>201807201301006_RenamedisCheckedOutToIsCheckedOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807201307070_AddStatusToRental.cs" />
+    <Compile Include="Migrations\201807201307070_AddStatusToRental.Designer.cs">
+      <DependentUpon>201807201307070_AddStatusToRental.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
@@ -141,11 +149,17 @@
     <EmbeddedResource Include="Migrations\201807131012409_updatedCastModelagain.resx">
       <DependentUpon>201807131012409_updatedCastModelagain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807181301244_DataStoreContextChanged.resx">
-      <DependentUpon>201807181301244_DataStoreContextChanged.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807191141280_DataStoreContextChanged.resx">
+      <DependentUpon>201807191141280_DataStoreContextChanged.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807181305229_DataStoreContextChanged1.resx">
-      <DependentUpon>201807181305229_DataStoreContextChanged1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807201244285_AddRentalModel.resx">
+      <DependentUpon>201807201244285_AddRentalModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807201301006_RenamedisCheckedOutToIsCheckedOut.resx">
+      <DependentUpon>201807201301006_RenamedisCheckedOutToIsCheckedOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807201307070_AddStatusToRental.resx">
+      <DependentUpon>201807201307070_AddStatusToRental.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

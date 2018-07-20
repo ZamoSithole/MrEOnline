@@ -7,13 +7,13 @@ namespace MrE.Repository.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DataStoreContextChanged1 : IMigrationMetadata
+    public sealed partial class RenamedisCheckedOutToIsCheckedOut : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DataStoreContextChanged1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RenamedisCheckedOutToIsCheckedOut));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807181305229_DataStoreContextChanged1"; }
+            get { return "201807201301006_RenamedisCheckedOutToIsCheckedOut"; }
         }
         
         string IMigrationMetadata.Source

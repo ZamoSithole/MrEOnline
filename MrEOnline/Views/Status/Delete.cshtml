@@ -4,9 +4,9 @@
     ViewBag.Title = "Delete";
 }
 
-<div class="panel panel-danger">
-    <div class="panel-heading">@ViewBag.Title</div>
-    <div class="panel-body">
+<div class="card">
+    <div class="card-header">@ViewBag.Title</div>
+    <div class="card-body">
         <div class="alert alert-danger">
             <p>
                 <i class="fa fa-exclamation-triangle"></i>&nbsp;Are you sure you want to delete the information below?
@@ -15,10 +15,10 @@
         @using (Html.BeginForm())
         {
             @Html.Partial("_Details")
-            <button type="submit" class="btn btn-danger">
+            <button type="submit" class="btn btn-outline-danger">
                 <i class="fa fa-thumbs-o-up"></i>&nbsp;Yes, please
             </button>
-            <a href="@Url.Action("index")" class="btn btn-default">
+            <a href="@Url.Action("index")" class="btn btn-outline-secondary">
                 <i class="fa fa-thumbs-o-down"></i>&nbsp;No, please
             </a>
         }

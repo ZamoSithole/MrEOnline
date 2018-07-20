@@ -2,9 +2,9 @@
 @{
     ViewBag.Title = "Register";
 }
-<div class="panel panel-default">
-    <div class="panel-heading">@ViewBag.Title</div>
-    <div class="panel-body">
+<div class="card">
+    <div class="card-header">@ViewBag.Title</div>
+    <div class="card-body">
         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {role = "form" }))
         {
             @Html.AntiForgeryToken()

@@ -8,9 +8,9 @@
 {
     @Html.Partial("_Feedback", (ViewData["ViewMessage"] as ViewMessage))
 }
-<div class="panel panel-default">
-    <div class="panel-heading">@ViewBag.Title</div>
-    <div class="panel-body">
+<div class="card">
+    <div class="card-header">@ViewBag.Title</div>
+    <div class="card-body">
         @if (Model.Data == null)
         {
 
@@ -23,16 +23,18 @@
         }
         <br />
         <div>
-
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#movie-info" aria-controls="movie" role="tab" data-toggle="tab">Movie Info</a></li>
-                <li role="presentation"><a href="#cast-list" aria-controls="profile" role="tab" data-toggle="tab">Cast</a></li>
+                <li role="presentation" class="nav-item ">
+                    <a class="nav-link active" href="#movie-info" aria-controls="movie" role="tab" data-toggle="tab">Movie Info</a>
+                </li>
+                <li role="presentation" id="tabCast" class="nav-item">
+                    <a class="nav-link" href="#cast-list" aria-controls="profile" role="tab" data-toggle="tab">Cast</a>
+                </li>
             </ul>
-
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="movie-info">
+                <div role="tabpanel" class="tab-pane fade show active" id="movie-info">
                     @using (Html.BeginForm("Edit", "Video", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
@@ -46,7 +48,7 @@
 
                     }
                 </div>
-                <div role="tabpanel" class="tab-pane" id="cast-list">
+                <div role="tabpanel" class="tab-pane fade show" id="cast-list">
                     @Html.Action("IndexPartial", "Cast", new { videoId = Model.Id })
                 </div>
             </div>
@@ -58,8 +60,26 @@
 </div>
 
 @section Scripts{
-    @*<script type="text/javascript">
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    <script type="text/javascript">
+        @*$('#tabCast').on('click', function (e) {
+            debugger;
+             var pattern = /#.+/gi //use regex to get anchor(==selector)
+            var contentID = e.target.toString().match(pattern)[0]; //get anchor
+            console.log(e.target);
+            //if (e.target.)
+            $(contentID).empty().load('@Url.Action("IndexPartial", "Cast",new { videoId ="' @Model.Id '"})', function (response, status, jxHR) {
+                console.log(status);
+                console.log(jxHR);
+                if (jxHR.statusCode === 200)
+                    $('#cast-list').empty().append(response);
+                else
+                    $('#cast-list').empty().append($('<div>').addClass("alert alert-info").html("No data to display."));
+            });
+
+            e.relatedTarget // previous active tab
+
+        })*@
+        @*$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             var pattern = /#.+/gi //use regex to get anchor(==selector)
             var contentID = e.target.toString().match(pattern)[0]; //get anchor
             console.log(e.target);
@@ -74,6 +94,6 @@
             });
 
             e.relatedTarget // previous active tab
-        })
-    </script>*@
+        })*@
+    </script>
     }

@@ -11,10 +11,10 @@
         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
 
     </div>
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-outline-primary">
         <i class="fa fa-save"></i>&nbsp;Save
     </button>
-    <a href="@Url.Action("index")" class="btn btn-default">
+    <a href="@Url.Action("index")" class="btn btn-outline-secondary">
         <i class="fa fa-times-circle"></i>&nbsp;Cancel
     </a>
 </div>

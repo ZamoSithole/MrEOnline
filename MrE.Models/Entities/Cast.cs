@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 namespace MrE.Models.Entities
 {
     [Table("Cast")]
-    public class Cast : IBaseEntity<int>, ICreatable, IDeletable, IUpdatable
-    {
+    public class Cast : IBaseEntity<int>, ICreatable, IDeletable, IUpdatable, IUploadable {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int Id { get; set; }
@@ -24,7 +23,7 @@ namespace MrE.Models.Entities
             }
 
         }
-        [Display(Name = "FirstName"), Required(ErrorMessage = "Fill out Name")]
+        [Display(Name = "First Name"), Required(ErrorMessage = "Fill out Name")]
         public string FirstName {get;set;}
         [Required(ErrorMessage = "Last Name is required")]
         public string LastName { get; set; }
@@ -32,6 +31,9 @@ namespace MrE.Models.Entities
         public Title Title { get; set; }
         public int VideoId { get; set; }
         public Video Video { get; set; }
+        [Display(Name = "Image")]
+        [Column("CastImage")]
+        public byte[] Data { get; set; }
         public bool IsDeleted { get; set; }
 
         [Display(Name = "Date Created")]

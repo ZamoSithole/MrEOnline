@@ -5,9 +5,9 @@
 }
 
 
-<div class="panel panel-default">
-    <div class="panel-heading">@ViewBag.Title</div>
-    <div class="panel-body">
+<div class="card">
+    <div class="card-header">@ViewBag.Title</div>
+    <div class="card-body">
 
         @using (Html.BeginForm("UploadData", "Video", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
@@ -30,8 +30,8 @@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
-                <span class="btn btn-success fileinput-button">
-                    <i class="glyphicon glyphicon-plus"></i>
+                <span class="btn btn-outline-success fileinput-button">
+                    <i class="fa fa-plus"></i>
                     <span>Select files...</span>
                     <!-- The file input field used as target for the file upload widget -->
                     <input type="file" id="Photo" name="upload" />
@@ -43,10 +43,10 @@
                 @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
 
             </div>
-            <button type="submit" value="Save" class="btn btn-info">
+            <button type="submit" value="Save" class="btn btn-outline-info">
                 <i class="fa fa-save"></i>&nbsp;Save
             </button>
-            <a href=" @Url.Action("Index")" class="btn btn-default">
+            <a href=" @Url.Action("Index")" class="btn btn-outline-secondary">
                 <i class="fa fa-times-circle"></i>&nbsp;Cancel
             </a>
         }

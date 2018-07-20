@@ -23,6 +23,12 @@ td.ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+label.ellipsis {
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .fileinput-button {
     position: relative;
     overflow: hidden;

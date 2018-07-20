@@ -25,5 +25,7 @@ namespace MrE.Models.Entities
 
         [Display(Name = "Date Deleted")]
         public DateTime? DateDeleted { get; set; }
+
+        public ICollection<Rental> Rentals { get; set; }
     }
 }

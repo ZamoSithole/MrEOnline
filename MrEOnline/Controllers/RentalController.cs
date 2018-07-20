@@ -20,9 +20,9 @@ namespace MrEOnline.Controllers
           
         }
         //// GET: Rental
-        //public ActionResult Details() {
-        //    return View();
-        //}
+        public ActionResult Create() {
+            return View();
+        }
 
         protected override async Task SetupSelectList() {
             ViewBag.GenreSelectList = new SelectList(await GenreService.Get().ToListAsync(), "Id", "Name");

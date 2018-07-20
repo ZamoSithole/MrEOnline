@@ -7,13 +7,13 @@ namespace MrE.Repository.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DataStoreContextChanged : IMigrationMetadata
+    public sealed partial class AddRentalModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DataStoreContextChanged));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddRentalModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807181301244_DataStoreContextChanged"; }
+            get { return "201807201244285_AddRentalModel"; }
         }
         
         string IMigrationMetadata.Source
