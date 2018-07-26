@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using MrE.Models;
 using MrE.Models.Entities;
 using MrE.Repository;
@@ -7,6 +8,7 @@ using MrE.Repository.Abstractions;
 using MrE.Services;
 using MrE.Services.Abstractions;
 using MrE.Services.Validations;
+using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -20,9 +22,10 @@ namespace MrEOnline
         {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            GlobalConfiguration.Configure(WebApiConfig.Register);
+           
         
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
@@ -31,6 +34,7 @@ namespace MrEOnline
             builder.RegisterModule<AutofacWebTypesModule>();
             builder.RegisterSource(new ViewRegistrationSource());
             builder.RegisterFilterProvider();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             builder.RegisterType<DataStoreContext>().InstancePerRequest();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
@@ -49,7 +53,12 @@ namespace MrEOnline
             builder.RegisterType<CastService>().As<IService<Cast>>().InstancePerRequest();
             builder.RegisterType<RentalValidationService>().As<IValidationService<Rental>>().InstancePerRequest();
             builder.RegisterType<RentalService>().As<IService<Rental>>().InstancePerRequest();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(builder.Build()));
+
+            var container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            var webApiResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configuration.DependencyResolver = webApiResolver;
         }
     }
 }

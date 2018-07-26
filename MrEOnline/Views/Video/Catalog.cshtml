@@ -179,11 +179,34 @@
             var currentRow = $(this).attr("data-RentalPrice");
             var videoID = $(this).attr("data-VideoId");
             console.log(currentRow)
-            RentedItems.push({
-                rentalPrice: currentRow,
-                VideoId: videoID,
-                StatusId: '2'
-            });
+            var rental = {
+                "rentalPrice": currentRow,
+                "videoId": videoID,
+                "statusId": 1
+            };
+
+            $.post("/api/rentalsapi", rental)
+                .done(function (response) {
+                    console.log("returned " + JSON.stringify(response));
+                }).fail(function (status, jxHR, error) {
+                    console.log('error while calling api is => ' + JSON.stringify(error));
+                });
+            //$.ajax({
+            //    url: "/api/rentalsapi",
+            //    data: {
+            //        "rentalPrice": currentRow,
+            //        "videoId": videoID,
+            //        "statusId": 1
+            //    },
+            //    datatype: 'json',
+            //    contentType: 'application/json',
+            //    type: 'POST',
+            //    success: function (data) {
+            //        console.log("response from /api/rental post is => " + JSON.stringify(respdataose));
+            //    }
+
+
+            //});
             console.log(RentedItems);
             Total = Total + parseInt(currentRow);
             $('#Amount').text('R' + Total + '.00')
@@ -211,25 +234,15 @@
             //    "_blank", "width=200,height=100");
 
             //debugger;
-            var url = "/Rental/Create"//?item=" + RentedItems;
-            //$.post("/api/rentals", { rental: RentedItems })
+            //var url = "/Rental/Create"//?item=" + RentedItems;
+            //$.post("/api/rentalsapi", RentedItems)
             //    .done(function (respose) {
             //        console.log("response from /api/rental post is => " + JSON.stringify(respose));
             //    }).fail(function (status, jxHR, error) {
             //        console.log('error while calling api is => ' + JSON.stringify(error));
             //    })
             //window.location.href = url;
-            $.ajax({
-                url: "/rental",
-                data: { rentals: RentedItems },
-                datatype: 'json',
-                type: 'POST',
-                success: function (data) {
-                    console.log("response from /api/rental post is => " + JSON.stringify(respdataose));
-                }
-
-
-            });
+            
         });
     </script>
 }
