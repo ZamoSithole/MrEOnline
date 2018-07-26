@@ -64,7 +64,7 @@
                         <a class="btnCheck btn btn-outline-secondary btn-sm" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" disabled style=" display:none">
                             <i class="fa fa-check fa-2x" style="color: green;"></i>
                         </a>
-                        <a class="pull-right btnCancel"  data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" style="cursor:pointer; display: none">
+                        <a class="pull-right btnCancel" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" style="cursor:pointer; display: none">
                             <i class="fa fa-close fa-2x" style="color:red"></i>
                         </a>
                     </div>
@@ -203,22 +203,29 @@
             $(this).hide();
             $(".btnCheck[data-VideoId='" + videoID + "']").hide();
         });
+
         $('.btnCheckOut').on('click', function (e) {
             e.preventDefault();
             //var data = "<p>This is 'myWindow'</p>";
             //window.open("data:text/html," + encodeURIComponent(data),
             //    "_blank", "width=200,height=100");
-            
+
             //debugger;
             var url = "/Rental/Create"//?item=" + RentedItems;
+            //$.post("/api/rentals", { rental: RentedItems })
+            //    .done(function (respose) {
+            //        console.log("response from /api/rental post is => " + JSON.stringify(respose));
+            //    }).fail(function (status, jxHR, error) {
+            //        console.log('error while calling api is => ' + JSON.stringify(error));
+            //    })
             //window.location.href = url;
             $.ajax({
-                url: url,
-                data: RentedItems,
+                url: "/rental",
+                data: { rentals: RentedItems },
                 datatype: 'json',
                 type: 'POST',
                 success: function (data) {
-
+                    console.log("response from /api/rental post is => " + JSON.stringify(respdataose));
                 }
 
 

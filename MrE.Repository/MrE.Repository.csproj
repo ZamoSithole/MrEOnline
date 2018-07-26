@@ -105,6 +105,10 @@
     <Compile Include="Migrations\201807201307070_AddStatusToRental.Designer.cs">
       <DependentUpon>201807201307070_AddStatusToRental.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807260910064_RentalValidationServiceAdded.cs" />
+    <Compile Include="Migrations\201807260910064_RentalValidationServiceAdded.Designer.cs">
+      <DependentUpon>201807260910064_RentalValidationServiceAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -160,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807201307070_AddStatusToRental.resx">
       <DependentUpon>201807201307070_AddStatusToRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807260910064_RentalValidationServiceAdded.resx">
+      <DependentUpon>201807260910064_RentalValidationServiceAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

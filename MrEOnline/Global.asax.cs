@@ -7,6 +7,7 @@ using MrE.Repository.Abstractions;
 using MrE.Services;
 using MrE.Services.Abstractions;
 using MrE.Services.Validations;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -21,7 +22,8 @@ namespace MrEOnline
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+        
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterModelBinders(typeof(MvcApplication).Assembly);
@@ -45,7 +47,8 @@ namespace MrEOnline
             builder.RegisterType<TitleService>().As<IService<Title>>().InstancePerRequest();
             builder.RegisterType<CastValidationService>().As<IValidationService<Cast>>().InstancePerRequest();
             builder.RegisterType<CastService>().As<IService<Cast>>().InstancePerRequest();
-
+            builder.RegisterType<RentalValidationService>().As<IValidationService<Rental>>().InstancePerRequest();
+            builder.RegisterType<RentalService>().As<IService<Rental>>().InstancePerRequest();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(builder.Build()));
         }
     }

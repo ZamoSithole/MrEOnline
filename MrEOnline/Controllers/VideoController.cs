@@ -25,6 +25,12 @@ namespace MrEOnline.Controllers
             GenreService = genreService;
             VideoService = videoService;
         }
+
+        public async Task<ActionResult> Catalog() {
+            var videos = await PrimaryService.Get().ToListAsync();
+            return View(videos);
+        }
+
         public ActionResult UploadVideo()
         {
             return View();

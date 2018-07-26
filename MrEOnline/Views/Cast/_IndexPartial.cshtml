@@ -5,10 +5,10 @@
     <div class="card-body">
 
         <p>
-            @foreach (var item in Model) {
+            @*@foreach (var item in Model) {*@
 
-                <a href="@Url.Action("Create", new { videoId = item.VideoId })" class="btn btn-outline-secondary">Create</a>
-            }
+                <a href="@Url.Action("Create", new { videoId = ViewContext.RouteData.Values["Edit"] })" class="btn btn-outline-secondary">Create</a>
+            @*}*@
         </p>
 
         <table class="table table-sm">
