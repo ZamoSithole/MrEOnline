@@ -12,10 +12,16 @@
             @Html.HiddenFor(m => m.UserId)
             <div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Role.RoleId, new { @class="control-label"})
+                    @Html.LabelFor(m => m.Role.RoleId, new { @class = "control-label" })
                     @Html.DropDownListFor(m => m.Role.RoleId, (ViewBag.RoleSelectList as SelectList), new { @class = "form-control", @required = true })
                 </div>
             </div>
+            <button type="submit" class="btn btn-sm btn-outline-primary">
+                <i class="fa fa-save"></i>&nbsp;Save
+            </button>
+            <a href="@Url.Action("Edit", "users", new { id= Model.UserId})" class="btn btn-sm btn-outline-secondary">
+                <i class="fa fa-times-circle"></i>&nbsp;Cancel
+            </a>
         }
     </div>
 </div>

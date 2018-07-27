@@ -22,14 +22,14 @@
                 @Html.LabelFor(m => m.PhoneNumber, new { @class = "control-label" })
                 @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
             </div>
-            <button type="submit" class="btn btn-sm btn-primary">
-                Save
+            <button type="submit" class="btn btn-sm btn-outline-primary">
+                <i class="fa fa-save"></i>&nbsp;Save
             </button>
-            <a href="@Url.Action("Index", "UserRoles", new {userId = Model.Id})"  class="btn btn-sm btn-success">
+            <a href="@Url.Action("Index", "UserRoles", new {userId = Model.Id})"  class="btn btn-sm btn-outline-success">
                 Add Roles
             </a>
-            <a href="@Url.Action("index")" class="btn btn-sm btn-secondary" >
-                Cancel
+            <a href="@Url.Action("index")" class="btn btn-sm btn-outline-secondary" >
+               <i class="fa fa-times-circle"></i>&nbsp;Cancel
             </a>            
         </div>
         }

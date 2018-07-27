@@ -7,8 +7,8 @@
 <div class="card">
     <div class="card-header">@ViewBag.Title</div>
     <div class="card-body">
-        <a href="@Url.Action("Create", new {userId = HttpContext.Current.Request.QueryString["userId"]})" class="btn btn-sm btn-secondary">
-            Add
+        <a href="@Url.Action("Create", new {userId = HttpContext.Current.Request.QueryString["userId"]})" class="btn btn-sm btn-outline-secondary">
+            <i class="fa fa-plus"></i>&nbsp;Add
         </a>
         <table class="table table-sm">
             <thead>
