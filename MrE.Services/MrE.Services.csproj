@@ -61,6 +61,7 @@
     <Compile Include="Service.cs" />
     <Compile Include="StatusService.cs" />
     <Compile Include="TitleService.cs" />
+    <Compile Include="UserService.cs" />
     <Compile Include="Validations\AddressValidationService.cs" />
     <Compile Include="Validations\CastValidationService.cs" />
     <Compile Include="Validations\GenreValidationService.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Validations\StatusValidationService.cs" />
     <Compile Include="Validations\TitleValidationService.cs" />
     <Compile Include="Validations\UserRoleValidationService.cs" />
+    <Compile Include="Validations\UserValidationService.cs" />
     <Compile Include="Validations\ValidationExceptionService.cs" />
     <Compile Include="Validations\VideoValidationService.cs" />
     <Compile Include="VideoService.cs" />

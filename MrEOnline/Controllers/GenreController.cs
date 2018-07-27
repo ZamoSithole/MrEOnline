@@ -9,11 +9,11 @@ using System.Web.Mvc;
 
 namespace MrEOnline.Controllers
 {
-    public class GenreController : BaseController<Genre>
+    public class GenreController : BaseController<Genre, int>
     {
-        protected IService<Genre> GenreService { get; set; }
+        protected IService<Genre, int> GenreService { get; set; }
 
-        public GenreController(IService<Genre> genreService)
+        public GenreController(IService<Genre, int> genreService)
             :base (genreService)
         {
             GenreService = genreService;

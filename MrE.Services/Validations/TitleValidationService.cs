@@ -6,8 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MrE.Services.Validations
-{
+namespace MrE.Services.Validations {
     public class TitleValidationService : ValidationService<Title>
     {
         public TitleValidationService(IValidationExceptionService validationExceptionService) :

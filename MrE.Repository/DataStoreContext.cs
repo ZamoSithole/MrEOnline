@@ -26,6 +26,10 @@ namespace MrE.Repository
             Configuration.ProxyCreationEnabled = false;
         }
 
+        public static DataStoreContext Create() {
+            return new DataStoreContext();
+        }
+
         public virtual object Update(object item) {
             if (Entry(item).State == EntityState.Detached) {
                 Set(item.GetType()).Attach(item);
@@ -41,7 +45,7 @@ namespace MrE.Repository
                 .HasRequired(p => p.Status)
                 .WithMany(p => p.Rentals)
                 .HasForeignKey(p => p.StatusId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(false);           
         }
     }
 }

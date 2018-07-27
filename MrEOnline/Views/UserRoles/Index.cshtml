@@ -1,0 +1,32 @@
+﻿@using MrEOnline.Models;
+@model IEnumerable<RoleViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="card">
+    <div class="card-header">@ViewBag.Title</div>
+    <div class="card-body">
+        <a href="@Url.Action("Create", new {userId = HttpContext.Current.Request.QueryString["userId"]})" class="btn btn-sm btn-secondary">
+            Add
+        </a>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var role in Model) {
+                    <tr>
+                        <td>@Html.DisplayFor(m => role.RoleId)</td>
+                        <td>@Html.DisplayFor(m => role.Name)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

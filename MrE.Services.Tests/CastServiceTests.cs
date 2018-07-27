@@ -16,12 +16,12 @@ namespace MrE.Services.Tests {
     public class CastServiceTests {
         protected MockRepositorySetup<Cast> MockRepositorySetup { get; set; }
         public AutoMock AutoMock { get; set; }
-        protected IService<Cast> CastService { get; set; }
+        protected IService<Cast, int> CastService { get; set; }
 
         [SetUp]
         public void Setup() {
             MockRepositorySetup = new MockRepositorySetup<Cast>(
-                new Mock<IRepository<Cast>>(),
+                new Mock<IRepository<Cast, int>>(),
                 (new List<Cast>()
            {
                 new Cast{Id = 1, FirstName = "Action",LastName="Hello", VideoId=1, DateCreated = DateTime.Now, IsDeleted = false , TitleId= 1},

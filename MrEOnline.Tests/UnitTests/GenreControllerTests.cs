@@ -20,7 +20,7 @@ namespace MrEOnline.Tests.UnitTests
     public class GenreControllerTests
     {
         private AutoMock AutoMock { get; set; }
-        private Mock<IRepository<Genre>> MockRepository { get; set; }
+        private Mock<IRepository<Genre, int>> MockRepository { get; set; }
         private List<Genre> DataStore { get; set; }
 
         [SetUp]
@@ -34,9 +34,9 @@ namespace MrEOnline.Tests.UnitTests
             };
 
             AutoMock = AutoMock.GetLoose();
-            MockRepository = new Mock<IRepository<Genre>>();
+            MockRepository = new Mock<IRepository<Genre, int>>();
             AutoMock.Provide(MockRepository.Object);
-            AutoMock.Provide<IService<Genre>, GenreService>();
+            AutoMock.Provide<IService<Genre, int>, GenreService>();
             AutoMock.Provide<IValidationService<Genre>, GenreValidationService>();
             AutoMock.Provide<IValidationExceptionService, ValidationExceptionService>();
         }

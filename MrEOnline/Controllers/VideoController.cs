@@ -1,9 +1,6 @@
 ﻿using MrE.Models.Entities;
-using MrE.Services;
 using MrE.Services.Abstractions;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -11,23 +8,24 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MrEOnline.Controllers
-{
-
-    public class VideoController : BaseController<Video>
+namespace MrEOnline.Controllers {
+    [Authorize(Roles ="Administrator")]
+    public class VideoController : BaseController<Video, int>
     {
-        public IService<Genre> GenreService { get; set; }
-        public IService<Title> TitleService { get; set; }
-        public IService<Video> VideoService { get; set; }
-        public VideoController(IService<Video> videoService, IService<Genre> genreService)
+        public IService<Genre, int> GenreService { get; set; }
+        public IService<Title, int> TitleService { get; set; }
+        public IService<Video, int> VideoService { get; set; }
+        public VideoController(IService<Video, int> videoService, IService<Genre, int> genreService)
             :base (videoService)
         {
             GenreService = genreService;
             VideoService = videoService;
         }
 
+        [AllowAnonymous]
         public async Task<ActionResult> Catalog() {
-            var videos = await PrimaryService.Get().ToListAsync();
+            var videos =  PrimaryService.Get();
+            TransformQuery(ref videos);
             return View(videos);
         }
 

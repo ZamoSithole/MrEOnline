@@ -19,10 +19,9 @@ namespace MrE.Models.Entities
         [Required(ErrorMessage = "Surname is required")]
         public string Surname { get; set; }
 
-        [Display(Name = "Password")]
-        [StringLength(8, MinimumLength = 8, ErrorMessage = "Password should be 8 characters")]
-        [DataType(DataType.Password, ErrorMessage = "Less than 8 characters "), Required(ErrorMessage = "Password Required")]
-        public string Password { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
+
         public int ContactID { get; set; }
         public Contact Contact { get; set; }
 

@@ -20,7 +20,7 @@ namespace MrEOnline.Tests.UnitTests
     public class StatusControllerTests
     {
         private AutoMock AutoMock { get; set; }
-        private Mock<IRepository<Status>> MockRepository { get; set; }
+        private Mock<IRepository<Status, int>> MockRepository { get; set; }
         private List<Status> DataStore { get; set; }
 
         [SetUp]
@@ -35,11 +35,11 @@ namespace MrEOnline.Tests.UnitTests
             };
 
             AutoMock = AutoMock.GetLoose();
-            MockRepository = new Mock<IRepository<Status>>();
+            MockRepository = new Mock<IRepository<Status, int>>();
             MockRepository.Setup(m => m.Get()).Returns(GetData());
 
             AutoMock.Provide(MockRepository.Object);
-            AutoMock.Provide<IService<Status>, StatusService>();
+            AutoMock.Provide<IService<Status, int>, StatusService>();
             AutoMock.Provide<IValidationService<Status>, StatusValidationService>();
             AutoMock.Provide<IValidationExceptionService, ValidationExceptionService>();
         }

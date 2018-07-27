@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MrEOnline.Services.Abstractions
 {
-    public abstract class Service<T> : IService<T> where T : class {
+    public abstract class Service<T, K> : IService<T, K> where T : class {
         public IValidationService<T> ValidationService { get; set; }
-        public IRepository<T> Repository { get; private set; }
+        public IRepository<T, K> Repository { get; private set; }
 
-        public Service(IRepository<T> repository, IValidationService<T> validationService) {
+        public Service(IRepository<T, K> repository, IValidationService<T> validationService) {
             ValidationService = validationService;
             Repository = repository;
         }
@@ -28,9 +28,9 @@ namespace MrEOnline.Services.Abstractions
 
         public virtual async Task<IEnumerable<T>> GetAsync() => (await Repository.Get().ToListAsync());
 
-        public virtual T GetByKey(int key) => Repository.GetByKey(key);
+        public virtual T GetByKey(K key) => Repository.GetByKey(key);
 
-        public virtual async Task<T> GetByKeyAsync(int key) => (await Repository.GetByKeyAsync(key));
+        public virtual async Task<T> GetByKeyAsync(K key) => (await Repository.GetByKeyAsync(key));
 
         public virtual T Insert(T item) {
             ValidationService.ValidateInsert(item, Get().AsNoTracking());

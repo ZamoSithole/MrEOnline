@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MrE.Services.Abstractions
 {
-    public interface IService<T>: IDisposable where T: class
+    public interface IService<T, K>: IDisposable where T: class
     {
         /// <summary>
         /// <see cref="Abstractions.IValidationService{T}"/>
@@ -25,8 +25,8 @@ namespace MrE.Services.Abstractions
         /// </summary>
         /// <param name="key">Unique key to retrieve by.</param>
         /// <returns>Item of type T having unique key.</returns>
-        T GetByKey(int key);
-        Task<T> GetByKeyAsync(int key);
+        T GetByKey(K key);
+        Task<T> GetByKeyAsync(K key);
 
         /// <summary>
         /// Inserts an item of type T to the underlying data store.

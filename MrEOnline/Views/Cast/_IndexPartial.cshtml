@@ -7,7 +7,7 @@
         <p>
             @*@foreach (var item in Model) {*@
 
-                <a href="@Url.Action("Create", new { videoId = ViewContext.RouteData.Values["Edit"] })" class="btn btn-outline-secondary">Create</a>
+                <a href="@Url.Action("CreateFor", new { videoId = ViewContext.RouteData.Values["Edit"] })" class="btn btn-outline-secondary">Create</a>
             @*}*@
         </p>
 

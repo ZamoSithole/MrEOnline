@@ -5,9 +5,9 @@ using MrEOnline.Services.Abstractions;
 
 namespace MrE.Services
 {
-    public class GenreService : Service<Genre>
+    public class GenreService : Service<Genre, int>
     {
-        public GenreService(IRepository<Genre> repository, IValidationService<Genre> validationService)
+        public GenreService(IRepository<Genre, int> repository, IValidationService<Genre> validationService)
            : base(repository, validationService)
         {
         }

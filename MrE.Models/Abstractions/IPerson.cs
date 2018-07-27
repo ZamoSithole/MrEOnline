@@ -9,7 +9,6 @@ namespace MrE.Models.Abstractions
     {
         string FirstName { get; set; }
         string Surname { get; set; }
-        string Password { get; set; }
         Contact Contact { get; set; }
         Status Status { get; set; }
     }

@@ -109,6 +109,14 @@
     <Compile Include="Migrations\201807260910064_RentalValidationServiceAdded.Designer.cs">
       <DependentUpon>201807260910064_RentalValidationServiceAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807270802103_AddedProps.cs" />
+    <Compile Include="Migrations\201807270802103_AddedProps.Designer.cs">
+      <DependentUpon>201807270802103_AddedProps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807270803334_AddedUserAsFkeyToRental.cs" />
+    <Compile Include="Migrations\201807270803334_AddedUserAsFkeyToRental.Designer.cs">
+      <DependentUpon>201807270803334_AddedUserAsFkeyToRental.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -167,6 +175,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807260910064_RentalValidationServiceAdded.resx">
       <DependentUpon>201807260910064_RentalValidationServiceAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807270802103_AddedProps.resx">
+      <DependentUpon>201807270802103_AddedProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807270803334_AddedUserAsFkeyToRental.resx">
+      <DependentUpon>201807270803334_AddedUserAsFkeyToRental.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

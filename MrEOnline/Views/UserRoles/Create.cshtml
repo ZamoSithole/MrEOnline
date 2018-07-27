@@ -1,0 +1,22 @@
+﻿@using MrEOnline.Models;
+@model UserRoleViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="card">
+    <div class="card-header">@ViewBag.Title</div>
+    <div class="card-body">
+        @using (Html.BeginForm()) {
+            @Html.HiddenFor(m => m.UserId)
+            <div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Role.RoleId, new { @class="control-label"})
+                    @Html.DropDownListFor(m => m.Role.RoleId, (ViewBag.RoleSelectList as SelectList), new { @class = "form-control", @required = true })
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

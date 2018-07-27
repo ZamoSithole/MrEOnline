@@ -10,37 +10,37 @@ using System.Web.Mvc;
 
 namespace MrEOnline.Controllers
 {
-    public class CastController : BaseController<Cast>
+    public class CastController : BaseController<Cast, int>
     {
-        public IService<Title> TitleService { get; set; }
-        public CastController(IService<Cast> castService, IService<Title> titleService)
+        public IService<Title, int> TitleService { get; set; }
+        public CastController(IService<Cast, int> castService, IService<Title, int> titleService)
             : base(castService) {
             TitleService = titleService;
         }
 
-        public override async Task<ActionResult> Create(int? videoId = null) {
+        public override async Task<ActionResult> CreateFor(int videoId) {
             await SetupSelectList();
-            if (videoId.HasValue)
-                return View(new Cast { VideoId = videoId.Value });
-            return View();
+            return View("CreateFor", new Cast { VideoId = videoId });
         }
         public ActionResult IndexPartial(int videoId) {
 
             var dataQuery = PrimaryService.Get().Where(e => e.VideoId == videoId);
-
+            TransformQuery(ref dataQuery);
             if (dataQuery.Count() < 1)
                 return new HttpNotFoundResult();
             return PartialView("_IndexPartial", dataQuery);
         }
         public ActionResult CastCheckoutIndexPartial(int videoId) {
             var dataQuery = PrimaryService.Get().Where(e => e.VideoId == videoId);
+            TransformQuery(ref dataQuery);
             if (dataQuery.Count() < 1)
                 return new HttpNotFoundResult();
             return PartialView("_CastCheckoutIndexPartial", dataQuery);
         }
         protected override void TransformQuery(ref IQueryable<Cast> dataQuery) {
-            dataQuery = dataQuery.Include(m => m.Video);
             dataQuery = dataQuery.Include(m => m.Title);
+            //dataQuery = dataQuery.Include(m => m.Video);
+            
         }
 
         protected override async Task SetupSelectList() {

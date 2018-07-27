@@ -9,8 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MrE.Services {
-    public class RentalService : Service<Rental> {
-        public RentalService(IRepository<Rental> repository, IValidationService<Rental> RentalValidationService)
+    public class RentalService : Service<Rental, int> {
+        public RentalService(IRepository<Rental, int> repository, IValidationService<Rental> RentalValidationService)
             : base(repository, RentalValidationService) { }
 
         public override Rental Insert(Rental item) {

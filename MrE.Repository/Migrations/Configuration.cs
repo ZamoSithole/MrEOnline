@@ -1,5 +1,6 @@
 namespace MrE.Repository.Migrations
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
     using MrE.Models.Entities;
     using System;
     using System.Data.Entity.Migrations;
@@ -13,6 +14,12 @@ namespace MrE.Repository.Migrations
 
         protected override void Seed(DataStoreContext context)
         {
+            context.Roles.AddOrUpdate(
+                p => p.Name,
+                new IdentityRole { Name = "Administrator"},
+                new IdentityRole { Name="Customer"}
+                );
+
             context.Statuses.AddOrUpdate(
                 p => p.Name,
                 new Status { Name = "Pending", DateCreated = DateTime.Now, IsDeleted = false }

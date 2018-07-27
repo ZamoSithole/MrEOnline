@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace MrE.Services
 {
-    public class TitleService : Service<Title>
+    public class TitleService : Service<Title, int>
     {
-        public TitleService(IRepository<Title> repository, IValidationService<Title> titleValidationService)
+        public TitleService(IRepository<Title, int> repository, IValidationService<Title> titleValidationService)
             : base(repository, titleValidationService) { }
 
       

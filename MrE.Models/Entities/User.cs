@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using MrE.Models.Abstractions;
 using MrE.Models.Entities;
 
 namespace MrEOnline.Models
-{
+{    
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class User : IdentityUser
+    public class User : IdentityUser, IBaseEntity<string>
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
@@ -17,6 +19,12 @@ namespace MrEOnline.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        [Display(Name = "FirstName"), Required(ErrorMessage = "Fill out Name")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Surname is required")]
+        public string Surname { get; set; }
 
         public virtual ICollection<Contact> ContactsCreated { get; set; }
         public virtual ICollection<Status> StatusesCreated { get; set; }

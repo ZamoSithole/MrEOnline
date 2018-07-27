@@ -8,7 +8,7 @@ using System.Data;
 using MrE.Models.Abstractions;
 
 namespace MrE.Repository {
-    public class Repository<T> : IDisposable, IRepository<T> where T : class {
+    public class Repository<T, K> : IDisposable, IRepository<T, K> where T : class {
         /// <summary>
         /// <see cref="IDataAuditor{T}"/> 
         /// </summary>
@@ -59,11 +59,11 @@ namespace MrE.Repository {
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public virtual T GetByKey(int key) {
+        public virtual T GetByKey(K key) {
             return (DataStoreContext.Set<T>().Find(key));
         }
 
-        public virtual async Task<T> GetByKeyAsync(int key) {
+        public virtual async Task<T> GetByKeyAsync(K key) {
             return (await DataStoreContext.Set<T>().FindAsync(key));
         }
 
@@ -116,7 +116,7 @@ namespace MrE.Repository {
         /// <param name="entity">The source entity to copied.</param>
         /// <returns>The copied entity.</returns>
         protected T CopyToCurrentValues(T entity) {
-            var entityEntry = DataStoreContext.Entry(GetByKey((entity as IBaseEntity<int>).Id));
+            var entityEntry = DataStoreContext.Entry(GetByKey((entity as IBaseEntity<K>).Id));
             entityEntry.CurrentValues.SetValues(entity);
 
             return entityEntry.Entity;

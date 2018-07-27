@@ -4,10 +4,10 @@ using MrE.Services.Abstractions;
 using MrEOnline.Services.Abstractions;
 
 namespace MrE.Services {
-    public class CastService : Service<Cast>
+    public class CastService : Service<Cast, int>
     {
 
-        public CastService(IRepository<Cast> repository, IValidationService<Cast> castValidationService)
+        public CastService(IRepository<Cast, int> repository, IValidationService<Cast> castValidationService)
             : base(repository, castValidationService) { }
 
     }

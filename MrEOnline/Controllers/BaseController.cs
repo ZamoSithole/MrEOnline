@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MrEOnline.Controllers
-{
-    public abstract class BaseController<T> : Controller
+namespace MrEOnline.Controllers {
+
+    public abstract class BaseController<T, K> : Controller
         where T : class
     {
-        public IService<T> PrimaryService { get; set; }
+        protected IService<T, K> PrimaryService { get; set; }
 
-        public BaseController(IService<T> primaryService)
+        public BaseController(IService<T, K> primaryService)
         {
             PrimaryService = primaryService;
         }
@@ -29,7 +29,7 @@ namespace MrEOnline.Controllers
             return View(dataQuery);
         }
 
-        public async Task<ActionResult> Details(int id)
+        public virtual async Task<ActionResult> Details(K id)
         {
             await SetupSelectList();
             var dataQuery = PrimaryService.GetByKey(id);
@@ -38,11 +38,17 @@ namespace MrEOnline.Controllers
             return View(dataQuery);
 
         }
-        public virtual async Task<ActionResult> Create(int? foreignKey = null)
+        public virtual async Task<ActionResult> Create()
         {
             await SetupSelectList();
             return View();
         }
+
+        public virtual async Task<ActionResult> CreateFor(K foreignKey) {
+            await SetupSelectList();
+            return View();
+        }
+
         [HttpPost]
         public async Task<ActionResult> Create(T item)
         {
@@ -85,7 +91,7 @@ namespace MrEOnline.Controllers
                 }
             }
         }
-        public async Task<ActionResult> UploadData(int id)
+        public async Task<ActionResult> UploadData(K id)
         {
             var dataQuery = PrimaryService.GetByKey(id);
             await SetupSelectList();
@@ -130,7 +136,8 @@ namespace MrEOnline.Controllers
 
             return View(item);
         }
-        public async Task<ActionResult> Edit(int id, string message = null, ViewMessageType? messageType = null)
+
+        public virtual async Task<ActionResult> Edit(K id, string message = null, ViewMessageType? messageType = null)
         {
             var dataQuery = PrimaryService.GetByKey(id);
             
@@ -142,8 +149,9 @@ namespace MrEOnline.Controllers
 
             return View(dataQuery);
         }
+
         [HttpPost]
-        public async Task<ActionResult> Edit(T item)
+        public virtual async Task<ActionResult> Edit(T item)
         {
             var viewMessage = new ViewMessage();
             await SetupSelectList();
@@ -153,10 +161,10 @@ namespace MrEOnline.Controllers
                 PrimaryService.Update(item);
                 viewMessage.Message = "Successfully saved your changes.";
                 viewMessage.Type = ViewMessageType.Success;
-                //return RedirectToAction("edit");
+
                 return RedirectToAction("Edit", new
                 {
-                    id = (item as IBaseEntity<int>).Id,
+                    id = (item as IBaseEntity<K>).Id,
                     message = viewMessage.Message,
                     messageType = viewMessage.Type
                 });
@@ -171,7 +179,7 @@ namespace MrEOnline.Controllers
 
             return View(item);
         }
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(K id)
         {
             var dataQuery = PrimaryService.GetByKey(id);
             await SetupSelectList();
@@ -180,7 +188,7 @@ namespace MrEOnline.Controllers
             return View(dataQuery);
         }
         [HttpPost]
-        public async Task<ActionResult> Delete(T item, int id)
+        public async Task<ActionResult> Delete(T item, K id)
         {
             await SetupSelectList();
             var existing = PrimaryService.GetByKey(id);
@@ -200,7 +208,7 @@ namespace MrEOnline.Controllers
             }
             return View(item);
         }
-        public async Task<ActionResult> Recover(int id)
+        public async Task<ActionResult> Recover(K id)
         {
             var dataQuery = PrimaryService.GetByKey(id);
             await SetupSelectList();
@@ -209,7 +217,7 @@ namespace MrEOnline.Controllers
             return View(dataQuery);
         }
         [HttpPost]
-        public async Task<ActionResult> Recover(T item, int id)
+        public async Task<ActionResult> Recover(T item, K id)
         {
             await SetupSelectList();
             var existing = PrimaryService.GetByKey(id);

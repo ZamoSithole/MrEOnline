@@ -15,7 +15,7 @@ namespace MrE.Models.Entities
         public int UserID { get; set; }
         public virtual Member User { get; set; }
         public int RoleID { get; set; }
-        public virtual Role Role { get; set; }
+        //public virtual Role Role { get; set; }
         public User CreatedBy { get; set;}
         public string CreatedById { get; set;}
         public DateTime DateCreated { get; set;}

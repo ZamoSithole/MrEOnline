@@ -20,10 +20,10 @@ using System.Web.Mvc;
 namespace MrEOnline.Tests.UnitTests {
     [TestFixture]
     public class CastControllerTests {
-        private BaseController<Cast> Controller { get; set; }
+        private BaseController<Cast, int> Controller { get; set; }
 
         private AutoMock AutoMock { get; set; }
-        private IRepository<Cast> Repository { get; set; }
+        private IRepository<Cast, int> Repository { get; set; }
         private List<Cast> DataStore { get; set; }
         private Mock<DbSet<Title>> MockTitleSet { get; set; }
         private Mock<DbSet<Cast>> MockCastSet { get; set; }
@@ -51,10 +51,10 @@ namespace MrEOnline.Tests.UnitTests {
 
             AutoMock = AutoMock.GetLoose();            
             AutoMock.Provide(MockContext.Object);
-            AutoMock.Provide<IRepository<Cast>, Repository<Cast>>();
-            AutoMock.Provide<IRepository<Title>, Repository<Title>>();
-            AutoMock.Provide<IService<Cast>, CastService>();
-            AutoMock.Provide<IService<Title>, TitleService>();
+            AutoMock.Provide<IRepository<Cast, int>, Repository<Cast, int>>();
+            AutoMock.Provide<IRepository<Title, int>, Repository<Title, int>>();
+            AutoMock.Provide<IService<Cast, int>, CastService>();
+            AutoMock.Provide<IService<Title, int>, TitleService>();
             AutoMock.Provide<IValidationService<Cast>, CastValidationService>();
             AutoMock.Provide<IValidationExceptionService, ValidationExceptionService>();
             Controller = AutoMock.Create<CastController>();

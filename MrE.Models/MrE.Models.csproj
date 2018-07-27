@@ -67,7 +67,6 @@
     <Compile Include="Entities\Human.cs" />
     <Compile Include="Entities\Member.cs" />
     <Compile Include="Entities\Rented.cs" />
-    <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Status.cs" />
     <Compile Include="Entities\Title.cs" />
     <Compile Include="Entities\User.cs" />

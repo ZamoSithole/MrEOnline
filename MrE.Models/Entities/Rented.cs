@@ -1,4 +1,5 @@
 ﻿using MrE.Models.Abstractions;
+using MrEOnline.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,8 +17,8 @@ namespace MrE.Models.Entities {
         public int Id { get; set; }
         public int VideoId { get; set; }
         public Video Video { get; set; }
-        public int MemberId { get; set; }
-        public Member Member { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
         public int StatusId { get; set; }
         public Status Status { get; set; }
         public bool IsCheckedOut { get; set; }

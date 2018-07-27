@@ -2,17 +2,12 @@
 using MrE.Repository.Abstractions;
 using MrE.Services.Abstractions;
 using MrEOnline.Services.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MrE.Services
-{
-    public class VideoService : Service<Video>
+namespace MrE.Services {
+
+    public class VideoService : Service<Video, int>
     {
-        public VideoService(IRepository<Video> repository, IValidationService<Video> validationService) 
+        public VideoService(IRepository<Video, int> repository, IValidationService<Video> validationService) 
             : base(repository, validationService)
         {
         }

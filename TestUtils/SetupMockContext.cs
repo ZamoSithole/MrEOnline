@@ -9,11 +9,11 @@ using System.Linq;
 
 namespace TestUtils {
     public class MockRepositorySetup<T> where T : class {
-        public Mock<IRepository<T>> MockRepository { get; set; }
+        public Mock<IRepository<T, int>> MockRepository { get; set; }
         private List<T> DataStore { get; set; }
 
         public MockRepositorySetup(
-            Mock<IRepository<T>> mockRepository,
+            Mock<IRepository<T, int>> mockRepository,
             List<T> dataStore
             ) {
             MockRepository = mockRepository;

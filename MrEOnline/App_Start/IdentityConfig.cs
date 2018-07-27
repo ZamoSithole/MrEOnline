@@ -10,22 +10,32 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using MrE.Models.Entities;
+using MrE.Repository;
 using MrEOnline.Models;
 
 namespace MrEOnline
-{
+{    
+    public class RoleManager : RoleManager<IdentityRole> {
+        public RoleManager(IRoleStore<IdentityRole, string> store) : base(store) {
+        }
 
+        public static RoleManager Create(IdentityFactoryOptions<RoleManager> options, IOwinContext context) {
+            var roleStore = new RoleStore<IdentityRole>(context.Get<DataStoreContext>());
+            return new RoleManager(roleStore);
+        }
+    }
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-    public class ApplicationUserManager : UserManager<User>
+    public class UserManager : UserManager<User>
     {
-        public ApplicationUserManager(IUserStore<User> store)
+        public UserManager(IUserStore<User> store)
             : base(store)
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static UserManager Create(IdentityFactoryOptions<UserManager> options, IOwinContext context) 
         {
-            var manager = new ApplicationUserManager(new UserStore<User>(context.Get<ApplicationDbContext>()));
+            var manager = new UserManager(new UserStore<User>(context.Get<DataStoreContext>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<User>(manager)
             {
@@ -74,19 +84,19 @@ namespace MrEOnline
     // Configure the application sign-in manager which is used in this application.
     public class ApplicationSignInManager : SignInManager<User, string>
     {
-        public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
+        public ApplicationSignInManager(UserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
         public override Task<ClaimsIdentity> CreateUserIdentityAsync(User user)
         {
-            return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
+            return user.GenerateUserIdentityAsync((UserManager)UserManager);
         }
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
-            return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+            return new ApplicationSignInManager(context.GetUserManager<UserManager>(), context.Authentication);
         }
     }
 }

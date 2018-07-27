@@ -16,10 +16,10 @@ namespace MrEOnline.Controllers
 {
     public class RentalsApiController : ApiController
     {
-        protected IService<Rental> PrimaryService { get; set; }
+        protected IService<Rental, int> PrimaryService { get; set; }
 
         public RentalsApiController() { }
-        public RentalsApiController(IService<Rental> rentalService) {
+        public RentalsApiController(IService<Rental, int> rentalService) {
             PrimaryService = rentalService;
         }       
                 

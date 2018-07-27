@@ -11,7 +11,7 @@ namespace MrE.Repository.Abstractions
   /// Defines a blueprint for all the classes implementing Unit Of Work.
   /// </summary>
   /// <typeparam name="T"></typeparam>
-    public interface IRepository<T> : IDisposable
+    public interface IRepository<T, K> : IDisposable
         where T : class
     {
         /// <summary>
@@ -28,9 +28,9 @@ namespace MrE.Repository.Abstractions
         /// <typeparam name="T">The data type to be retrieved</typeparam>
         /// <param name="key">The primary key of the entity to be retrived.</param>
         /// <returns>The entity owning the primary supplied.</returns>
-        T GetByKey(int key);
+        T GetByKey(K key);
 
-        Task<T> GetByKeyAsync(int key);
+        Task<T> GetByKeyAsync(K key);
 
         /// <summary>
         /// Marks the supplied item as ready for Insert to the underlying storage.        

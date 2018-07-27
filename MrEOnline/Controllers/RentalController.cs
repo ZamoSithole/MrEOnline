@@ -20,12 +20,12 @@ namespace MrEOnline.Controllers {
     //    public ActionResult Post()
     //}
 
-    public class RentalController : BaseController<Rental> {
-        public IService<Video> VideoService { get; set; }
-        public IService<Genre> GenreService { get; set; }
-        public IService<Title> TitleService { get; set; }
-        public IService<Rental> RentalService { get; set; }
-        public RentalController(IService<Video> videoService, IService<Genre> genreService, IService<Rental> rentalService)
+    public class RentalController : BaseController<Rental, int> {
+        public IService<Video, int> VideoService { get; set; }
+        public IService<Genre, int> GenreService { get; set; }
+        public IService<Title, int> TitleService { get; set; }
+        public IService<Rental, int> RentalService { get; set; }
+        public RentalController(IService<Video, int> videoService, IService<Genre, int> genreService, IService<Rental, int> rentalService)
             : base(rentalService) {
             GenreService = genreService;
             RentalService = rentalService;

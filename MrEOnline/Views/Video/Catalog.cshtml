@@ -8,13 +8,13 @@
     <div class="card-body">
 
         <p>
-            <a @*href="@Url.Action("Create")"*@ class="btn btn-success btnCheckOut"> <i class="fa fa-shopping-cart"></i>&nbsp;Check Out</a>
+            <a href="@Url.Action("Create")" class="btn btn-success btnCheckOut"> <i class="fa fa-shopping-cart"></i>&nbsp;Check Out</a>
             <span style="color:Red" id="Amount"></span>
         </p>
 
         @foreach (var item in Model) {
-            <div class="row" style="margin-bottom: 19px;">
-                <div class="col-md-6">
+            <div class="row divOne flex-shrink-0" style="margin-bottom: 19px;">
+                <div class="col-md-6" style="margin-top: 10px;">
                     @if (item.Data == null) {
                         <i class="fa fa-picture-o fa-5x" aria-hidden="true" style=" font-size: 13em; "></i>
                     } else {
@@ -24,7 +24,7 @@
                     }
                     <hr />
                 </div>
-                <div class="col-md-6" data-VideoId="@item.Id">
+                <div class="col-md-6" data-VideoId="@item.Id" style="margin-top: 10px;">
                     <div>
                         <label class="control-label">Title :</label>
                         @Html.DisplayFor(model => item.Title)
@@ -61,9 +61,9 @@
                             <i class="fa fa-shopping-basket fa-2x"></i>
                             &nbsp;Rent
                         </a>
-                        <a class="btnCheck btn btn-outline-secondary btn-sm" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" disabled style=" display:none">
+                        <button class="btnCheck btn btn-outline-secondary btn-sm" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" disabled style=" display:none">
                             <i class="fa fa-check fa-2x" style="color: green;"></i>
-                        </a>
+                        </button>
                         <a class="pull-right btnCancel" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" style="cursor:pointer; display: none">
                             <i class="fa fa-close fa-2x" style="color:red"></i>
                         </a>
@@ -90,6 +90,12 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<style>
+    .divOne:hover {
+        border: 1px solid #777;
+        background-color: #ECECEC;
+    }
+</style>
 @section Scripts{
     <script type="text/javascript">
         $('[data-toggle="popover"]').popover()
