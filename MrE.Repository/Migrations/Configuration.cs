@@ -22,7 +22,10 @@ namespace MrE.Repository.Migrations
 
             context.Statuses.AddOrUpdate(
                 p => p.Name,
-                new Status { Name = "Pending", DateCreated = DateTime.Now, IsDeleted = false }
+                new Status { Name = "Pending",Description = "Pending action", DateCreated = DateTime.Now, IsDeleted = false },
+                new Status { Name = "CheckedOut", Description = "Video checked out", DateCreated = DateTime.Now, IsDeleted = false },
+                new Status { Name = "CheckedIn", Description = "Video checked in", DateCreated = DateTime.Now, IsDeleted = false },
+                new Status { Name = "Active", Description = "Active status", DateCreated = DateTime.Now, IsDeleted = false }
                 );
             context.Genres.AddOrUpdate(
                 p => p.Name,

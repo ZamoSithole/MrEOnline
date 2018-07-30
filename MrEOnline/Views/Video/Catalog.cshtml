@@ -13,60 +13,70 @@
         </p>
 
         @foreach (var item in Model) {
-            <div class="row divOne flex-shrink-0" style="margin-bottom: 19px;">
-                <div class="col-md-6" style="margin-top: 10px;">
-                    @if (item.Data == null) {
-                        <i class="fa fa-picture-o fa-5x" aria-hidden="true" style=" font-size: 13em; "></i>
-                    } else {
-                        <div class="">
-                            <img src="data:image/png;base64,@System.Convert.ToBase64String( item.Data)" height="auto" max-width="100%" style="display:block" class="img-responsive center" />
+            <div class="row flex-shrink-0" style="margin-bottom: 19px;">
+                <div class="col-md-12">
+                    <div class="card divOne">
+                        <span class="badge corner-ribbon top-right shadow btnCheck" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" disabled style=" display:none">Rented</span>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 video-img">
+                                    @if (item.Data == null) {
+                                        <i class="fa fa-picture-o fa-5x" aria-hidden="true" style=" font-size: 13em; "></i>
+                                    } else {
+                                        <img src="data:image/png;base64,@System.Convert.ToBase64String( item.Data)" height="auto" max-width="100%" style="display:block" class="img-responsive" />
+                                    }
+                                </div>
+                                <div class="col-md-4" data-VideoId="@item.Id">
+                                    <dl class="dl-horizontal">
+                                        <dt>Title</dt>
+                                        <dd>@Html.DisplayFor(model => item.Title)</dd>
+
+                                        <dt>Genre</dt>
+                                        <dd>@Html.DisplayFor(model => item.Genre.Name)</dd>
+
+                                        <dt>Age Restriction</dt>
+                                        <dd>@Html.DisplayFor(model => item.AgeRestriction)</dd>
+
+                                        <dt>Rental Price</dt>
+                                        <dd>@Html.DisplayFor(model => item.RentalPrice)</dd>
+                                    </dl>
+                                </div>
+                                <div class="col-md-4">
+                                    <dl class="dl-horizontal">
+                                        <dt>Description</dt>
+                                        <dd class="ellipsis" data-VideoId="@item.Id" data-toggle="popover" data-trigger="hover" data-placement="left" data-container="body" data-content="@item.Description">
+                                            @Html.DisplayFor(model => item.Description)
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
                         </div>
-                    }
-                    <hr />
-                </div>
-                <div class="col-md-6" data-VideoId="@item.Id" style="margin-top: 10px;">
-                    <div>
-                        <label class="control-label">Title :</label>
-                        @Html.DisplayFor(model => item.Title)
-                    </div>
-                    <div>
-                        <label class="control-label">Genre :</label>
-                        @Html.DisplayFor(model => item.Genre.Name)
-                    </div>
-                    <div>
-                        <label class="control-label ellipsis">Description :&nbsp;<span style="font-weight: normal">@item.Description</span></label>
-                        <span class="pull-right spanDescription btn btn-sm" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne" data-VideoId="@item.Id">
-                            <i class="fa fa-chevron-down"></i>
-                        </span>
-                        <div class="divDescription collapse" role="tabpanel" aria-labelledby="headingTwo" data-VideoId="@item.Id">
-                            @Html.DisplayFor(model => item.Description)
+                        <div class="card-footer">
+                            <div class="buttons">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fa fa-thumbs-o-up"></i>&nbsp;Like&nbsp;<span class="badge">20</span>
+                                </button>
+                                <button type="button" data-videoid="@item.Id" class="btn btn-sm btn-outline-info btn-cast">
+                                    <i class="fa fa-user"></i>&nbsp;Cast
+                                </button>
+                                <button type="button" title="Rent" class="btnRent btn btn-sm btn-outline-success" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice">
+                                    <i class="fa fa-shopping-basket"></i>
+                                    &nbsp;Rent
+                                </button>
+                                @*<button class="btnCheck btn btn-outline-secondary btn-sm" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" disabled style=" display:none">
+                                    <i class="fa fa-check" style="color: green;"></i>
+                                </button>*@
+                                <a class="pull-right btnCancel" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" style="cursor:pointer; display: none">
+                                    <i class="fa fa-close" style="color:red"></i>
+                                </a>
+                                <button type="button" class="btn btn-sm btn-outline-success">
+                                    <i class="fa fa-share-alt"></i>&nbsp;Share
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-success">
+                                    <i class="fa fa-comment-o"></i>&nbsp;Comment
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <label class="control-label">Age Restriction :</label>
-                        @Html.DisplayFor(model => item.AgeRestriction)
-                    </div>
-                    <div>
-                        <label class="control-label">Rental Price :</label>
-                        @Html.DisplayFor(model => item.RentalPrice)
-                    </div>
-                    <div class="buttons">
-                        @*<a href="@Url.Action("Details", new { id = item.Id })" data-toggle="tooltip" data-placement="top" title="Details" class="btn btn-sm btn-info">
-                                <i class="fa fa-list-alt fa-2x"></i>&nbsp;Details
-                            </a>*@
-                        <button type="button" data-videoid="@item.Id" class="btn btn-sm btn-outline-info btn-cast">
-                            <i class="fa fa-user fa-2x"></i>&nbsp;Cast
-                        </button>
-                        <a href="" title="Rent" class="btnRent btn btn-sm btn-outline-success" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice">
-                            <i class="fa fa-shopping-basket fa-2x"></i>
-                            &nbsp;Rent
-                        </a>
-                        <button class="btnCheck btn btn-outline-secondary btn-sm" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" disabled style=" display:none">
-                            <i class="fa fa-check fa-2x" style="color: green;"></i>
-                        </button>
-                        <a class="pull-right btnCancel" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" style="cursor:pointer; display: none">
-                            <i class="fa fa-close fa-2x" style="color:red"></i>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -90,13 +100,8 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<style>
-    .divOne:hover {
-        border: 1px solid #777;
-        background-color: #ECECEC;
-    }
-</style>
 @section Scripts{
+    <script src="~/Scripts/sweetalert2.all.min.js"></script>
     <script type="text/javascript">
         $('[data-toggle="popover"]').popover()
 
@@ -186,39 +191,41 @@
             var videoID = $(this).attr("data-VideoId");
             console.log(currentRow)
             var rental = {
-                "rentalPrice": currentRow,
                 "videoId": videoID,
-                "statusId": 1
             };
 
             $.post("/api/rentalsapi", rental)
                 .done(function (response) {
+                    if(response.Message == "Authorization has been denied for this request.") {
+                        swal({
+                            type: 'error',
+                            title: 'Oops..',
+                            html: 'You are <b>not</b> logged in.',
+                            allowOutsideClick: false,
+                            confirmButtonText:
+                                '<i class=" fa fa-sign-in"></i>&nbsp;Log in!',
+                            confirmButtonAriaLabel: 'Thumbs up, great!',
+                            showCancelButton: true,
+                            cancelButtonColor: '#d33',
+                        }).then((result) => {
+                            console.log(result)
+                            if (result.value = true) {
+                                window.location = "/Account/Login?ReturnUrl=%2FVideo/Catalog";
+                            }
+                        })
+                    } else {
+                        Total = Total + parseInt(currentRow);
+                        $('#Amount').text('R' + Total + '.00')
+                        
+                        $(".btnCancel[data-VideoId='" + videoID + "']").show();
+                        $(".btnCheck[data-VideoId='" + videoID + "']").show();
+                    }
                     console.log("returned " + JSON.stringify(response));
                 }).fail(function (status, jxHR, error) {
                     console.log('error while calling api is => ' + JSON.stringify(error));
                 });
-            //$.ajax({
-            //    url: "/api/rentalsapi",
-            //    data: {
-            //        "rentalPrice": currentRow,
-            //        "videoId": videoID,
-            //        "statusId": 1
-            //    },
-            //    datatype: 'json',
-            //    contentType: 'application/json',
-            //    type: 'POST',
-            //    success: function (data) {
-            //        console.log("response from /api/rental post is => " + JSON.stringify(respdataose));
-            //    }
-
-
-            //});
-            console.log(RentedItems);
-            Total = Total + parseInt(currentRow);
-            $('#Amount').text('R' + Total + '.00')
             $(this).hide();
-            $(".btnCancel[data-VideoId='" + videoID + "']").show();
-            $(".btnCheck[data-VideoId='" + videoID + "']").show();
+            
         });
         $('.btnCancel').on('click', function (e) {
             e.preventDefault();
@@ -235,6 +242,22 @@
 
         $('.btnCheckOut').on('click', function (e) {
             e.preventDefault();
+            $.ajax({
+                dataType: "json",
+                url: "/Rental/Confirm"
+            });
+
+
+            //$.get("/Rental/Confirm", function (result) {
+            //    console.log(result);
+            //})
+
+            //$.get("/Rental/Confirm")
+            //    .done(function (response) {
+            //        console.log("returned " + JSON.stringify(response));
+            //    })//.fail(function (status, jxHR, error) {
+                //    console.log('error while calling api is => ' + JSON.stringify(error));
+                //});
             //var data = "<p>This is 'myWindow'</p>";
             //window.open("data:text/html," + encodeURIComponent(data),
             //    "_blank", "width=200,height=100");
@@ -248,7 +271,7 @@
             //        console.log('error while calling api is => ' + JSON.stringify(error));
             //    })
             //window.location.href = url;
-            
+
         });
     </script>
 }

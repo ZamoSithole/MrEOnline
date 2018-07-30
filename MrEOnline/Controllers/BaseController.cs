@@ -29,8 +29,7 @@ namespace MrEOnline.Controllers {
             return View(dataQuery);
         }
 
-        public virtual async Task<ActionResult> Details(K id)
-        {
+        public virtual async Task<ActionResult> Details(K id) {
             await SetupSelectList();
             var dataQuery = PrimaryService.GetByKey(id);
             if (dataQuery == null) return HttpNotFound("Video information cannot be found.");
@@ -236,6 +235,7 @@ namespace MrEOnline.Controllers {
             }
             return View(item);
         }
+       
         protected abstract void TransformQuery(ref IQueryable<T> dataQuery);
         protected abstract Task SetupSelectList();
     }

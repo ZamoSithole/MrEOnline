@@ -117,6 +117,18 @@
     <Compile Include="Migrations\201807270803334_AddedUserAsFkeyToRental.Designer.cs">
       <DependentUpon>201807270803334_AddedUserAsFkeyToRental.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807300634472_AddedUpdateRentalServiceWithUpdateClause.cs" />
+    <Compile Include="Migrations\201807300634472_AddedUpdateRentalServiceWithUpdateClause.Designer.cs">
+      <DependentUpon>201807300634472_AddedUpdateRentalServiceWithUpdateClause.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807300835371_RequiredToUserIdInRental.cs" />
+    <Compile Include="Migrations\201807300835371_RequiredToUserIdInRental.Designer.cs">
+      <DependentUpon>201807300835371_RequiredToUserIdInRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807301102142_RmRequiredToUserIdInRental.cs" />
+    <Compile Include="Migrations\201807301102142_RmRequiredToUserIdInRental.Designer.cs">
+      <DependentUpon>201807301102142_RmRequiredToUserIdInRental.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -181,6 +193,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807270803334_AddedUserAsFkeyToRental.resx">
       <DependentUpon>201807270803334_AddedUserAsFkeyToRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807300634472_AddedUpdateRentalServiceWithUpdateClause.resx">
+      <DependentUpon>201807300634472_AddedUpdateRentalServiceWithUpdateClause.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807300835371_RequiredToUserIdInRental.resx">
+      <DependentUpon>201807300835371_RequiredToUserIdInRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807301102142_RmRequiredToUserIdInRental.resx">
+      <DependentUpon>201807301102142_RmRequiredToUserIdInRental.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

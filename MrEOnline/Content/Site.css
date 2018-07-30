@@ -23,12 +23,20 @@ td.ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+dd.ellipsis {
+    max-height: 262px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 label.ellipsis {
     max-width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 .fileinput-button {
     position: relative;
     overflow: hidden;
@@ -57,7 +65,6 @@ label.ellipsis {
 }
 
 .grayout {
-
     opacity: 0.6; /* Real browsers */
     filter: alpha(opacity = 60); /* MSIE */
 }
@@ -66,7 +73,7 @@ label.ellipsis {
     margin-top: 10px !important;
 }
 
-footer{
+footer {
     text-align: center;
 }
 
@@ -142,9 +149,51 @@ However, delay the fade out process for 2.5 seconds */
         opacity: 0;
     }
 }
+
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
     /*width: 50%;*/
-} 
+}
+
+.divOne:hover {
+    border: 1px solid #777;
+    background-color: #f5f9f9;
+}
+
+.corner-ribbon {
+    width: 140px;
+    background: #e43;
+    position: absolute;
+    top: 25px;
+    left: -50px;
+    text-align: center;
+    line-height: 50px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+    .corner-ribbon.top-right {
+        top: 25px;
+        right: -30px;
+        left: auto;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
+    .corner-ribbon.shadow {
+        box-shadow: 0 0 3px rgba(0,0,0,.3);
+    }
+
+.video-img {
+    margin: 0px -85px 0px 0px
+}
+
+.bold-label {
+    font-weight: bold;
+}
+
+.popover {
+    max-width: 584px !important;
+}
