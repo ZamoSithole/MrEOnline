@@ -10,7 +10,7 @@
             <a href="@Url.Action("Create")" class="btn btn-outline-secondary">Create</a>
             <a href="@Url.Action("UploadVideo")" class="btn btn-success">Uplaod Video List</a>
         </p>
-        <div>
+        <div style="overflow-x:auto;">
             <table class="table table-sm">
                 <thead>
                     <tr>
@@ -67,8 +67,8 @@
                             @Html.DisplayFor(modelItem => item.AgeRestriction)
                         </td>
                         @*<td>
-                                @Html.DisplayFor(modelItem => item.MoviePhoto)
-                            </td>*@
+                        @Html.DisplayFor(modelItem => item.MoviePhoto)
+                    </td>*@
                         <td>
                             @if (item.IsDeleted) {
                                 @Html.Raw("Yes")
@@ -90,24 +90,30 @@
                                 <a class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-cog"></i>&nbsp;Action&nbsp;<span class="caret"></span>
                                 </a>
-                                <div  class="dropdown-menu">
+                                <div class="dropdown-menu">
                                     @if (item.IsDeleted) {
                                         <a href="@Url.Action("Details", new { id = item.Id })" class="dropdown-item">
                                             <i class="fa fa-list-alt fa-2x"></i>&nbsp;Details
                                         </a>
                                         <a href="@Url.Action("Recover",  new { id = item.Id })" class="dropdown-item">
-                                    <i class="fa fa-check fa-2x"></i>&nbsp;Recover</a>
+                                            <i class="fa fa-check fa-2x"></i>&nbsp;Recover
+                                        </a>
                                     } else {
                                         <a href="@Url.Action("Edit", new { id = item.Id })" class="dropdown-item">
-                                    <i class="fa fa-edit"></i>&nbsp;Edit</a>
+                                            <i class="fa fa-edit"></i>&nbsp;Edit
+                                        </a>
                                         <a href="@Url.Action("Details", new { id = item.Id })" class="dropdown-item">
-                                    <i class="fa fa-list-alt"></i>&nbsp;Details</a>
+                                            <i class="fa fa-list-alt"></i>&nbsp;Details
+                                        </a>
                                         <a href="@Url.Action("Delete", new { id = item.Id })" class="dropdown-item">
-                                    <i class="fa fa-trash-o"></i>&nbsp;Delete</a>
+                                            <i class="fa fa-trash-o"></i>&nbsp;Delete
+                                        </a>
                                         <a href="@Url.Action("UploadData", new { id = item.Id })" class="dropdown-item">
-                                    <i class="fa fa-upload"></i>&nbsp;Upload</a>
+                                            <i class="fa fa-upload"></i>&nbsp;Upload
+                                        </a>
                                         <a href="@Url.Action("Create","Cast", new { VideoID = item.Id })" class="dropdown-item">
-                                    <i class="fa fa-user-plus"></i>&nbsp;Cast</a>
+                                            <i class="fa fa-user-plus"></i>&nbsp;Cast
+                                        </a>
                                     }
                                 </div>
                             </div>

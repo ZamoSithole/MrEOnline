@@ -1,6 +1,11 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url(Images/186120-OX1QLI-828.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -15,6 +20,15 @@
 .dl-horizontal dt {
     white-space: normal;
 }
+
+/*div.Home {
+    background-image: url(Images/186120-OX1QLI-828.jpg);
+    background-repeat: no-repeat;
+    background-position: right top;
+    margin-right: 200px;
+    background-attachment: fixed;
+    background-size: 300px 100px, cover;
+}*/
 
 
 td.ellipsis {
@@ -163,7 +177,7 @@ However, delay the fade out process for 2.5 seconds */
 }
 
 .corner-ribbon {
-    width: 140px;
+    width: 90px;
     background: #e43;
     position: absolute;
     top: 25px;
@@ -177,7 +191,7 @@ However, delay the fade out process for 2.5 seconds */
 }
     .corner-ribbon.top-right {
         top: 25px;
-        right: -30px;
+        right: -8px;
         left: auto;
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);

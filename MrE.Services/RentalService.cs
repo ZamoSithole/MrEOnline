@@ -18,10 +18,6 @@ namespace MrE.Services {
             item.StatusId = 1;            
             return base.Insert(item);
         }
-        public override Rental Update(Rental item) {
-            item.IsCheckedOut = true;
-            item.StatusId = 2;
-            return base.Insert(item);
-        }
+        
     }
 }

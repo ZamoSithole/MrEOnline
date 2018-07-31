@@ -3,6 +3,7 @@ using MrE.Models.Entities;
 using MrE.Services.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -62,7 +63,22 @@ namespace MrEOnline.Controllers {
             TransformQuery(ref dataQuery);
             if (dataQuery.Count() < 1)
                 return new HttpNotFoundResult();
-            return View(dataQuery);
+            return View("Confirm",dataQuery);
+        }
+        public async Task<ActionResult> DoConfirm() {
+            var user = await UserManager.FindByNameAsync(User.Identity.Name);
+            var userId = user.Id;
+            var dataQuery = await PrimaryService.Get().Where(e => e.UserId == userId).ToListAsync();
+            try {
+                foreach (var item in dataQuery) {
+                    item.StatusId = 2;
+                    PrimaryService.Update(item);
+                }
+            } catch (Exception exception) {
+
+                throw;
+            }
+            return View("ThankYou");
         }
 
         protected override async Task SetupSelectList() {
@@ -70,7 +86,9 @@ namespace MrEOnline.Controllers {
         }
 
         protected override void TransformQuery(ref IQueryable<Rental> dataQuery) {
-            //dataQuery = dataQuery.Include(m => m.Genre);
+            dataQuery = dataQuery.Include(m => m.User)
+                .Include(m => m.Status)
+                .Include(m => m.Video);
         }
     }
 }

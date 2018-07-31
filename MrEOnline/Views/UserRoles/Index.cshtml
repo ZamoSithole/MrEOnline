@@ -10,22 +10,24 @@
         <a href="@Url.Action("Create", new {userId = HttpContext.Current.Request.QueryString["userId"]})" class="btn btn-sm btn-outline-secondary">
             <i class="fa fa-plus"></i>&nbsp;Add
         </a>
-        <table class="table table-sm">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var role in Model) {
+        <div style="overflow-x:auto;">
+            <table class="table table-sm">
+                <thead>
                     <tr>
-                        <td>@Html.DisplayFor(m => role.RoleId)</td>
-                        <td>@Html.DisplayFor(m => role.Name)</td>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var role in Model) {
+                        <tr>
+                            <td>@Html.DisplayFor(m => role.RoleId)</td>
+                            <td>@Html.DisplayFor(m => role.Name)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

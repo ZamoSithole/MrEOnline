@@ -11,82 +11,84 @@
         <p>
             <a href="@Url.Action("Create")" class="btn btn-outline-secondary">Create</a>
         </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th scope="col">
-                        @Html.DisplayNameFor(model => model.IsDeleted)
-                    </th>
-                    <th scope="col">
-                        @Html.DisplayNameFor(model => model.DateCreated)
-                    </th>
-                    <th scope="col">
-                        @Html.DisplayNameFor(model => model.DateUpdated)
-                    </th>
-                    <th scope="col">
-                        @Html.DisplayNameFor(model => model.DateDeleted)
-                    </th>
-                    <th scope="col"></th>
-                </tr>
+        <div style="overflow-x:auto;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.IsDeleted)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.DateCreated)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.DateUpdated)
+                        </th>
+                        <th scope="col">
+                            @Html.DisplayNameFor(model => model.DateDeleted)
+                        </th>
+                        <th scope="col"></th>
+                    </tr>
 
-            </thead>
+                </thead>
 
-            @foreach (var item in Model) {
-                var style = string.Empty;
-                if (item.IsDeleted) { style = "class=grayout"; }
-                <tr @style>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @if (item.IsDeleted) {
-                            @Html.Raw("Yes")
-                        } else {
-                            @Html.Raw("No")
-                        }
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateCreated)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateUpdated)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateDeleted)
-                    </td>
-                    <td>
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-cog"></i>&nbsp;Action&nbsp;<span class="caret"></span>
-                            </button>
-                            <div class="dropdown-menu">
-                                @if (item.IsDeleted) {
-                                    <a href="@Url.Action("Details", new { id = item.Id })" class="dropdown-item">
-                                        <i class="fa fa-list-alt fa-2x"></i>&nbsp;Details
-                                    </a>
-                                    <a href="@Url.Action("Recover",  new { id = item.Id })" class="dropdown-item">
-                                        <i class="fa fa-check fa-2x"></i>&nbsp;Recover
-                                    </a>
-                                } else {
-                                    <a href="@Url.Action("Edit", new { id = item.Id })" class="dropdown-item">
-                                        <i class="fa fa-edit fa-2x"></i>&nbsp;Edit
-                                    </a>
-                                    <a href="@Url.Action("Details", new { id = item.Id })" class="dropdown-item">
-                                        <i class="fa fa-list-alt fa-2x"></i>&nbsp;Details
-                                    </a>
-                                    <a href="@Url.Action("Delete", new { id = item.Id })" class="dropdown-item">
-                                        <i class="fa fa-trash-o fa-2x"></i>&nbsp;Delete
-                                    </a>
-                                }
+                @foreach (var item in Model) {
+                    var style = string.Empty;
+                    if (item.IsDeleted) { style = "class=grayout"; }
+                    <tr @style>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @if (item.IsDeleted) {
+                                @Html.Raw("Yes")
+                            } else {
+                                @Html.Raw("No")
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateCreated)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateUpdated)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateDeleted)
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-cog"></i>&nbsp;Action&nbsp;<span class="caret"></span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    @if (item.IsDeleted) {
+                                        <a href="@Url.Action("Details", new { id = item.Id })" class="dropdown-item">
+                                            <i class="fa fa-list-alt fa-2x"></i>&nbsp;Details
+                                        </a>
+                                        <a href="@Url.Action("Recover",  new { id = item.Id })" class="dropdown-item">
+                                            <i class="fa fa-check fa-2x"></i>&nbsp;Recover
+                                        </a>
+                                    } else {
+                                        <a href="@Url.Action("Edit", new { id = item.Id })" class="dropdown-item">
+                                            <i class="fa fa-edit fa-2x"></i>&nbsp;Edit
+                                        </a>
+                                        <a href="@Url.Action("Details", new { id = item.Id })" class="dropdown-item">
+                                            <i class="fa fa-list-alt fa-2x"></i>&nbsp;Details
+                                        </a>
+                                        <a href="@Url.Action("Delete", new { id = item.Id })" class="dropdown-item">
+                                            <i class="fa fa-trash-o fa-2x"></i>&nbsp;Delete
+                                        </a>
+                                    }
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-            }
+                        </td>
+                    </tr>
+                }
 
-        </table>
+            </table>
+        </div>
     </div>
 </div>

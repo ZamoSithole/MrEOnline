@@ -242,10 +242,11 @@
 
         $('.btnCheckOut').on('click', function (e) {
             e.preventDefault();
-            $.ajax({
-                dataType: "json",
-                url: "/Rental/Confirm"
-            });
+            window.location.href = "/Rental/Confirm"
+            //$.ajax({
+            //    dataType: "json",
+            //    url: "/Rental/Confirm"
+            //});
 
 
             //$.get("/Rental/Confirm", function (result) {

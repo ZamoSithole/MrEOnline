@@ -23,6 +23,6 @@ namespace MrE.Models.Entities {
         public Status Status { get; set; }
         public bool IsCheckedOut { get; set; }
         public DateTime DateCreated { get; set; }
-        public DateTime? DateUpdated { get; set; }
+        public DateTime? DateUpdated { get; set; }       
     }
 }
