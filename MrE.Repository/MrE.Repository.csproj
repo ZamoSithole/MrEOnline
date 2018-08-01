@@ -129,6 +129,10 @@
     <Compile Include="Migrations\201807301102142_RmRequiredToUserIdInRental.Designer.cs">
       <DependentUpon>201807301102142_RmRequiredToUserIdInRental.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808010633324_ChangedCastInsertValidation.cs" />
+    <Compile Include="Migrations\201808010633324_ChangedCastInsertValidation.Designer.cs">
+      <DependentUpon>201808010633324_ChangedCastInsertValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807301102142_RmRequiredToUserIdInRental.resx">
       <DependentUpon>201807301102142_RmRequiredToUserIdInRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808010633324_ChangedCastInsertValidation.resx">
+      <DependentUpon>201808010633324_ChangedCastInsertValidation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
