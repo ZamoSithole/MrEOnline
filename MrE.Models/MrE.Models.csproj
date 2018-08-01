@@ -61,6 +61,7 @@
     <Compile Include="Abstractions\IUploadable.cs" />
     <Compile Include="DataOperation.cs" />
     <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\AuditEntry.cs" />
     <Compile Include="Entities\Cast.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\Genre.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserRoles.cs" />
     <Compile Include="Entities\Video.cs" />
+    <Compile Include="EnumExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationException.cs" />
   </ItemGroup>

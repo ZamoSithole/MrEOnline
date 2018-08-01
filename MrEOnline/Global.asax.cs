@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using Mr.Services;
 using MrE.Models;
 using MrE.Models.Entities;
 using MrE.Repository;
@@ -9,6 +10,7 @@ using MrE.Services;
 using MrE.Services.Abstractions;
 using MrE.Services.Validations;
 using MrEOnline.Models;
+using MrEOnline.Web.Helpers;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -38,10 +40,8 @@ namespace MrEOnline {
 
             builder.RegisterType<DataStoreContext>().InstancePerRequest();
             builder.RegisterGeneric(typeof(Repository<,>)).As(typeof(IRepository<,>));
-            //builder.RegisterType<UserStore<User>>().As<IUserStore<User>>();
-            //builder.RegisterType<UserManager>();
-            //builder.RegisterType<RoleStore<IdentityRole>>().As<IRoleStore<IdentityRole, string>>();
-            //builder.RegisterType<RoleManager>();
+            builder.RegisterType<DataAuditor>().As<IDataAuditor>();
+            builder.RegisterType<UserProvider>().As<IUserProvider>();
 
             builder.RegisterType<ValidationException>().InstancePerRequest();
             builder.RegisterType<ValidationExceptionService>().As<IValidationExceptionService>();

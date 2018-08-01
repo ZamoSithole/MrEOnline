@@ -20,6 +20,7 @@ namespace TestUtils {
             DataStore = dataStore;
         }
 
+
         public MockRepositorySetup<T> Setup() {
             MockRepository.Setup(m => m.Get())
                 .Returns(DataStore.AsQueryable());
