@@ -18,9 +18,11 @@ namespace MrEOnline.Controllers
             TitleService = titleService;
         }
 
-        public override async Task<ActionResult> CreateFor(int videoId) {
+        public override async Task<ActionResult> Create(int? videoId = null) {
             await SetupSelectList();
-            return View("CreateFor", new Cast { VideoId = videoId });
+            if (videoId.HasValue)
+                return View(new Cast { VideoId = videoId.Value });
+            return View("Create");
         }
         public ActionResult IndexPartial(int videoId) {
 

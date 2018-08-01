@@ -13,93 +13,95 @@
     <div class="card-header">@ViewBag.Title</div>
     <div class="card-body">
 
-            <div class="container">
-                <div class="card">
-                    <div class="card-header">
-                        Invoice
-                        <strong>@DateTime.Now</strong>
-                        @foreach (var c in Model.Select(c => c.Status).Distinct()) {
-                            <span class="float-right"><strong>Status: </strong>@c.Name</span>
-                        }
-                        <div class="card-body">
-                            <div class="row mb-4">
-                                <div class="col-sm-6">
-                                    <h6 class="mb-3">From:</h6>
-                                    <div>
-                                        <strong>Mr E Online</strong>
-                                    </div>
-                                    <div>Mr E Onine</div>
-                                    <div>Cnr 8th Avenue and Rose street,Hillbrow</div>
-                                    <div>Email: info@mreonline.co.za</div>
-                                    <div>Phone: +27 01 748 8456</div>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    Invoice
+                    <strong>@DateTime.Now</strong>
+                    @foreach (var c in Model.Select(c => c.Status).Distinct()) {
+                        <span class="float-right"><strong>Status: </strong>@c.Name</span>
+                    }
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-sm-6">
+                                <h6 class="mb-3">From:</h6>
+                                <div>
+                                    <strong>Mr E Online</strong>
                                 </div>
-
-                                <div class="col-sm-6">
-                                    <h6 class="mb-3">To:</h6>
-                                    <div>
-                                        @foreach (var c in Model.Select(c => c.User.FirstName).Distinct()) {
-                                            <strong>@c</strong>
-                                        }
-                                    </div>
-                                </div>
+                                <div>Mr E Onine</div>
+                                <div>Cnr 8th Avenue and Rose street,Hillbrow</div>
+                                <div>Email: info@mreonline.co.za</div>
+                                <div>Phone: +27 01 748 8456</div>
                             </div>
-                            <div class="table-responsive-sm">
-                                <table class="table table-striped tblInfo">
-                                    <thead>
-                                        <tr>
-                                            <th class="center" scope="col">#</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Description</th>
-                                            <th class="right" scope="col">Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
 
-                                        @foreach (var item in Model) {
-                                            @Html.Hidden(item.Id.ToString())
-                                            <tr>
-                                                <td class="center">@Html.Raw(counter++)</td>
-                                                <td class="left strong">@item.Video.Title</td>
-                                                <td class="left ellipsis">@item.Video.Description</td>
-                                                <td class="right">@item.Video.RentalPrice</td>
-                                            </tr>
-                                        }
+                            <div class="col-sm-6">
+                                <h6 class="mb-3">To:</h6>
+                                @foreach (var c in Model.Select(c => c.User).Distinct()) {
+                                    <div>
+                                        <strong>@c.FirstName</strong>
+                                    </div>
+                                    <div>Email: @c.Email</div>
+                                    <div>Phone: @c.PhoneNumber</div>
+                                }
+                            </div>
+                        </div>
+                        <div class="table-responsive-sm">
+                            <table class="table table-striped tblInfo">
+                                <thead>
+                                    <tr>
+                                        <th class="center" scope="col">#</th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Description</th>
+                                        <th class="right" scope="col">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model) {
+                                        @Html.Hidden(item.Id.ToString())
+                                        <tr>
+                                            <td class="center">@Html.Raw(counter++)</td>
+                                            <td class="left strong">@item.Video.Title</td>
+                                            <td class="left ellipsis">@item.Video.Description</td>
+                                            <td class="right">@item.Video.RentalPrice</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-5"></div>
+                            <div class="col-lg-4 col-sm-5 ml-auto">
+                                <table class="table table-clear">
+                                    <tbody>
+                                        <tr>
+                                            <td class="left">
+                                                <strong>VAT (15%)</strong>
+                                            </td>
+                                            <td class="right">@vatAmount</td>
+                                        </tr>
+                                        <tr class="tblTotals">
+                                            <td class="left">
+                                                <strong>Total</strong>
+                                            </td>
+                                            <td class="right ">
+                                                <strong>R@(vatAmount + total)</strong>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4 col-sm-5"></div>
-                                <div class="col-lg-4 col-sm-5 ml-auto">
-                                    <table class="table table-clear">
-                                        <tbody>
-                                            <tr>
-                                                <td class="left">
-                                                    <strong>VAT (15%)</strong>
-                                                </td>
-                                                <td class="right">@vatAmount</td>
-                                            </tr>
-                                            <tr class="tblTotals">
-                                                <td class="left">
-                                                    <strong>Total</strong>
-                                                </td>
-                                                <td class="right ">
-                                                    <strong>R@(vatAmount + total)</strong>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card-footer" style="text-align:center">
-                <a href="@Url.Action("DoConfirm")" class="btn btn-sm btn-outline-success col-md-6">
-                    <i class="fa fa-thumbs-o-up"></i>&nbsp;Confirm
-                </a>
+        </div>
+        <div class="card-footer" style="text-align:center">
+            <a href="@Url.Action("DoConfirm")" class="btn btn-sm btn-outline-success col-md-6">
+                <i class="fa fa-thumbs-o-up"></i>&nbsp;Confirm
+            </a>
 
-            </div>
+        </div>
 
     </div>
 </div>

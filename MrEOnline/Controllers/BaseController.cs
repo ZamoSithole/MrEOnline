@@ -37,16 +37,19 @@ namespace MrEOnline.Controllers {
             return View(dataQuery);
 
         }
-        public virtual async Task<ActionResult> Create()
-        {
+        //public virtual async Task<ActionResult> Create()
+        //{
+        //    await SetupSelectList();
+        //    return View();
+        //}
+        public virtual async Task<ActionResult> Create(int? foreignKey = null) {
             await SetupSelectList();
             return View();
         }
-
-        public virtual async Task<ActionResult> CreateFor(K foreignKey) {
-            await SetupSelectList();
-            return View();
-        }
+        //public virtual async Task<ActionResult> CreateFor(K foreignKey) {
+        //    await SetupSelectList();
+        //    return View();
+        //}
 
         [HttpPost]
         public async Task<ActionResult> Create(T item)

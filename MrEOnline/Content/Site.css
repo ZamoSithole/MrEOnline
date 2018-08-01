@@ -1,13 +1,28 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-image: url(Images/186120-OX1QLI-828.jpg);
+    /*background-image: url(Images/186120-OX1QLI-828.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: cover;*/
 }
 
+    body::after {
+        content: "";
+        background-image: url(Images/186120-OX1QLI-828.jpg);
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: block;
+        opacity: 0.4;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -2;
+    }
 /* Set padding to keep content from hitting the edges */
 .body-content {
     /*padding-left: 15px;
@@ -189,6 +204,7 @@ However, delay the fade out process for 2.5 seconds */
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
+
     .corner-ribbon.top-right {
         top: 25px;
         right: -8px;
@@ -196,6 +212,7 @@ However, delay the fade out process for 2.5 seconds */
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
     }
+
     .corner-ribbon.shadow {
         box-shadow: 0 0 3px rgba(0,0,0,.3);
     }
