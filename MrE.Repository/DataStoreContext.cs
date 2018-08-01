@@ -13,13 +13,12 @@ namespace MrE.Repository
         public virtual DbSet<Status> Statuses { get; set; }
         public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
-
         public virtual DbSet<Video> Videos { get; set; }
         public virtual DbSet<Title> Titles { get; set; }
         public virtual DbSet<Cast> Casts { get; set; }
-
         public virtual DbSet<Rental> Rentals { get; set; }
-       
+       public virtual DbSet<AuditEntry> AuditTrail { get; set; }
+
         public DataStoreContext() : base("DefaultConnection")
         {
             Configuration.LazyLoadingEnabled = false;

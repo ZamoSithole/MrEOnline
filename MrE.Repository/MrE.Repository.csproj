@@ -56,6 +56,8 @@
     <Compile Include="Abstractions\IDataAuditor.cs" />
     <Compile Include="Abstractions\IDataStoreBase.cs" />
     <Compile Include="Abstractions\IRepository.cs" />
+    <Compile Include="Abstractions\IUserProvider.cs" />
+    <Compile Include="DataAuditor.cs" />
     <Compile Include="DataStoreContext.cs" />
     <Compile Include="Migrations\201807060704577_EntityRefactoring.cs" />
     <Compile Include="Migrations\201807060704577_EntityRefactoring.Designer.cs">
@@ -128,6 +130,10 @@
     <Compile Include="Migrations\201807301102142_RmRequiredToUserIdInRental.cs" />
     <Compile Include="Migrations\201807301102142_RmRequiredToUserIdInRental.Designer.cs">
       <DependentUpon>201807301102142_RmRequiredToUserIdInRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808010835538_AddedAuditTrail.cs" />
+    <Compile Include="Migrations\201808010835538_AddedAuditTrail.Designer.cs">
+      <DependentUpon>201808010835538_AddedAuditTrail.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807301102142_RmRequiredToUserIdInRental.resx">
       <DependentUpon>201807301102142_RmRequiredToUserIdInRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808010835538_AddedAuditTrail.resx">
+      <DependentUpon>201808010835538_AddedAuditTrail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
