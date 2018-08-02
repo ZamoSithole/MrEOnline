@@ -88,10 +88,9 @@ namespace MrEOnline.Tests.UnitTests {
                 VideoId = 1,
                 DateCreated = DateTime.Now,
                 IsDeleted = false,
-                TitleId = 1
-            };
+                TitleId = 1};
 
-            var indexResult = await Controller.Create(cast);
+            var indexResult = await Controller.Create(newKey);
             Assert.AreEqual(4, DataStore.Count(), "Failed to insert cast.");
         }
 

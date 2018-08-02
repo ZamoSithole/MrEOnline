@@ -95,7 +95,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CastServiceTests.cs" />
+    <Compile Include="GenreServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentalServiceTests.cs" />
+    <Compile Include="StatusServiceTests.cs" />
     <Compile Include="VideoServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>

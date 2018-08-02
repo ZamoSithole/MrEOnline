@@ -97,5 +97,49 @@ namespace MrE.Services.Tests {
             var actual = VideoService.Insert(video);
             Assert.AreEqual(video, actual, "Insert test failed to insert correctly.");
         }
+
+        [Test]
+        [TestCase(1)]
+        public void UpdateShouldSucceed(int value) {
+            var video = VideoService.GetByKey(value);
+            var oldDateUpdated = video.DateUpdated;
+            var oldTitle = video.Title;
+
+            video.Title = DateTime.Now.GetHashCode().ToString();
+
+            VideoService.Update(video);
+
+            Assert.AreNotEqual(oldTitle, video.Title);
+            Assert.AreNotEqual(oldDateUpdated, video.DateUpdated);
+
+        }
+
+        [Test]
+        public void DeleteShouldPass() {
+            var video = VideoService.Get().FirstOrDefault(e => !e.IsDeleted);
+            var oldIsDeleted = video.IsDeleted;
+            var oldDate = video.DateDeleted;
+
+            VideoService.Delete(video);
+            Assert.AreNotEqual(oldDate, video.DateDeleted);
+            Assert.AreEqual(true, video.IsDeleted);
+        }
+
+        [Test]
+        public void RecoverShouldSucceed() {
+            var video = VideoService.Get().FirstOrDefault(e => e.IsDeleted);
+            var oldIsDeleted = video.IsDeleted;
+            var oldDateUpdate = video.DateUpdated;
+
+            VideoService.Recover(video);
+            Assert.AreNotEqual(oldDateUpdate, video.DateUpdated);
+            Assert.AreEqual(false, video.IsDeleted);
+            Assert.IsNull(video.DateDeleted);
+        }
+
+        [TearDown]
+        public void TearDown() {
+            AutoMock?.Dispose();
+        }
     }
 }

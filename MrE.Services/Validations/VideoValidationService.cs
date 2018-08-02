@@ -27,7 +27,7 @@ namespace MrE.Services.Validations
             base.ValidateUpdate(targetObject);
 
             if (items != null && items.Any(elem => elem.Id != targetObject.Id && string.Compare(elem.Title, targetObject.Title) == 0))
-                ValidationExceptionService.Add(Guid.NewGuid().ToString(), "Unable to update Status, there's already a Status with the same name.");
+                ValidationExceptionService.Add(Guid.NewGuid().ToString(), "Unable to update Video, there's already a Video with the same name.");
             ValidationExceptionService.ThrowException();
         }
 

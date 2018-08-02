@@ -52,9 +52,9 @@ namespace MrEOnline.Controllers {
         //}
 
         [HttpPost]
-        public async Task<ActionResult> Create(T item)
+        public virtual async Task<ActionResult> Create(T item)
         {
-            await SetupSelectList();
+            //await SetupSelectList();
             var viewMessage = new ViewMessage();
             if (!ModelState.IsValid) return View(item);
 
@@ -74,7 +74,7 @@ namespace MrEOnline.Controllers {
             catch (Exception exception)
             {
 
-                viewMessage.Type = ViewMessageType.Success;
+                viewMessage.Type = ViewMessageType.Error;
                 if (exception is ValidationException)
                     viewMessage.Message = exception.ToString();
                 else
@@ -156,7 +156,7 @@ namespace MrEOnline.Controllers {
         public virtual async Task<ActionResult> Edit(T item)
         {
             var viewMessage = new ViewMessage();
-            await SetupSelectList();
+            //await SetupSelectList();
             if (!ModelState.IsValid) return View(item);
             try
             {
@@ -185,14 +185,14 @@ namespace MrEOnline.Controllers {
         {
             var dataQuery = PrimaryService.GetByKey(id);
             await SetupSelectList();
-            if (dataQuery == null) return HttpNotFound("Status cannot be found.");
+            if (dataQuery == null) return HttpNotFound("Item cannot be found.");
 
             return View(dataQuery);
         }
         [HttpPost]
         public async Task<ActionResult> Delete(T item, K id)
         {
-            await SetupSelectList();
+            //await SetupSelectList();
             var existing = PrimaryService.GetByKey(id);
 
             if (existing == null) return HttpNotFound("Cannot find the item to be deleted.");
@@ -221,7 +221,7 @@ namespace MrEOnline.Controllers {
         [HttpPost]
         public async Task<ActionResult> Recover(T item, K id)
         {
-            await SetupSelectList();
+            //await SetupSelectList();
             var existing = PrimaryService.GetByKey(id);
             if (existing == null) return HttpNotFound("Cannot find the item to be recovered.");
             try
