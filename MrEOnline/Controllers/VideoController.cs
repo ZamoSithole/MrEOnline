@@ -1,12 +1,14 @@
 ﻿using MrE.Models.Entities;
 using MrE.Services.Abstractions;
 using System;
+using System.Configuration;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using X.PagedList;
 
 namespace MrEOnline.Controllers {
     [Authorize(Roles ="Administrator")]
@@ -23,10 +25,12 @@ namespace MrEOnline.Controllers {
         }
 
         [AllowAnonymous]
-        public async Task<ActionResult> Catalog() {
+        public async Task<ActionResult> Catalog(int? page) {
             var videos =  PrimaryService.Get();
             TransformQuery(ref videos);
-            return View(videos);
+            int pageSize = int.Parse(ConfigurationManager.AppSettings["PageSize"]);
+            int pageNumber = (page ?? 1);
+            return View(videos.OrderBy(v => v.Title).ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult UploadVideo()

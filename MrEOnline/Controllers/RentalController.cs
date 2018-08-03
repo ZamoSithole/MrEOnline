@@ -59,7 +59,7 @@ namespace MrEOnline.Controllers {
         public virtual async Task<ActionResult> Confirm() {
             var user = await UserManager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
-            var dataQuery = PrimaryService.Get().Where(e => e.UserId == userId);
+            var dataQuery = PrimaryService.Get().Where(e => e.UserId == userId & e.StatusId == 1);
             TransformQuery(ref dataQuery);
             if (dataQuery.Count() < 1)
                 return new HttpNotFoundResult();

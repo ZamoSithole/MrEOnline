@@ -1,5 +1,9 @@
-﻿@model IEnumerable<MrE.Models.Entities.Video>
+﻿@using X.PagedList.Mvc.Bootstrap4;
+@using X.PagedList.Mvc;
+@using X.PagedList;
 
+@model IPagedList<MrE.Models.Entities.Video>
+@*@model IEnumerable<MrE.Models.Entities.Video>*@
 @{
     ViewBag.Title = "Movies";
 }
@@ -80,7 +84,30 @@
                     </div>
                 </div>
             </div>
+
         }
+        <nav>
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link">@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</a>
+                    @Html.PagedListPager(Model, page => Url.Action("Catalog", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter}), new PagedListRenderOptions { LinkToFirstPageFormat = "<< First", LinkToPreviousPageFormat = "< Previous", LinkToNextPageFormat = "Next >", LinkToLastPageFormat = "Last >>"})
+                </li>
+            </ul>
+        </nav>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                       
+
+                </li>
+            </ul>
+        </nav>
+        @*<div class="page-link" style="display:inline-block; vertical-align:middle">
+            <b>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</b>
+        </div>
+        <div class="pagination" style="display:inline-block; vertical-align:middle">
+            @Html.PagedListPager(Model, page => Url.Action("Catalog", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< First", LinkToPreviousPageFormat = "< Previous", LinkToNextPageFormat = "Next >", LinkToLastPageFormat = "Last >>" })
+        </div>*@
     </div>
 </div>
 <div class="modal fade" tabindex="-1" role="dialog">
@@ -100,6 +127,28 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<style>
+    .PagedList-skipToNext {
+        position: relative;
+        display: block;
+        padding: 0.5rem 0.75rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: #007bff;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+    }
+    .PagedList-skipToPrevious {
+        position: relative;
+        display: block;
+        padding: 0.5rem 0.75rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: #007bff;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+    }
+</style>
 @section Scripts{
     <script src="~/Scripts/sweetalert2.all.min.js"></script>
     <script type="text/javascript">
@@ -196,7 +245,7 @@
 
             $.post("/api/rentalsapi", rental)
                 .done(function (response) {
-                    if(response.Message == "Authorization has been denied for this request.") {
+                    if (response.Message == "Authorization has been denied for this request.") {
                         swal({
                             type: 'error',
                             title: 'Oops..',
@@ -216,7 +265,7 @@
                     } else {
                         Total = Total + parseInt(currentRow);
                         $('#Amount').text('R' + Total + '.00')
-                        
+
                         $(".btnCancel[data-VideoId='" + videoID + "']").show();
                         $(".btnCheck[data-VideoId='" + videoID + "']").show();
                     }
@@ -225,7 +274,7 @@
                     console.log('error while calling api is => ' + JSON.stringify(error));
                 });
             $(this).hide();
-            
+
         });
         $('.btnCancel').on('click', function (e) {
             e.preventDefault();
@@ -257,8 +306,8 @@
             //    .done(function (response) {
             //        console.log("returned " + JSON.stringify(response));
             //    })//.fail(function (status, jxHR, error) {
-                //    console.log('error while calling api is => ' + JSON.stringify(error));
-                //});
+            //    console.log('error while calling api is => ' + JSON.stringify(error));
+            //});
             //var data = "<p>This is 'myWindow'</p>";
             //window.open("data:text/html," + encodeURIComponent(data),
             //    "_blank", "width=200,height=100");

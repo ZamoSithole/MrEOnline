@@ -68,20 +68,20 @@
                                     <div class="dropdown-menu">
                                         @if (item.IsDeleted) {
                                             <a href="@Url.Action("Details", new { id = item.Id })" class="dropdown-item">
-                                                <i class="fa fa-list-alt fa-2x"></i>&nbsp;Details
+                                                <i class="fa fa-list-alt"></i>&nbsp;Details
                                             </a>
                                             <a href="@Url.Action("Recover",  new { id = item.Id })" class="dropdown-item">
-                                                <i class="fa fa-check fa-2x"></i>&nbsp;Recover
+                                                <i class="fa fa-check"></i>&nbsp;Recover
                                             </a>
                                         } else {
                                             <a href="@Url.Action("Edit", new { id = item.Id })" class="dropdown-item">
-                                                <i class="fa fa-edit fa-2x"></i>&nbsp;Edit
+                                                <i class="fa fa-edit"></i>&nbsp;Edit
                                             </a>
                                             <a href="@Url.Action("Details", new { id = item.Id })" class="dropdown-item">
-                                                <i class="fa fa-list-alt fa-2x"></i>&nbsp;Details
+                                                <i class="fa fa-list-alt"></i>&nbsp;Details
                                             </a>
                                             <a href="@Url.Action("Delete", new { id = item.Id })" class="dropdown-item">
-                                                <i class="fa fa-trash-o fa-2x"></i>&nbsp;Delete
+                                                <i class="fa fa-trash-o"></i>&nbsp;Delete
                                             </a>
                                         }
                                     </div>
