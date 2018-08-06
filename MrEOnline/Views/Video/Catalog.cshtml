@@ -89,7 +89,7 @@
         <nav>
             <ul class="pagination">
                 <li class="page-item">
-                    <a class="page-link">@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</a>
+                    @*<a class="page-link">@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</a>*@
                     @Html.PagedListPager(Model, page => Url.Action("Catalog", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter}), new PagedListRenderOptions { LinkToFirstPageFormat = "<< First", LinkToPreviousPageFormat = "< Previous", LinkToNextPageFormat = "Next >", LinkToLastPageFormat = "Last >>"})
                 </li>
             </ul>
@@ -128,26 +128,79 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <style>
+    .active {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #868e96;
+        border-radius: 34px;
+    }
+    .pagination :not(li) {
+        padding: 0.5rem 0.75rem;
+        
+    }
+    .pagination-container {
+        font-family: "FontAwesome";
+    }
+    .PagedList-skipToNext::after {
+        content: "\f054";
+    }
     .PagedList-skipToNext {
+        text-decoration: none !important;
         position: relative;
         display: block;
         padding: 0.5rem 0.75rem;
         margin-left: -1px;
         line-height: 1.25;
-        color: #007bff;
         background-color: #fff;
-        border: 1px solid #dee2e6;
+        border: 1px solid #868e96;
+        border-radius: 10px;
+    }
+        .PagedList-skipToNext a {
+            text-decoration: none !important;
+            line-height: 0;
+            font-size: 0;
+            color: transparent;
+            text-indent: -9999px;
+            padding: 5px;
+        }
+            .PagedList-skipToNext a:hover {
+                color: #fff !important;
+            }
+        .PagedList-skipToNext:hover {
+            text-decoration: none !important;
+            background-color: #868e96;
+            color: #fff !important;
+        }
+    .PagedList-skipToPrevious::before {
+        content: "\f053";
     }
     .PagedList-skipToPrevious {
+        text-decoration: none !important;
         position: relative;
         display: block;
         padding: 0.5rem 0.75rem;
         margin-left: -1px;
         line-height: 1.25;
-        color: #007bff;
         background-color: #fff;
-        border: 1px solid #dee2e6;
+        border: 1px solid #868e96;
+        border-radius: 10px;
     }
+
+        .PagedList-skipToPrevious:hover {
+            text-decoration: none !important;
+            background-color: #868e96;
+            color: #fff !important;
+        }
+
+        .PagedList-skipToPrevious a:hover {
+            color: #fff !important;
+        }
+        .PagedList-skipToPrevious a {
+            text-decoration: none !important;
+            line-height: 0;
+            font-size: 0;
+            padding: 5px;
+            color: transparent;
+        }
 </style>
 @section Scripts{
     <script src="~/Scripts/sweetalert2.all.min.js"></script>

@@ -410,6 +410,7 @@
     <Content Include="Views\UserRoles\Create.cshtml" />
     <Content Include="Views\Rental\Confirm.cshtml" />
     <Content Include="Views\Shared\ThankYou.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

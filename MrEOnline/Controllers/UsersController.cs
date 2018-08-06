@@ -17,7 +17,7 @@ namespace MrEOnline.Controllers {
         public override async Task<ActionResult> Index() {
             return View((await PrimaryService.Get().ToListAsync()).Select(e => new UserViewModel(e)));
         }
-
+      
         protected override void TransformQuery(ref IQueryable<User> dataQuery) {
             dataQuery = dataQuery.Include(e => e.Roles);
         }

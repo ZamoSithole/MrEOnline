@@ -29,7 +29,7 @@ namespace MrEOnline.Controllers {
             var item = PrimaryService.GetByKey(id);
 
             await SetupSelectList();
-            if (item == null) return HttpNotFound("Could not find the video you are looking for.");
+            if (item == null) return HttpNotFound("Could not find the user you are looking for.");
 
             if (!string.IsNullOrEmpty(message) && messageType.HasValue)
                 ViewData["ViewMessage"] = new ViewMessage(message, messageType.Value);
@@ -65,6 +65,14 @@ namespace MrEOnline.Controllers {
             return View(item);
         }
 
+        public async Task<ActionResult> Details(K id) {
+            var item = PrimaryService.GetByKey(id);
+
+            await SetupSelectList();
+            if (item == null) return HttpNotFound("Could not find the user you are lokking for");
+            return View(CreateViewObject(item));
+            
+        }
         protected abstract V CreateViewObject(T item);
         protected abstract void CreateObjectFromViewModel(V item, ref T entity);
         protected abstract void TransformQuery(ref IQueryable<T> dataQuery);
