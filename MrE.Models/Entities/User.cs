@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -25,6 +26,12 @@ namespace MrEOnline.Models
 
         [Required(ErrorMessage = "Surname is required")]
         public string Surname { get; set; }
+
+        [NotMapped]
+        public string FullName { get {
+                return $"{FirstName} {Surname}";
+            }
+        }
 
         public virtual ICollection<Contact> ContactsCreated { get; set; }
         public virtual ICollection<Status> StatusesCreated { get; set; }

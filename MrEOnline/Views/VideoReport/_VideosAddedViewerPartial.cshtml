@@ -1,0 +1,7 @@
+@Html.DevExpress().DocumentViewer(settings => {
+    settings.Name = "DocumentViewer1";
+    settings.CallbackRouteValues = new { Controller = "VideoReport", Action = "VideosAddedViewerPartial" };
+    settings.ExportRouteValues = new { Controller = "VideoReport", Action = "VideosAddedViewerPartialExport" };
+    settings.Report = (XtraReport)Model;
+    settings.ToolbarMode = DocumentViewerToolbarMode.Ribbon;
+}).GetHtml()
