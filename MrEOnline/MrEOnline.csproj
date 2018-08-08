@@ -255,6 +255,7 @@
     <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OverDueReportController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Controllers\RentalsApiController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
@@ -273,6 +274,9 @@
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\ViewMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\OverDueVideos.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\Rentals.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -345,6 +349,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -488,6 +493,8 @@
     <Content Include="Views\VideoReport\_VideosAddedViewerPartial.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\Reports\_RentalReportViewerPartial.cshtml" />
+    <Content Include="Views\OverDueReport\Index.cshtml" />
+    <Content Include="Views\OverDueReport\_OverDueVideosViewerPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -519,6 +526,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\OverDueVideos.resx">
+      <DependentUpon>OverDueVideos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Rentals.resx">
       <DependentUpon>Rentals.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="card">
+    <div class="card-body">
+
+    </div>
+</div>
+@*@Html.Action("OverDueVideosViewerPartial")*@
+
+@section Scripts{ 
+<script type="text/javascript">
+    $(function () {
+         $('.card-body').load('@Url.Action("OverDueVideosViewerPartial")');
+    })
+</script>
+}

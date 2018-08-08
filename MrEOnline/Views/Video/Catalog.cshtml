@@ -287,7 +287,7 @@
             })
         });
         var RentedItems = [];
-        $(".btnRent").on('click', function (e) {
+        $(document).on('click', '.btnRent', function (e) {
             e.preventDefault();
             var currentRow = $(this).attr("data-RentalPrice");
             var videoID = $(this).attr("data-VideoId");
@@ -342,7 +342,7 @@
             $(".btnCheck[data-VideoId='" + videoID + "']").hide();
         });
 
-        $('.btnCheckOut').on('click', function (e) {
+        $(document).on('click','.btnCheckOut', function (e) {
             e.preventDefault();
             window.location.href = "/Rental/Confirm"
             //$.ajax({

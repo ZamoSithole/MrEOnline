@@ -12,7 +12,6 @@
 <div class="card">
     <div class="card-header">@ViewBag.Title</div>
     <div class="card-body">
-
         <div class="container">
             <div class="card">
                 <div class="card-header">
@@ -42,6 +41,7 @@
                                     </div>
                                     <div>Email: @c.Email</div>
                                     <div>Phone: @c.PhoneNumber</div>
+
                                 }
                             </div>
                         </div>
@@ -64,6 +64,7 @@
                                             <td class="left strong">@item.Video.Title</td>
                                             <td class="left ellipsis">@item.Video.Description</td>
                                             <td class="right">@item.Video.RentalPrice</td>
+                                            <td hidden>@item.DateCreated.AddDays(5).ToString()</td>
                                         </tr>
                                     }
                                 </tbody>

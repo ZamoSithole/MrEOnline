@@ -23,6 +23,15 @@ namespace MrE.Models.Entities {
         public Status Status { get; set; }
         public bool IsCheckedOut { get; set; }
         public DateTime DateCreated { get; set; }
-        public DateTime? DateUpdated { get; set; }       
+        public DateTime? DateUpdated { get; set; } 
+        public DateTime? DateRented { get; set; }
+        public DateTime? DueDate { get; set; }
+        [NotMapped]
+        public int OverDueDays {
+            get {
+                if (DateRented == null || DueDate == null) return 0;
+                return DateTime.Now.Subtract(DueDate.Value).Days;
+            }
+        }
     }
 }

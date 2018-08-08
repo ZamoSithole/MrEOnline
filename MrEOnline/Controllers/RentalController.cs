@@ -68,10 +68,13 @@ namespace MrEOnline.Controllers {
         public async Task<ActionResult> DoConfirm() {
             var user = await UserManager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
-            var dataQuery = await PrimaryService.Get().Where(e => e.UserId == userId).ToListAsync();
+            var dataQuery = await PrimaryService.Get().Where(e => e.UserId == userId & e.StatusId == 1).ToListAsync();
             try {
                 foreach (var item in dataQuery) {
                     item.StatusId = 2;
+                    var dateRented = DateTime.Now;
+                    item.DateRented = dateRented;
+                    item.DueDate = dateRented.AddDays(5);
                     PrimaryService.Update(item);
                 }
             } catch (Exception exception) {

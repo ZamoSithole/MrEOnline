@@ -7,6 +7,7 @@ using MrE.Services;
 using MrE.Services.Abstractions;
 using MrE.Services.Validations;
 using MrEOnline.Controllers;
+using MrEOnline.Models;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -90,8 +91,18 @@ namespace MrEOnline.Tests.UnitTests {
                 IsDeleted = false,
                 TitleId = 1};
 
-            var indexResult = await Controller.Create(newKey);
-            Assert.AreEqual(4, DataStore.Count(), "Failed to insert cast.");
+            var controller = AutoMock.Create<CastController>();
+            ActionResult result = await controller.Create(cast);
+
+            Assert.IsTrue(controller.ModelState.IsValid);
+
+            Assert.IsInstanceOf<RedirectToRouteResult>(result);
+
+            var redirectResult = (result as RedirectToRouteResult);
+            Assert.AreEqual(redirectResult.RouteValues["action"], "Edit");
+            Assert.AreEqual(redirectResult.RouteValues["id"], newKey);
+            Assert.AreEqual(redirectResult.RouteValues["message"], "Successfully saved your changes.");
+            Assert.AreEqual(redirectResult.RouteValues["messageType"], ViewMessageType.Success);
         }
 
         [TearDown]

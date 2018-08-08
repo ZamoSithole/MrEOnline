@@ -143,6 +143,14 @@
     <Compile Include="Migrations\201808010902523_FixMigrationIssues.Designer.cs">
       <DependentUpon>201808010902523_FixMigrationIssues.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808080724441_addedDueDateToRentedEntity.cs" />
+    <Compile Include="Migrations\201808080724441_addedDueDateToRentedEntity.Designer.cs">
+      <DependentUpon>201808080724441_addedDueDateToRentedEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808080935197_addedDateRentedToRentedEntity.cs" />
+    <Compile Include="Migrations\201808080935197_addedDateRentedToRentedEntity.Designer.cs">
+      <DependentUpon>201808080935197_addedDateRentedToRentedEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -225,6 +233,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808010902523_FixMigrationIssues.resx">
       <DependentUpon>201808010902523_FixMigrationIssues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808080724441_addedDueDateToRentedEntity.resx">
+      <DependentUpon>201808080724441_addedDueDateToRentedEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808080935197_addedDateRentedToRentedEntity.resx">
+      <DependentUpon>201808080935197_addedDateRentedToRentedEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
