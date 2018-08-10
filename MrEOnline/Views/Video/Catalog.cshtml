@@ -331,8 +331,8 @@
                             }
                         })
                     } else {
-                        //$.post("/Video/UpdateQuantity?videoId=" + videoID).done();
-                        Total = Total + parseInt(currentRow);
+                        $.post("/Video/UpdateQuantity?videoId=" + videoID).done();
+                        Total = parseInt(Total) + parseInt(currentRow);
                         $('#Amount').text('R' + Total + '.00')
                         $(".btnCancel[data-VideoId='" + videoID + "']").show();
                         $(".btnCheck[data-VideoId='" + videoID + "']").show();
@@ -347,12 +347,11 @@
         $(document).on('click', '.btnCancel', function (e) {
             e.preventDefault();
             var currentRow = $(this).attr("data-RentalPrice");
-            console.log(currentRow);
             var videoID = $(this).attr("data-VideoId");
             var checkOutAmount = $('#Amount').text();
             substitude = checkOutAmount.replace('R', '');
-            newTotal = Total - parseInt(currentRow);
-            $('#Amount').text('R' + newTotal + '.00')
+            Total = parseInt(Total) - parseInt(currentRow);
+            $('#Amount').text('R' + Total + '.00')
             $(".btnRent[data-VideoId='" + videoID + "']").show();
             $(this).hide();
             $(".btnCheck[data-VideoId='" + videoID + "']").hide();
