@@ -188,11 +188,11 @@ However, delay the fade out process for 2.5 seconds */
 
 .divOne:hover {
     border: 1px solid #777;
-    background-color: #f5f9f9;
+    background-color: #f8f9fa;
 }
 
 .corner-ribbon {
-    width: 90px;
+    width: 166px;
     background: #e43;
     position: absolute;
     top: 25px;
@@ -203,11 +203,12 @@ However, delay the fade out process for 2.5 seconds */
     color: #f0f0f0;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
+    height: 47px;
 }
 
     .corner-ribbon.top-right {
         top: 25px;
-        right: -8px;
+        right: -22px;
         left: auto;
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
@@ -218,7 +219,7 @@ However, delay the fade out process for 2.5 seconds */
     }
 
 .video-img {
-    margin: 0px -85px 0px 0px
+    /*margin: 0px -85px 0px 0px*/
 }
 
 .bold-label {

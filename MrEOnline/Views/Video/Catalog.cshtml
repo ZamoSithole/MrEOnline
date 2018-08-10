@@ -30,7 +30,7 @@
                                         <img src="data:image/png;base64,@System.Convert.ToBase64String( item.Data)" height="auto" max-width="100%" style="display:block" class="img-responsive" />
                                     }
                                 </div>
-                                <div class="col-md-4" data-VideoId="@item.Id">
+                                <div class="col-md-2" data-VideoId="@item.Id">
                                     <dl class="dl-horizontal">
                                         <dt>Title</dt>
                                         <dd>@Html.DisplayFor(model => item.Title)</dd>
@@ -57,28 +57,34 @@
                         </div>
                         <div class="card-footer">
                             <div class="buttons">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">
+                                <button type="button" class="btn btn-sm btn-outline-success">
                                     <i class="fa fa-thumbs-o-up"></i>&nbsp;Like&nbsp;<span class="badge">20</span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-danger">
+                                    <i class="fa fa-thumbs-o-down"></i>&nbsp;Dislike&nbsp;<span class="badge">20</span>
+                                </button>
+                                <a class="pull-right btnCancel" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" style="cursor:pointer; display: none">
+                                    <i class="fa fa-close" style="color:red"></i>
+                                </a>
+                                <button type="button" class="btn btn-sm btn-outline-primary">
+                                    <i class="fa fa-share-alt"></i>&nbsp;Share
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-dark">
+                                    <i class="fa fa-comment-o"></i>&nbsp;Comment
                                 </button>
                                 <button type="button" data-videoid="@item.Id" class="btn btn-sm btn-outline-info btn-cast">
                                     <i class="fa fa-user"></i>&nbsp;Cast
                                 </button>
-                                <button type="button" title="Rent" class="btnRent btn btn-sm btn-outline-success" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice">
-                                    <i class="fa fa-shopping-basket"></i>
-                                    &nbsp;Rent
-                                </button>
-                                @*<button class="btnCheck btn btn-outline-secondary btn-sm" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" disabled style=" display:none">
-                                    <i class="fa fa-check" style="color: green;"></i>
-                                </button>*@
-                                <a class="pull-right btnCancel" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" style="cursor:pointer; display: none">
-                                    <i class="fa fa-close" style="color:red"></i>
-                                </a>
-                                <button type="button" class="btn btn-sm btn-outline-success">
-                                    <i class="fa fa-share-alt"></i>&nbsp;Share
-                                </button>
-                                <button type="button" class="btn btn-sm btn-outline-success">
-                                    <i class="fa fa-comment-o"></i>&nbsp;Comment
-                                </button>
+                                @if (item.Quantity > 0) {
+                                    <button type="button" title="Rent" class="btnRent btn btn-sm btn-outline-success" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice">
+                                        <i class="fa fa-shopping-basket"></i>
+                                        &nbsp;Rent
+                                    </button>
+                                }
+
+                                @if (item.Quantity < 2) {
+                                    <p class="pull-right">Only <span>@item.Quantity</span> remains</p>
+                                }
                             </div>
                         </div>
                     </div>
@@ -90,24 +96,24 @@
             <ul class="pagination">
                 <li class="page-item">
                     @*<a class="page-link">@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</a>*@
-                    @Html.PagedListPager(Model, page => Url.Action("Catalog", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter}), new PagedListRenderOptions { LinkToFirstPageFormat = "<< First", LinkToPreviousPageFormat = "< Previous", LinkToNextPageFormat = "Next >", LinkToLastPageFormat = "Last >>"})
+                    @Html.PagedListPager(Model, page => Url.Action("Catalog", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< First", LinkToPreviousPageFormat = "< Previous", LinkToNextPageFormat = "Next >", LinkToLastPageFormat = "Last >>" })
                 </li>
             </ul>
         </nav>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item">
-                       
+
 
                 </li>
             </ul>
         </nav>
         @*<div class="page-link" style="display:inline-block; vertical-align:middle">
-            <b>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</b>
-        </div>
-        <div class="pagination" style="display:inline-block; vertical-align:middle">
-            @Html.PagedListPager(Model, page => Url.Action("Catalog", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< First", LinkToPreviousPageFormat = "< Previous", LinkToNextPageFormat = "Next >", LinkToLastPageFormat = "Last >>" })
-        </div>*@
+                <b>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</b>
+            </div>
+            <div class="pagination" style="display:inline-block; vertical-align:middle">
+                @Html.PagedListPager(Model, page => Url.Action("Catalog", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< First", LinkToPreviousPageFormat = "< Previous", LinkToNextPageFormat = "Next >", LinkToLastPageFormat = "Last >>" })
+            </div>*@
     </div>
 </div>
 <div class="modal fade" tabindex="-1" role="dialog">
@@ -133,16 +139,19 @@
         border: 1px solid #868e96;
         border-radius: 34px;
     }
+
     .pagination :not(li) {
         padding: 0.5rem 0.75rem;
-        
     }
+
     .pagination-container {
         font-family: "FontAwesome";
     }
+
     .PagedList-skipToNext::after {
         content: "\f054";
     }
+
     .PagedList-skipToNext {
         text-decoration: none !important;
         position: relative;
@@ -154,6 +163,7 @@
         border: 1px solid #868e96;
         border-radius: 10px;
     }
+
         .PagedList-skipToNext a {
             text-decoration: none !important;
             line-height: 0;
@@ -162,17 +172,21 @@
             text-indent: -9999px;
             padding: 5px;
         }
+
             .PagedList-skipToNext a:hover {
                 color: #fff !important;
             }
+
         .PagedList-skipToNext:hover {
             text-decoration: none !important;
             background-color: #868e96;
             color: #fff !important;
         }
+
     .PagedList-skipToPrevious::before {
         content: "\f053";
     }
+
     .PagedList-skipToPrevious {
         text-decoration: none !important;
         position: relative;
@@ -194,6 +208,7 @@
         .PagedList-skipToPrevious a:hover {
             color: #fff !important;
         }
+
         .PagedList-skipToPrevious a {
             text-decoration: none !important;
             line-height: 0;
@@ -316,9 +331,9 @@
                             }
                         })
                     } else {
+                        //$.post("/Video/UpdateQuantity?videoId=" + videoID).done();
                         Total = Total + parseInt(currentRow);
                         $('#Amount').text('R' + Total + '.00')
-
                         $(".btnCancel[data-VideoId='" + videoID + "']").show();
                         $(".btnCheck[data-VideoId='" + videoID + "']").show();
                     }
@@ -329,20 +344,21 @@
             $(this).hide();
 
         });
-        $('.btnCancel').on('click', function (e) {
+        $(document).on('click', '.btnCancel', function (e) {
             e.preventDefault();
             var currentRow = $(this).attr("data-RentalPrice");
+            console.log(currentRow);
             var videoID = $(this).attr("data-VideoId");
             var checkOutAmount = $('#Amount').text();
             substitude = checkOutAmount.replace('R', '');
-            newTotal = substitude - parseInt(currentRow);
+            newTotal = Total - parseInt(currentRow);
             $('#Amount').text('R' + newTotal + '.00')
             $(".btnRent[data-VideoId='" + videoID + "']").show();
             $(this).hide();
             $(".btnCheck[data-VideoId='" + videoID + "']").hide();
         });
 
-        $(document).on('click','.btnCheckOut', function (e) {
+        $(document).on('click', '.btnCheckOut', function (e) {
             e.preventDefault();
             window.location.href = "/Rental/Confirm"
             //$.ajax({

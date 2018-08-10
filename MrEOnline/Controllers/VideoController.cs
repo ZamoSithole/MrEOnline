@@ -58,6 +58,20 @@ namespace MrEOnline.Controllers {
             }                       
         }
         
+        public async Task<ActionResult> UpdateQuantity(int VideoId) {
+
+            var DataQuery =  PrimaryService.GetByKey(VideoId);
+            var CurrentQty = DataQuery.Quantity - 1;
+            DataQuery.Quantity = CurrentQty;
+            try {
+                PrimaryService.Update(DataQuery);
+
+            } catch (Exception exception) {
+
+                throw;
+            }
+            return View();
+        }
         protected override void TransformQuery(ref IQueryable<Video> dataQuery)
         {
             dataQuery = dataQuery.Include(m => m.Genre);

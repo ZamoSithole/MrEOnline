@@ -151,6 +151,10 @@
     <Compile Include="Migrations\201808080935197_addedDateRentedToRentedEntity.Designer.cs">
       <DependentUpon>201808080935197_addedDateRentedToRentedEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808100822300_AddedQuantityInVideoEntity.cs" />
+    <Compile Include="Migrations\201808100822300_AddedQuantityInVideoEntity.Designer.cs">
+      <DependentUpon>201808100822300_AddedQuantityInVideoEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -239,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808080935197_addedDateRentedToRentedEntity.resx">
       <DependentUpon>201808080935197_addedDateRentedToRentedEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808100822300_AddedQuantityInVideoEntity.resx">
+      <DependentUpon>201808100822300_AddedQuantityInVideoEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
