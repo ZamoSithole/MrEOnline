@@ -69,7 +69,7 @@
                                 <button type="button" class="btn btn-sm btn-outline-primary">
                                     <i class="fa fa-share-alt"></i>&nbsp;Share
                                 </button>
-                                <button type="button" class="btn btn-sm btn-outline-dark">
+                                <button type="button" class="btn btn-sm btn-outline-dark btnComment">
                                     <i class="fa fa-comment-o"></i>&nbsp;Comment
                                 </button>
                                 <button type="button" data-videoid="@item.Id" class="btn btn-sm btn-outline-info btn-cast">
@@ -116,7 +116,8 @@
             </div>*@
     </div>
 </div>
-<div class="modal fade" tabindex="-1" role="dialog">
+<!--Cast Model -->
+<div class="CastModel modal fade " tabindex="-1" role="dialog" id="CastModel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -125,7 +126,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="castBody modal-body">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
@@ -133,93 +134,39 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<!--Rate Model -->
+<div class="RateCommentModal modal" tabindex="-1" role="dialog" id="RateCommentModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btnClose">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
     .active {
         padding: 0.5rem 0.75rem;
         border: 1px solid #868e96;
         border-radius: 34px;
     }
-
-    .pagination :not(li) {
-        padding: 0.5rem 0.75rem;
-    }
-
-    .pagination-container {
-        font-family: "FontAwesome";
-    }
-
-    .PagedList-skipToNext::after {
-        content: "\f054";
-    }
-
-    .PagedList-skipToNext {
-        text-decoration: none !important;
-        position: relative;
-        display: block;
-        padding: 0.5rem 0.75rem;
-        margin-left: -1px;
-        line-height: 1.25;
-        background-color: #fff;
-        border: 1px solid #868e96;
-        border-radius: 10px;
-    }
-
-        .PagedList-skipToNext a {
-            text-decoration: none !important;
-            line-height: 0;
-            font-size: 0;
-            color: transparent;
-            text-indent: -9999px;
-            padding: 5px;
-        }
-
-            .PagedList-skipToNext a:hover {
-                color: #fff !important;
-            }
-
-        .PagedList-skipToNext:hover {
-            text-decoration: none !important;
-            background-color: #868e96;
-            color: #fff !important;
-        }
-
-    .PagedList-skipToPrevious::before {
-        content: "\f053";
-    }
-
-    .PagedList-skipToPrevious {
-        text-decoration: none !important;
-        position: relative;
-        display: block;
-        padding: 0.5rem 0.75rem;
-        margin-left: -1px;
-        line-height: 1.25;
-        background-color: #fff;
-        border: 1px solid #868e96;
-        border-radius: 10px;
-    }
-
-        .PagedList-skipToPrevious:hover {
-            text-decoration: none !important;
-            background-color: #868e96;
-            color: #fff !important;
-        }
-
-        .PagedList-skipToPrevious a:hover {
-            color: #fff !important;
-        }
-
-        .PagedList-skipToPrevious a {
-            text-decoration: none !important;
-            line-height: 0;
-            font-size: 0;
-            padding: 5px;
-            color: transparent;
-        }
 </style>
 @section Scripts{
     <script src="~/Scripts/sweetalert2.all.min.js"></script>
     <script type="text/javascript">
+
+
         $('[data-toggle="popover"]').popover()
 
         var nItems = 0;
@@ -280,11 +227,14 @@
             var videoId = $(this).data("videoid");
             var url = '/Cast/CastCheckoutIndexPartial/?videoid=' + videoId;
             $.get(url).done(function (response) {
-                $('.modal-body').empty().append(response);
+                $('.castBody').empty().append(response);
                 $('.carousel').carousel();
-                $('.modal').modal('show');
+                $('.CastModel').modal('show');
             })
         });
+        $(document).on('click', '.btnClose', function () {
+            $('.RateCommentModal').modal('hide')
+        })
 
         $('.spanDescription').on("click", function (e) {
             e.preventDefault();
@@ -293,13 +243,11 @@
             $(".spanDescription[data-VideoId='" + videoId + "']").html('<i class="fa fa-chevron-up"></i>');
         })
 
-        $(document).on("click", '.btn-cast', function () {
+        $(document).on('click', '.btnComment', function (e) {
+            e.preventDefault();
             var videoId = $(this).data("videoid");
-            var url = '/Cast/CastCheckoutIndexPartial/?videoid=' + videoId;
-            $.get(url).done(function (response) {
-                $('.modal-body').empty().append(response);
-                $('.modal').show();
-            })
+            var url = '/Rating/CreateRatingPartial/?videoid=' + videoId;
+            $('.RateCommentModal').modal('show');
         });
         var RentedItems = [];
         $(document).on('click', '.btnRent', function (e) {

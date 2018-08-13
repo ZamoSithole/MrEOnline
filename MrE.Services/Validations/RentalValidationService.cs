@@ -16,7 +16,7 @@ namespace MrE.Services.Validations {
         }
 
         public override void ValidateUpdate(Rental targetObject, IEnumerable<Rental> items) {
-            ValidateUpdate(targetObject);
+            ValidateInsert(targetObject);
         }
     }
 }

@@ -256,6 +256,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OverDueReportController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Controllers\RentalsApiController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
@@ -297,6 +298,7 @@
     <Content Include="Content\Images\186120-OX1QLI-828.jpg" />
     <Content Include="Content\jquery.fileupload.css" />
     <Content Include="Content\pagination.css" />
+    <Content Include="Content\Rating.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -495,6 +497,7 @@
     <Content Include="Views\Reports\_RentalReportViewerPartial.cshtml" />
     <Content Include="Views\OverDueReport\Index.cshtml" />
     <Content Include="Views\OverDueReport\_OverDueVideosViewerPartial.cshtml" />
+    <Content Include="Views\Rating\_CreateRatingPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

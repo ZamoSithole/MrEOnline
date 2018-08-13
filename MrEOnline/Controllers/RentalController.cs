@@ -60,9 +60,12 @@ namespace MrEOnline.Controllers {
             var user = await UserManager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
             var dataQuery = PrimaryService.Get().Where(e => e.UserId == userId & e.StatusId == 1);
+
+            //if (dataQuery == null) return View("Catalog", "No Videos selected");//HttpNotFound("No Videos were rented out");
+
             TransformQuery(ref dataQuery);
-            if (dataQuery.Count() < 1)
-                return new HttpNotFoundResult();
+            if (dataQuery.Count() < 1) ViewBag.Message = "No Videos selected";//this.RedirectToAction("Catalog", "Video",);//HttpNotFound("No Videos were rented out");
+
             return View("Confirm",dataQuery);
         }
         public async Task<ActionResult> DoConfirm() {

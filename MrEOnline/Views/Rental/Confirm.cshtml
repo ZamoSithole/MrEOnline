@@ -12,6 +12,10 @@
 <div class="card">
     <div class="card-header">@ViewBag.Title</div>
     <div class="card-body">
+        @if (ViewBag.Message != null) {
+        <input class="success sweet-alert" type="hidden" value=" @ViewBag.Message" id="hfErrorMessage"/>
+        }
+
         <div class="container">
             <div class="card">
                 <div class="card-header">
@@ -106,5 +110,29 @@
 
     </div>
 </div>
+@section Scripts{
+    <script src="~/Scripts/sweetalert2.all.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var message = $('#hfErrorMessage').val();
+            swal({
+                type: 'error',
+                title: 'Opps',
+                text: message,
+                allowOutsideClick: false,
+                confirmButtonText:
+                    'Ok!',
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+            }).then((result) => {
+                console.log(result)
+                if (result.value = true) {
+                    window.location = "/Video/Catalog";
+                }
+            })
 
+        });
+
+
+    </script>
+}
 

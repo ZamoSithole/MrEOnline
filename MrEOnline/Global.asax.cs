@@ -46,18 +46,20 @@ namespace MrEOnline {
             builder.RegisterType<ValidationException>().InstancePerRequest();
             builder.RegisterType<ValidationExceptionService>().As<IValidationExceptionService>();
             builder.RegisterType<StatusValidationService>().As<IValidationService<Status>>().InstancePerRequest();
-            builder.RegisterType<StatusService>().As<IService<Status, int>>().InstancePerRequest();
+            builder.RegisterType<GenreValidationService>().As<IValidationService<Genre>>().InstancePerRequest();
             builder.RegisterType<VideoValidationService>().As<IValidationService<Video>>().InstancePerRequest();
             builder.RegisterType<UserValidationService>().As<IValidationService<User>>().InstancePerRequest();
-
-            builder.RegisterType<VideoService>().As<IService<Video, int>>().InstancePerRequest();
-            builder.RegisterType<GenreValidationService>().As<IValidationService<Genre>>().InstancePerRequest();
-            builder.RegisterType<GenreService>().As<IService<Genre, int>>().InstancePerRequest();
             builder.RegisterType<TitleValidationService>().As<IValidationService<Title>>().InstancePerRequest();
-            builder.RegisterType<TitleService>().As<IService<Title, int>>().InstancePerRequest();
             builder.RegisterType<CastValidationService>().As<IValidationService<Cast>>().InstancePerRequest();
-            builder.RegisterType<CastService>().As<IService<Cast, int>>().InstancePerRequest();
             builder.RegisterType<RentalValidationService>().As<IValidationService<Rental>>().InstancePerRequest();
+            builder.RegisterType<RatingValidationService>().As<IValidationService<Rating>>().InstancePerRequest();
+
+            builder.RegisterType<RatingService>().As<IService<Rating, int>>().InstancePerRequest();
+            builder.RegisterType<StatusService>().As<IService<Status, int>>().InstancePerRequest();
+            builder.RegisterType<VideoService>().As<IService<Video, int>>().InstancePerRequest();
+            builder.RegisterType<GenreService>().As<IService<Genre, int>>().InstancePerRequest();
+            builder.RegisterType<TitleService>().As<IService<Title, int>>().InstancePerRequest();
+            builder.RegisterType<CastService>().As<IService<Cast, int>>().InstancePerRequest();
             builder.RegisterType<RentalService>().As<IService<Rental, int>>().InstancePerRequest();
             builder.RegisterType<UserService>().As<IService<User, string>>().InstancePerRequest();
 
