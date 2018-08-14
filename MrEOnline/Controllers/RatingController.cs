@@ -7,9 +7,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
-namespace MrEOnline.Controllers
-{
+namespace MrEOnline.Controllers {
+    [Authorize]
     public class RatingController : BaseController<Rating, int> {
         private UserManager _userManager { get; set; }
         public UserManager UserManager {
@@ -20,24 +21,37 @@ namespace MrEOnline.Controllers
                 _userManager = value;
             }
         }
-        public RatingController(IService<Rating, int> ratingService) 
-            : base(ratingService){
+        public RatingController(IService<Rating, int> ratingService)
+            : base(ratingService) {
         }
 
-        public async Task<ActionResult> CreateRatingPartial(int videoId) {
+        public async Task<ActionResult> CreatePartial(int? videoId) {
+            return View("_CreatePartial");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreatePartial(Rating item) {
             var user = await UserManager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
-            return PartialView("_CreateRatingPartial");
+            item.UserId = userId;
+            if (!ModelState.IsValid) return View(item);
+            try {
+
+                PrimaryService.Insert(item);
+
+            } catch (Exception exception) {
+
+                throw;
+            }
+            return this.RedirectToAction("Catalog", "Video");
+        }
+        // GET: Rating
+        public ActionResult Index() {
+            return View();
         }
 
-        // GET: Rating
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
         protected override void TransformQuery(ref IQueryable<Rating> dataQuery) {
-         
+
 
         }
 

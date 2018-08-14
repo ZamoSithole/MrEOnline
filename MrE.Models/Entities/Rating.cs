@@ -1,21 +1,21 @@
 ﻿using MrE.Models.Abstractions;
 using MrEOnline.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MrE.Models.Entities {
     [Table("Reviews")]
     public class Rating : IBaseEntity<int>, ICreatable, IDeletable,IUpdatable {
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int Id { get; set; }
+        [Display(Name = " Title"), Required(ErrorMessage = "Title name is required.")]
         public string Title { get; set; }
+        [Display(Name = " Comment"), Required(ErrorMessage = "Comment is required.")]
         public string Comment { get; set; }
+        [Display(Name = " Rating"), Required(ErrorMessage = "Rating is required.")]
         public int Ratings { get; set; }
         public int VideoId { get; set; }
         public Video Video { get; set; }

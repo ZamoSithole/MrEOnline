@@ -23,14 +23,14 @@
                         <span class="badge corner-ribbon top-right shadow btnCheck" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" disabled style=" display:none">Rented</span>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4 video-img">
+                                <div class="col-md-3 video-img">
                                     @if (item.Data == null) {
                                         <i class="fa fa-picture-o fa-5x" aria-hidden="true" style=" font-size: 13em; "></i>
                                     } else {
                                         <img src="data:image/png;base64,@System.Convert.ToBase64String( item.Data)" height="auto" max-width="100%" style="display:block" class="img-responsive" />
                                     }
                                 </div>
-                                <div class="col-md-2" data-VideoId="@item.Id">
+                                <div class="col-md-3" data-VideoId="@item.Id">
                                     <dl class="dl-horizontal">
                                         <dt>Title</dt>
                                         <dd>@Html.DisplayFor(model => item.Title)</dd>
@@ -45,13 +45,31 @@
                                         <dd>@Html.DisplayFor(model => item.RentalPrice)</dd>
                                     </dl>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <dl class="dl-horizontal">
                                         <dt>Description</dt>
                                         <dd class="ellipsis" data-VideoId="@item.Id" data-toggle="popover" data-trigger="hover" data-placement="left" data-container="body" data-content="@item.Description">
                                             @Html.DisplayFor(model => item.Description)
                                         </dd>
                                     </dl>
+                                </div>
+                                <div class="col-md-3">
+                                    <div id="test" style="font-size: 100%;">
+                                        <div style="line-height: 1.3em;color: #222;width: 240px;height: 16px;padding: 6px;font-size: 100%;">
+                                            <div style="padding-left: 6px;background-color: #e9e9e9;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;">
+                                                <span>Reviews</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <ul style="height: 220px;width: 240px;overflow: hidden;padding-left: 6px;margin-top: 4px;color: #222;">
+                                                <li style="font-size: 100%;font-style: italic;list-style: none;height: 220px;display: list-item;">
+                                                    <div style="padding: 4px;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;">
+                                                        <p>There is something very special about Black Panther.      It's easy to dismiss it as yet another superhero movie, but once seeing it on the big screen, you soon realise that you aren't just watching another movie.       Rather, you are watching a movie that highlights all the best parts of being African, and even gives you hope for an Africa that doesn't exist today, but could in the future.  The movie is an enigma, because not only do you get a variety of complex characters with an enthralling villain, you also have a movie where a majority of the cast and actors on screen are undeniably black.</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -69,8 +87,8 @@
                                 <button type="button" class="btn btn-sm btn-outline-primary">
                                     <i class="fa fa-share-alt"></i>&nbsp;Share
                                 </button>
-                                <button type="button" class="btn btn-sm btn-outline-dark btnComment">
-                                    <i class="fa fa-comment-o"></i>&nbsp;Comment
+                                <button type="button" data-videoid="@item.Id" class="btn btn-sm btn-outline-dark btnComment">
+                                    <i class="fa fa-comment-o"></i>&nbsp;Post Review
                                 </button>
                                 <button type="button" data-videoid="@item.Id" class="btn btn-sm btn-outline-info btn-cast">
                                     <i class="fa fa-user"></i>&nbsp;Cast
@@ -144,12 +162,12 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-               
+            <div class="RateBody modal-body">
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary btnClose">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                @*<button type="button" class="btn btn-outline-primary btnSaveRatings">Save changes</button>*@
             </div>
         </div>
     </div>
@@ -234,20 +252,22 @@
         });
         $(document).on('click', '.btnClose', function () {
             $('.RateCommentModal').modal('hide')
-        })
-
+        });
         $('.spanDescription').on("click", function (e) {
             e.preventDefault();
             videoId = $(this).attr("data-VideoId");
             $(".divDescription[data-VideoId='" + videoId + "']").collapse('toggle');
             $(".spanDescription[data-VideoId='" + videoId + "']").html('<i class="fa fa-chevron-up"></i>');
         })
-
         $(document).on('click', '.btnComment', function (e) {
             e.preventDefault();
             var videoId = $(this).data("videoid");
-            var url = '/Rating/CreateRatingPartial/?videoid=' + videoId;
-            $('.RateCommentModal').modal('show');
+            var url = '/Rating/CreatePartial?videoId=' + videoId;
+            $.get(url).done(function (response) {
+                $('.RateBody').empty().append(response);
+                $('.RateCommentModal').modal('show');
+            })
+
         });
         var RentedItems = [];
         $(document).on('click', '.btnRent', function (e) {
@@ -304,7 +324,6 @@
             $(this).hide();
             $(".btnCheck[data-VideoId='" + videoID + "']").hide();
         });
-
         $(document).on('click', '.btnCheckOut', function (e) {
             e.preventDefault();
             window.location.href = "/Rental/Confirm"
@@ -339,5 +358,13 @@
             //window.location.href = url;
 
         });
+
+        $(document).on("change", "input[name='rating']", function () {
+            var RatingNum = $(this).val();
+            console.log(RatingNum)
+            $('#ratingNumbers').val(RatingNum)
+        });
+
+
     </script>
 }

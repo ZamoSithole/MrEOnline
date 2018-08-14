@@ -1,0 +1,86 @@
+﻿@model MrE.Models.Entities.Rating
+@{
+    Layout = null;
+}
+<div class="card">
+    <div class="card-body">
+        @using (Html.BeginForm("CreatePartial", "Rating", FormMethod.Post, new { @class = "rating-form" })) {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.VideoId)
+            @Html.HiddenFor(m => m.Ratings, new { id = "ratingNumbers" })
+            <input type="hidden" value="" name="ratingNumber" />
+            <div class="row">
+                <div class="body col-md-12">
+                    <fieldset class="form-group">
+                        <legend class="form-legend">Rating:</legend>
+                        <div class="form-item">
+                            <input id="rating-5" name="rating" type="radio" value="5" />
+                            <label for="rating-5" data-value="5">
+                                <span class="rating-star">
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span class="ir">5</span>
+                            </label>
+                            <input id="rating-4" name="rating" type="radio" value="4" />
+                            <label for="rating-4" data-value="4">
+                                <span class="rating-star">
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span class="ir">4</span>
+                            </label>
+                            <input id="rating-3" name="rating" type="radio" value="3" />
+                            <label for="rating-3" data-value="3">
+                                <span class="rating-star">
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span class="ir">3</span>
+                            </label>
+                            <input id="rating-2" name="rating" type="radio" value="2" />
+                            <label for="rating-2" data-value="2">
+                                <span class="rating-star">
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span class="ir">2</span>
+                            </label>
+                            <input id="rating-1" name="rating" type="radio" value="1" />
+                            <label for="rating-1" data-value="1">
+                                <span class="rating-star">
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span class="ir">1</span>
+                            </label>
+                            <div class="form-action">
+                                <input class="btn-reset" type="reset" value="Reset" />
+                            </div>
+                            <div class="form-output">
+                                ? / 5
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </div>
+                <div class="form-group col-md-12">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-12">
+                    @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control", @col = 10, @row = 5 } })
+                    @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <button type="submit" value="Create" class="btn btn-outline-info">
+                <i class="fa fa-save"></i>&nbsp;Save
+            </button>
+        }
+
+    </div>
+</div>      
+
+  
