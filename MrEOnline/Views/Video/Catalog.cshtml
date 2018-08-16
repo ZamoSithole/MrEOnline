@@ -54,22 +54,7 @@
                                     </dl>
                                 </div>
                                 <div class="col-md-3">
-                                    <div id="test" style="font-size: 100%;">
-                                        <div style="line-height: 1.3em;color: #222;width: 240px;height: 16px;padding: 6px;font-size: 100%;">
-                                            <div style="padding-left: 6px;background-color: #e9e9e9;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;">
-                                                <span>Reviews</span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <ul style="height: 220px;width: 240px;overflow: hidden;padding-left: 6px;margin-top: 4px;color: #222;">
-                                                <li style="font-size: 100%;font-style: italic;list-style: none;height: 220px;display: list-item;">
-                                                    <div style="padding: 4px;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;">
-                                                        <p>There is something very special about Black Panther.      It's easy to dismiss it as yet another superhero movie, but once seeing it on the big screen, you soon realise that you aren't just watching another movie.       Rather, you are watching a movie that highlights all the best parts of being African, and even gives you hope for an Africa that doesn't exist today, but could in the future.  The movie is an enigma, because not only do you get a variety of complex characters with an enthralling villain, you also have a movie where a majority of the cast and actors on screen are undeniably black.</p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    @Html.Action("ReviewsPartial", "Rating", new { videoId = item.Id })
                                 </div>
                             </div>
                         </div>
@@ -84,7 +69,7 @@
                                 <a class="pull-right btnCancel" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice" style="cursor:pointer; display: none">
                                     <i class="fa fa-close" style="color:red"></i>
                                 </a>
-                                <button type="button" class="btn btn-sm btn-outline-primary">
+                                <button type="button" class="btn btn-sm btn-outline-primary btnShare" data-videoid="@item.Id">
                                     <i class="fa fa-share-alt"></i>&nbsp;Share
                                 </button>
                                 <button type="button" data-videoid="@item.Id" class="btn btn-sm btn-outline-dark btnComment">
@@ -93,15 +78,15 @@
                                 <button type="button" data-videoid="@item.Id" class="btn btn-sm btn-outline-info btn-cast">
                                     <i class="fa fa-user"></i>&nbsp;Cast
                                 </button>
-                                @if (item.Quantity > 0) {
+                                @if (item.QuantityRemaining >= 0) {
                                     <button type="button" title="Rent" class="btnRent btn btn-sm btn-outline-success" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice">
                                         <i class="fa fa-shopping-basket"></i>
                                         &nbsp;Rent
                                     </button>
                                 }
 
-                                @if (item.Quantity < 2) {
-                                    <p class="pull-right">Only <span>@item.Quantity</span> remains</p>
+                                @if (item.QuantityRemaining < 2) {
+                                    <p class="pull-right">Only <span>@item.QuantityRemaining</span> remains</p>
                                 }
                             </div>
                         </div>
@@ -121,8 +106,6 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item">
-
-
                 </li>
             </ul>
         </nav>
@@ -166,8 +149,34 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary btnClose">Close</button>
+                <button type="button" class="btn btn-outline-secondary btnClose"  data-dismiss="modal">Close</button>
                 @*<button type="button" class="btn btn-outline-primary btnSaveRatings">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+<!--Share Model-->
+<div class="ShareModal modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Share It!!!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="fa fa-facebook-official btn  btn-primary" style="background-color:#3B5998;">&nbsp;Facebook</button>
+                        <button class="fa fa-twitter btn  btn-primary" style="background-color:#1DA1F2;">&nbsp;Twitter</button>
+                        <button class="fa fa-whatsapp btn btn-success" style="background-color:#25D366">&nbsp;WhatsApp</button>
+                        <button class="fa fa-envelope btn btn-danger" style="background-color:#DB4437">&nbsp;Email</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btnClose"  data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -176,8 +185,8 @@
 <style>
     .active {
         padding: 0.5rem 0.75rem;
-        border: 1px solid #868e96;
-        border-radius: 34px;
+        /*border: 1px solid #868e96;
+        border-radius: 34px;*/
     }
 </style>
 @section Scripts{
@@ -250,9 +259,6 @@
                 $('.CastModel').modal('show');
             })
         });
-        $(document).on('click', '.btnClose', function () {
-            $('.RateCommentModal').modal('hide')
-        });
         $('.spanDescription').on("click", function (e) {
             e.preventDefault();
             videoId = $(this).attr("data-VideoId");
@@ -299,7 +305,7 @@
                             }
                         })
                     } else {
-                        $.post("/Video/UpdateQuantity?videoId=" + videoID).done();
+                       // $.post("/Video/UpdateQuantity?videoId=" + videoID).done();
                         Total = parseInt(Total) + parseInt(currentRow);
                         $('#Amount').text('R' + Total + '.00')
                         $(".btnCancel[data-VideoId='" + videoID + "']").show();
@@ -358,13 +364,14 @@
             //window.location.href = url;
 
         });
-
+        $(document).on('click', '.btnShare', function (e) {
+            e.preventDefault();
+            $('.ShareModal').modal('show');
+        });
         $(document).on("change", "input[name='rating']", function () {
             var RatingNum = $(this).val();
             console.log(RatingNum)
             $('#ratingNumbers').val(RatingNum)
         });
-
-
     </script>
 }

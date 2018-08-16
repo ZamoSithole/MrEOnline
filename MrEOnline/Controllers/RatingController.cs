@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
+using MrEOnline.Models;
 
 namespace MrEOnline.Controllers {
     [Authorize]
@@ -33,17 +35,31 @@ namespace MrEOnline.Controllers {
         public async Task<ActionResult> CreatePartial(Rating item) {
             var user = await UserManager.FindByNameAsync(User.Identity.Name);
             var userId = user.Id;
+            var viewMessage = new ViewMessage();
             item.UserId = userId;
+
             if (!ModelState.IsValid) return View(item);
             try {
 
                 PrimaryService.Insert(item);
+                viewMessage.Message = "Successfully saved your changes.";
+                viewMessage.Type = ViewMessageType.Success;
 
             } catch (Exception exception) {
 
-                throw;
+                if (exception is ValidationException)
+                    ModelState.AddModelError("", exception.ToString());
+                else
+                    ModelState.AddModelError("", "There was an error processing your request, please try again later!!");
             }
             return this.RedirectToAction("Catalog", "Video");
+        }
+        public ActionResult ReviewsPartial(int? videoId) {
+            var dataQuery = PrimaryService.Get().Where(e => e.VideoId == videoId);
+            TransformQuery(ref dataQuery);
+            if (dataQuery.Count() < 1)
+                return new HttpNotFoundResult();
+            return View("_ReviewsPartial", dataQuery);
         }
         // GET: Rating
         public ActionResult Index() {
@@ -51,8 +67,7 @@ namespace MrEOnline.Controllers {
         }
 
         protected override void TransformQuery(ref IQueryable<Rating> dataQuery) {
-
-
+            dataQuery = dataQuery.Include(m => m.User);
         }
 
         protected override async Task SetupSelectList() {

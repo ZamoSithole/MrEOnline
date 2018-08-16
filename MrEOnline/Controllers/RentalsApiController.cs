@@ -38,14 +38,13 @@ namespace MrEOnline.Controllers
         [Authorize]
         // POST: api/RentalsApi
         [ResponseType(typeof(Rental))]
-        public async Task<IHttpActionResult> PostRental(Rental rental)
-        {
+        public async Task<IHttpActionResult> PostRental(Rental rental) {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var user = await UserManager.FindByNameAsync(User.Identity.Name);
             rental.UserId = user.Id;
             PrimaryService.Insert(rental);
             return Ok();
-        } 
+        }
     }
 }

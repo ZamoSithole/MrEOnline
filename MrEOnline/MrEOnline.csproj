@@ -498,6 +498,7 @@
     <Content Include="Views\OverDueReport\Index.cshtml" />
     <Content Include="Views\OverDueReport\_OverDueVideosViewerPartial.cshtml" />
     <Content Include="Views\Rating\_CreatePartial.cshtml" />
+    <Content Include="Views\Rating\_ReviewsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

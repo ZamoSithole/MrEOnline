@@ -58,6 +58,11 @@ dd.ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+p.ellipsis {
+    max-height: 95px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 label.ellipsis {
     max-width: 250px;
@@ -304,4 +309,76 @@ However, delay the fade out process for 2.5 seconds */
         font-size: 0;
         padding: 5px;
         color: transparent;
+    }
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    margin-top: -20px;
+}
+
+.carousel-caption {
+    font-style: italic;
+    position: relative;
+    right: 0% !important;
+    bottom: 20px;
+    left: 0% !important;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    color: #000;
+    text-align: left;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 15%;
+    color: #000;
+    text-align: center;
+    opacity: 0.1;
+    margin-left: -24px;
+    margin-right: -19px;
+}
+
+    .carousel-control-prev:hover {
+        background-color: lightgray;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 15%;
+        color: #000;
+        text-align: center;
+        opacity: 0.1;
+    }
+
+    .carousel-control-next:hover {
+        background-color: lightgray;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 15%;
+        color: #000;
+        text-align: center;
+        opacity: 0.1;
     }

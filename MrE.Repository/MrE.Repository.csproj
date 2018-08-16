@@ -167,6 +167,10 @@
     <Compile Include="Migrations\201808140538268_AddedDisplayNamesRatingEntity.Designer.cs">
       <DependentUpon>201808140538268_AddedDisplayNamesRatingEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808161350550_AddedCollectionRentalInVideoEntity.cs" />
+    <Compile Include="Migrations\201808161350550_AddedCollectionRentalInVideoEntity.Designer.cs">
+      <DependentUpon>201808161350550_AddedCollectionRentalInVideoEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -267,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808140538268_AddedDisplayNamesRatingEntity.resx">
       <DependentUpon>201808140538268_AddedDisplayNamesRatingEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808161350550_AddedCollectionRentalInVideoEntity.resx">
+      <DependentUpon>201808161350550_AddedCollectionRentalInVideoEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
