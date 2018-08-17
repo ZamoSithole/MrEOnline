@@ -53,5 +53,20 @@ namespace MrE.Models.Entities
 
             }
         }
+        public virtual ICollection<DislikeLike> DislikeLikes { get; set; }
+        [NotMapped]
+        public int VideoLikes {
+            get {
+                if (DislikeLikes == null) return 0;
+                return DislikeLikes.Where(e => e.videoId == Id).Count(r => r.IsLike == true);
+            }
+        }
+        [NotMapped]
+        public int VideoDislike {
+            get {
+                if (DislikeLikes == null) return 0;
+                return DislikeLikes.Where(e => e.videoId == Id).Count(r => r.IsDislike == true);
+            }
+        }
     }
 }

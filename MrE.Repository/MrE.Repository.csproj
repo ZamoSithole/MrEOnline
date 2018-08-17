@@ -171,6 +171,10 @@
     <Compile Include="Migrations\201808161350550_AddedCollectionRentalInVideoEntity.Designer.cs">
       <DependentUpon>201808161350550_AddedCollectionRentalInVideoEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808171012479_DislikeLikeEntityAdded.cs" />
+    <Compile Include="Migrations\201808171012479_DislikeLikeEntityAdded.Designer.cs">
+      <DependentUpon>201808171012479_DislikeLikeEntityAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\addAddressEntity.cs" />
     <Compile Include="Migrations\addAddressEntity1.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -274,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808161350550_AddedCollectionRentalInVideoEntity.resx">
       <DependentUpon>201808161350550_AddedCollectionRentalInVideoEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171012479_DislikeLikeEntityAdded.resx">
+      <DependentUpon>201808171012479_DislikeLikeEntityAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

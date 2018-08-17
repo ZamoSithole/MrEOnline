@@ -19,6 +19,7 @@ namespace MrE.Repository
         public virtual DbSet<Rental> Rentals { get; set; }
        public virtual DbSet<AuditEntry> AuditTrail { get; set; }
         public virtual DbSet<Rating> RatingReviews { get; set; }
+        public virtual DbSet<DislikeLike> DislikeLikes { get; set; }
         public DataStoreContext() : base("DefaultConnection")
         {
             Configuration.LazyLoadingEnabled = false;

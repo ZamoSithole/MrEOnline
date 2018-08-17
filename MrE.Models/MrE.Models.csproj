@@ -64,6 +64,7 @@
     <Compile Include="Entities\AuditEntry.cs" />
     <Compile Include="Entities\Cast.cs" />
     <Compile Include="Entities\Contact.cs" />
+    <Compile Include="Entities\DislikeLike.cs" />
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\Human.cs" />
     <Compile Include="Entities\Member.cs" />
