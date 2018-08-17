@@ -74,7 +74,9 @@ namespace MrEOnline.Controllers {
         }
         protected override void TransformQuery(ref IQueryable<Video> dataQuery)
         {
-            dataQuery = dataQuery.Include(m => m.Genre);
+            dataQuery = dataQuery.Include(m => m.Genre)
+                .Include(m => m.Rentals);
+                //.Include(m => m.QuantityRemaining);
         }
 
         protected override async Task SetupSelectList()

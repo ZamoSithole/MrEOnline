@@ -47,9 +47,10 @@ namespace MrE.Models.Entities
         public virtual ICollection<Rental> Rentals { get; set; }
         [NotMapped]
         public int QuantityRemaining {
-            get {
-                if (Rentals == null) return 0;
-                return Rentals.Where(e => e.StatusId == 2).Count(r => r.VideoId == Id);
+            get { 
+                var dataQuery = Rentals.Where(e => e.StatusId == 2).Count(r => r.VideoId == Id);
+                return Quantity - dataQuery;
+
             }
         }
     }

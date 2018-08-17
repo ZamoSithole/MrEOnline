@@ -78,14 +78,14 @@
                                 <button type="button" data-videoid="@item.Id" class="btn btn-sm btn-outline-info btn-cast">
                                     <i class="fa fa-user"></i>&nbsp;Cast
                                 </button>
-                                @if (item.QuantityRemaining >= 0) {
+                                @if (item.QuantityRemaining > 0) {
                                     <button type="button" title="Rent" class="btnRent btn btn-sm btn-outline-success" data-VideoId="@item.Id" data-RentalPrice="@item.RentalPrice">
                                         <i class="fa fa-shopping-basket"></i>
                                         &nbsp;Rent
                                     </button>
                                 }
 
-                                @if (item.QuantityRemaining < 2) {
+                                @if (item.QuantityRemaining <= 2) {
                                     <p class="pull-right">Only <span>@item.QuantityRemaining</span> remains</p>
                                 }
                             </div>
