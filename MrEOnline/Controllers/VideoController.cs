@@ -75,7 +75,8 @@ namespace MrEOnline.Controllers {
         protected override void TransformQuery(ref IQueryable<Video> dataQuery)
         {
             dataQuery = dataQuery.Include(m => m.Genre)
-                .Include(m => m.Rentals);
+                .Include(m => m.Rentals)
+                .Include(m => m.DislikeLikes);
                 //.Include(m => m.QuantityRemaining);
         }
 

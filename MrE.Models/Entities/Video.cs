@@ -64,8 +64,9 @@ namespace MrE.Models.Entities
         [NotMapped]
         public int VideoDislike {
             get {
-                if (DislikeLikes == null) return 0;
-                return DislikeLikes.Where(e => e.videoId == Id).Count(r => r.IsDislike == true);
+                //if (DislikeLikes == null) return 0;
+                var dataQuery = DislikeLikes.Where(e => e.videoId == Id).Count(r => r.IsDislike == true);
+                return dataQuery;
             }
         }
     }

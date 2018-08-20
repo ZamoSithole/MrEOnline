@@ -53,7 +53,9 @@ namespace MrEOnline {
             builder.RegisterType<CastValidationService>().As<IValidationService<Cast>>().InstancePerRequest();
             builder.RegisterType<RentalValidationService>().As<IValidationService<Rental>>().InstancePerRequest();
             builder.RegisterType<RatingValidationService>().As<IValidationService<Rating>>().InstancePerRequest();
+            builder.RegisterType<DislikeLikeValidationService>().As<IValidationService<DislikeLike>>().InstancePerRequest();
 
+            builder.RegisterType<DislikeLikeService>().As<IService<DislikeLike, int>>().InstancePerRequest();
             builder.RegisterType<RatingService>().As<IService<Rating, int>>().InstancePerRequest();
             builder.RegisterType<StatusService>().As<IService<Status, int>>().InstancePerRequest();
             builder.RegisterType<VideoService>().As<IService<Video, int>>().InstancePerRequest();
