@@ -22,13 +22,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * Get CSS computed property of the given element
- * @method
- * @memberof Popper.Utils
- * @argument {Eement} element
- * @argument {String} property
- */
+///**
+// * Get CSS computed property of the given element
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Eement} element
+// * @argument {String} property
+// */
 function getStyleComputedProperty(element, property) {
   if (element.nodeType !== 1) {
     return [];
@@ -38,13 +38,13 @@ function getStyleComputedProperty(element, property) {
   return property ? css[property] : css;
 }
 
-/**
- * Returns the parentNode or the host of the element
- * @method
- * @memberof Popper.Utils
- * @argument {Element} element
- * @returns {Element} parent
- */
+///**
+// * Returns the parentNode or the host of the element
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Element} element
+// * @returns {Element} parent
+// */
 function getParentNode(element) {
   if (element.nodeName === 'HTML') {
     return element;
@@ -52,13 +52,13 @@ function getParentNode(element) {
   return element.parentNode || element.host;
 }
 
-/**
- * Returns the scrolling parent of the given element
- * @method
- * @memberof Popper.Utils
- * @argument {Element} element
- * @returns {Element} scroll parent
- */
+///**
+// * Returns the scrolling parent of the given element
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Element} element
+// * @returns {Element} scroll parent
+// */
 function getScrollParent(element) {
   // Return body, `getScroll` will take care to get the correct `scrollTop` from it
   if (!element) {
@@ -122,13 +122,13 @@ var isIE = function () {
   return cache[version];
 };
 
-/**
- * Returns the offset parent of the given element
- * @method
- * @memberof Popper.Utils
- * @argument {Element} element
- * @returns {Element} offset parent
- */
+///**
+// * Returns the offset parent of the given element
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Element} element
+// * @returns {Element} offset parent
+// */
 function getOffsetParent(element) {
   if (!element) {
     return document.documentElement;
@@ -167,13 +167,13 @@ function isOffsetContainer(element) {
   return nodeName === 'HTML' || getOffsetParent(element.firstElementChild) === element;
 }
 
-/**
- * Finds the root node (document, shadowDOM root) of the given element
- * @method
- * @memberof Popper.Utils
- * @argument {Element} node
- * @returns {Element} root node
- */
+///**
+// * Finds the root node (document, shadowDOM root) of the given element
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Element} node
+// * @returns {Element} root node
+// */
 function getRoot(node) {
   if (node.parentNode !== null) {
     return getRoot(node.parentNode);
@@ -182,14 +182,14 @@ function getRoot(node) {
   return node;
 }
 
-/**
- * Finds the offset parent common to the two provided nodes
- * @method
- * @memberof Popper.Utils
- * @argument {Element} element1
- * @argument {Element} element2
- * @returns {Element} common offset parent
- */
+///**
+// * Finds the offset parent common to the two provided nodes
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Element} element1
+// * @argument {Element} element2
+// * @returns {Element} common offset parent
+// */
 function findCommonOffsetParent(element1, element2) {
   // This check is needed to avoid errors in case one of the elements isn't defined for any reason
   if (!element1 || !element1.nodeType || !element2 || !element2.nodeType) {
@@ -226,14 +226,14 @@ function findCommonOffsetParent(element1, element2) {
   }
 }
 
-/**
- * Gets the scroll value of the given element in the given side (top and left)
- * @method
- * @memberof Popper.Utils
- * @argument {Element} element
- * @argument {String} side `top` or `left`
- * @returns {number} amount of scrolled pixels
- */
+///**
+// * Gets the scroll value of the given element in the given side (top and left)
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Element} element
+// * @argument {String} side `top` or `left`
+// * @returns {number} amount of scrolled pixels
+// */
 function getScroll(element) {
   var side = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'top';
 
@@ -317,13 +317,13 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
-/**
- * Given element offsets, generate an output similar to getBoundingClientRect
- * @method
- * @memberof Popper.Utils
- * @argument {Object} offsets
- * @returns {Object} ClientRect like output
- */
+///**
+// * Given element offsets, generate an output similar to getBoundingClientRect
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Object} offsets
+// * @returns {Object} ClientRect like output
+// */
 function getClientRect(offsets) {
   return _extends({}, offsets, {
     right: offsets.left + offsets.width,
@@ -331,13 +331,13 @@ function getClientRect(offsets) {
   });
 }
 
-/**
- * Get bounding client rect of given element
- * @method
- * @memberof Popper.Utils
- * @param {HTMLElement} element
- * @return {Object} client rect
- */
+///**
+// * Get bounding client rect of given element
+// * @method
+// * @memberof Popper.Utils
+// * @param {HTMLElement} element
+// * @return {Object} client rect
+// */
 function getBoundingClientRect(element) {
   var rect = {};
 
@@ -356,7 +356,8 @@ function getBoundingClientRect(element) {
     } else {
       rect = element.getBoundingClientRect();
     }
-  } catch (e) {}
+  } catch (e) {
+      return false;}
 
   var result = {
     left: rect.left,
@@ -460,14 +461,14 @@ function getViewportOffsetRectRelativeToArtbitraryNode(element) {
   return getClientRect(offset);
 }
 
-/**
- * Check if the given element is fixed or is inside a fixed parent
- * @method
- * @memberof Popper.Utils
- * @argument {Element} element
- * @argument {Element} customContainer
- * @returns {Boolean} answer to "isFixed?"
- */
+///**
+// * Check if the given element is fixed or is inside a fixed parent
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Element} element
+// * @argument {Element} customContainer
+// * @returns {Boolean} answer to "isFixed?"
+// */
 function isFixed(element) {
   var nodeName = element.nodeName;
   if (nodeName === 'BODY' || nodeName === 'HTML') {
@@ -499,17 +500,17 @@ function getFixedPositionOffsetParent(element) {
   return el || document.documentElement;
 }
 
-/**
- * Computed the boundaries limits and return them
- * @method
- * @memberof Popper.Utils
- * @param {HTMLElement} popper
- * @param {HTMLElement} reference
- * @param {number} padding
- * @param {HTMLElement} boundariesElement - Element used to define the boundaries
- * @param {Boolean} fixedPosition - Is in fixed position mode
- * @returns {Object} Coordinates of the boundaries
- */
+///**
+// * Computed the boundaries limits and return them
+// * @method
+// * @memberof Popper.Utils
+// * @param {HTMLElement} popper
+// * @param {HTMLElement} reference
+// * @param {number} padding
+// * @param {HTMLElement} boundariesElement - Element used to define the boundaries
+// * @param {Boolean} fixedPosition - Is in fixed position mode
+// * @returns {Object} Coordinates of the boundaries
+// */
 function getBoundaries(popper, reference, padding, boundariesElement) {
   var fixedPosition = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
 
@@ -569,15 +570,15 @@ function getArea(_ref) {
   return width * height;
 }
 
-/**
- * Utility used to transform the `auto` placement to the placement with more
- * available space.
- * @method
- * @memberof Popper.Utils
- * @argument {Object} data - The data object generated by update method
- * @argument {Object} options - Modifiers configuration and options
- * @returns {Object} The data object, properly modified
- */
+///**
+// * Utility used to transform the `auto` placement to the placement with more
+// * available space.
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Object} data - The data object generated by update method
+// * @argument {Object} options - Modifiers configuration and options
+// * @returns {Object} The data object, properly modified
+// */
 function computeAutoPlacement(placement, refRect, popper, reference, boundariesElement) {
   var padding = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0;
 
@@ -679,15 +680,15 @@ var supportsMicroTasks = isBrowser && window.Promise;
 */
 var debounce = supportsMicroTasks ? microtaskDebounce : taskDebounce;
 
-/**
- * Mimics the `find` method of Array
- * @method
- * @memberof Popper.Utils
- * @argument {Array} arr
- * @argument prop
- * @argument value
- * @returns index or -1
- */
+///**
+// * Mimics the `find` method of Array
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Array} arr
+// * @argument prop
+// * @argument value
+// * @returns index or -1
+// */
 function find(arr, check) {
   // use native find if supported
   if (Array.prototype.find) {
@@ -698,15 +699,15 @@ function find(arr, check) {
   return arr.filter(check)[0];
 }
 
-/**
- * Return the index of the matching object
- * @method
- * @memberof Popper.Utils
- * @argument {Array} arr
- * @argument prop
- * @argument value
- * @returns index or -1
- */
+///**
+// * Return the index of the matching object
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Array} arr
+// * @argument prop
+// * @argument value
+// * @returns index or -1
+// */
 function findIndex(arr, prop, value) {
   // use native findIndex if supported
   if (Array.prototype.findIndex) {
@@ -722,13 +723,13 @@ function findIndex(arr, prop, value) {
   return arr.indexOf(match);
 }
 
-/**
- * Get the position of the given element, relative to its offset parent
- * @method
- * @memberof Popper.Utils
- * @param {Element} element
- * @return {Object} position - Coordinates of the element and its `scrollTop`
- */
+///**
+// * Get the position of the given element, relative to its offset parent
+// * @method
+// * @memberof Popper.Utils
+// * @param {Element} element
+// * @return {Object} position - Coordinates of the element and its `scrollTop`
+// */
 function getOffsetRect(element) {
   var elementRect = void 0;
   if (element.nodeName === 'HTML') {
@@ -755,13 +756,13 @@ function getOffsetRect(element) {
   return getClientRect(elementRect);
 }
 
-/**
- * Get the outer sizes of the given element (offset size + margins)
- * @method
- * @memberof Popper.Utils
- * @argument {Element} element
- * @returns {Object} object containing width and height properties
- */
+///**
+// * Get the outer sizes of the given element (offset size + margins)
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Element} element
+// * @returns {Object} object containing width and height properties
+// */
 function getOuterSizes(element) {
   var styles = getComputedStyle(element);
   var x = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
@@ -773,13 +774,13 @@ function getOuterSizes(element) {
   return result;
 }
 
-/**
- * Get the opposite placement of the given one
- * @method
- * @memberof Popper.Utils
- * @argument {String} placement
- * @returns {String} flipped placement
- */
+///**
+// * Get the opposite placement of the given one
+// * @method
+// * @memberof Popper.Utils
+// * @argument {String} placement
+// * @returns {String} flipped placement
+// */
 function getOppositePlacement(placement) {
   var hash = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
   return placement.replace(/left|right|bottom|top/g, function (matched) {
@@ -787,16 +788,16 @@ function getOppositePlacement(placement) {
   });
 }
 
-/**
- * Get offsets to the popper
- * @method
- * @memberof Popper.Utils
- * @param {Object} position - CSS position the Popper will get applied
- * @param {HTMLElement} popper - the popper element
- * @param {Object} referenceOffsets - the reference offsets (the popper will be relative to this)
- * @param {String} placement - one of the valid placement options
- * @returns {Object} popperOffsets - An object containing the offsets which will be applied to the popper
- */
+///**
+// * Get offsets to the popper
+// * @method
+// * @memberof Popper.Utils
+// * @param {Object} position - CSS position the Popper will get applied
+// * @param {HTMLElement} popper - the popper element
+// * @param {Object} referenceOffsets - the reference offsets (the popper will be relative to this)
+// * @param {String} placement - one of the valid placement options
+// * @returns {Object} popperOffsets - An object containing the offsets which will be applied to the popper
+// */
 function getPopperOffsets(popper, referenceOffsets, placement) {
   placement = placement.split('-')[0];
 
@@ -826,16 +827,16 @@ function getPopperOffsets(popper, referenceOffsets, placement) {
   return popperOffsets;
 }
 
-/**
- * Get offsets to the reference element
- * @method
- * @memberof Popper.Utils
- * @param {Object} state
- * @param {Element} popper - the popper element
- * @param {Element} reference - the reference element (the popper will be relative to this)
- * @param {Element} fixedPosition - is in fixed position mode
- * @returns {Object} An object containing the offsets which will be applied to the popper
- */
+///**
+// * Get offsets to the reference element
+// * @method
+// * @memberof Popper.Utils
+// * @param {Object} state
+// * @param {Element} popper - the popper element
+// * @param {Element} reference - the reference element (the popper will be relative to this)
+// * @param {Element} fixedPosition - is in fixed position mode
+// * @returns {Object} An object containing the offsets which will be applied to the popper
+// */
 function getReferenceOffsets(state, popper, reference) {
   var fixedPosition = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
@@ -876,12 +877,12 @@ function isFunction(functionToCheck) {
   return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
 }
 
-/**
- * Helper used to know if the given modifier is enabled.
- * @method
- * @memberof Popper.Utils
- * @returns {Boolean}
- */
+///**
+// * Helper used to know if the given modifier is enabled.
+// * @method
+// * @memberof Popper.Utils
+// * @returns {Boolean}
+// */
 function isModifierEnabled(modifiers, modifierName) {
   return modifiers.some(function (_ref) {
     var name = _ref.name,
@@ -890,16 +891,16 @@ function isModifierEnabled(modifiers, modifierName) {
   });
 }
 
-/**
- * Helper used to know if the given modifier depends from another one.<br />
- * It checks if the needed modifier is listed and enabled.
- * @method
- * @memberof Popper.Utils
- * @param {Array} modifiers - list of modifiers
- * @param {String} requestingName - name of requesting modifier
- * @param {String} requestedName - name of requested modifier
- * @returns {Boolean}
- */
+///**
+// * Helper used to know if the given modifier depends from another one.<br />
+// * It checks if the needed modifier is listed and enabled.
+// * @method
+// * @memberof Popper.Utils
+// * @param {Array} modifiers - list of modifiers
+// * @param {String} requestingName - name of requesting modifier
+// * @param {String} requestedName - name of requested modifier
+// * @returns {Boolean}
+// */
 function isModifierRequired(modifiers, requestingName, requestedName) {
   var requesting = find(modifiers, function (_ref) {
     var name = _ref.name;
@@ -918,33 +919,33 @@ function isModifierRequired(modifiers, requestingName, requestedName) {
   return isRequired;
 }
 
-/**
- * Tells if a given input is a number
- * @method
- * @memberof Popper.Utils
- * @param {*} input to check
- * @return {Boolean}
- */
+///**
+// * Tells if a given input is a number
+// * @method
+// * @memberof Popper.Utils
+// * @param {*} input to check
+// * @return {Boolean}
+// */
 function isNumeric(n) {
   return n !== '' && !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-/**
- * Get the window associated with the element
- * @argument {Element} element
- * @returns {Window}
- */
+///**
+// * Get the window associated with the element
+// * @argument {Element} element
+// * @returns {Window}
+// */
 function getWindow(element) {
   var ownerDocument = element.ownerDocument;
   return ownerDocument ? ownerDocument.defaultView : window;
 }
 
-/**
- * Remove event listeners used to update the popper position
- * @method
- * @memberof Popper.Utils
- * @private
- */
+///**
+// * Remove event listeners used to update the popper position
+// * @method
+// * @memberof Popper.Utils
+// * @private
+// */
 function removeEventListeners(reference, state) {
   // Remove resize event listener on window
   getWindow(reference).removeEventListener('resize', state.updateBound);
@@ -962,16 +963,16 @@ function removeEventListeners(reference, state) {
   return state;
 }
 
-/**
- * Loop trough the list of modifiers and run them in order,
- * each of them will then edit the data object.
- * @method
- * @memberof Popper.Utils
- * @param {dataObject} data
- * @param {Array} modifiers
- * @param {String} ends - Optional modifier name used as stopper
- * @returns {dataObject}
- */
+///**
+// * Loop trough the list of modifiers and run them in order,
+// * each of them will then edit the data object.
+// * @method
+// * @memberof Popper.Utils
+// * @param {dataObject} data
+// * @param {Array} modifiers
+// * @param {String} ends - Optional modifier name used as stopper
+// * @returns {dataObject}
+// */
 function runModifiers(modifiers, data, ends) {
   var modifiersToRun = ends === undefined ? modifiers : modifiers.slice(0, findIndex(modifiers, 'name', ends));
 
@@ -995,14 +996,14 @@ function runModifiers(modifiers, data, ends) {
   return data;
 }
 
-/**
- * Set the attributes to the given popper
- * @method
- * @memberof Popper.Utils
- * @argument {Element} element - Element to apply the attributes to
- * @argument {Object} styles
- * Object with a list of properties and values which will be applied to the element
- */
+///**
+// * Set the attributes to the given popper
+// * @method
+// * @memberof Popper.Utils
+// * @argument {Element} element - Element to apply the attributes to
+// * @argument {Object} styles
+// * Object with a list of properties and values which will be applied to the element
+// */
 function setAttributes(element, attributes) {
   Object.keys(attributes).forEach(function (prop) {
     var value = attributes[prop];
@@ -1044,12 +1045,12 @@ function attachToScrollParents(scrollParent, event, callback, scrollParents) {
   scrollParents.push(target);
 }
 
-/**
- * Setup needed event listeners used to update the popper position
- * @method
- * @memberof Popper.Utils
- * @private
- */
+///**
+// * Setup needed event listeners used to update the popper position
+// * @method
+// * @memberof Popper.Utils
+// * @private
+// */
 function setupEventListeners(reference, options, state, updateBound) {
   // Resize event listener on window
   state.updateBound = updateBound;

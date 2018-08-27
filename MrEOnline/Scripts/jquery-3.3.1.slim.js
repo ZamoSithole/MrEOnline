@@ -82,7 +82,7 @@ var isFunction = function isFunction( obj ) {
 
 
 var isWindow = function isWindow( obj ) {
-		return obj != null && obj === obj.window;
+		return obj !== null && obj === obj.window;
 	};
 
 
@@ -113,7 +113,7 @@ var isWindow = function isWindow( obj ) {
 
 
 function toType( obj ) {
-	if ( obj == null ) {
+	if ( obj === null ) {
 		return obj + "";
 	}
 
@@ -162,7 +162,7 @@ jQuery.fn = jQuery.prototype = {
 	get: function( num ) {
 
 		// Return all the elements in a clean array
-		if ( num == null ) {
+		if ( num === null ) {
 			return slice.call( this );
 		}
 
@@ -254,7 +254,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 	for ( ; i < length; i++ ) {
 
 		// Only deal with non-null/undefined values
-		if ( ( options = arguments[ i ] ) != null ) {
+		if ( ( options = arguments[ i ] ) !== null ) {
 
 			// Extend the base object
 			for ( name in options ) {
@@ -368,7 +368,7 @@ jQuery.extend( {
 
 	// Support: Android <=4.0 only
 	trim: function( text ) {
-		return text == null ?
+		return text === null ?
 			"" :
 			( text + "" ).replace( rtrim, "" );
 	},
@@ -377,7 +377,7 @@ jQuery.extend( {
 	makeArray: function( arr, results ) {
 		var ret = results || [];
 
-		if ( arr != null ) {
+		if ( arr !== null ) {
 			if ( isArrayLike( Object( arr ) ) ) {
 				jQuery.merge( ret,
 					typeof arr === "string" ?
@@ -392,7 +392,7 @@ jQuery.extend( {
 	},
 
 	inArray: function( elem, arr, i ) {
-		return arr == null ? -1 : indexOf.call( arr, elem, i );
+		return arr === null ? -1 : indexOf.call( arr, elem, i );
 	},
 
 	// Support: Android <=4.0 only, PhantomJS 1 only
@@ -442,7 +442,7 @@ jQuery.extend( {
 			for ( ; i < length; i++ ) {
 				value = callback( elems[ i ], i, arg );
 
-				if ( value != null ) {
+				if ( value !== null ) {
 					ret.push( value );
 				}
 			}
@@ -452,7 +452,7 @@ jQuery.extend( {
 			for ( i in elems ) {
 				value = callback( elems[ i ], i, arg );
 
-				if ( value != null ) {
+				if ( value !== null ) {
 					ret.push( value );
 				}
 			}
@@ -830,7 +830,8 @@ function Sizzle( selector, context, results, seed ) {
 							newContext.querySelectorAll( newSelector )
 						);
 						return results;
-					} catch ( qsaError ) {
+                    } catch (qsaError) {
+
 					} finally {
 						if ( nid === expando ) {
 							context.removeAttribute( "id" );
@@ -865,19 +866,19 @@ function createCache() {
 	return cache;
 }
 
-/**
- * Mark a function for special use by Sizzle
- * @param {Function} fn The function to mark
- */
+///**
+// * Mark a function for special use by Sizzle
+// * @param {Function} fn The function to mark
+// */
 function markFunction( fn ) {
 	fn[ expando ] = true;
 	return fn;
 }
 
-/**
- * Support testing using an element
- * @param {Function} fn Passed the created element and returns a boolean result
- */
+///**
+// * Support testing using an element
+// * @param {Function} fn Passed the created element and returns a boolean result
+// */
 function assert( fn ) {
 	var el = document.createElement("fieldset");
 
@@ -909,12 +910,12 @@ function addHandle( attrs, handler ) {
 	}
 }
 
-/**
- * Checks document order of two siblings
- * @param {Element} a
- * @param {Element} b
- * @returns {Number} Returns less than 0 if a precedes b, greater than 0 if a follows b
- */
+///**
+// * Checks document order of two siblings
+// * @param {Element} a
+// * @param {Element} b
+// * @returns {Number} Returns less than 0 if a precedes b, greater than 0 if a follows b
+// */
 function siblingCheck( a, b ) {
 	var cur = b && a,
 		diff = cur && a.nodeType === 1 && b.nodeType === 1 &&
@@ -937,10 +938,10 @@ function siblingCheck( a, b ) {
 	return a ? 1 : -1;
 }
 
-/**
- * Returns a function to use in pseudos for input types
- * @param {String} type
- */
+///**
+// * Returns a function to use in pseudos for input types
+// * @param {String} type
+// */
 function createInputPseudo( type ) {
 	return function( elem ) {
 		var name = elem.nodeName.toLowerCase();
@@ -948,10 +949,10 @@ function createInputPseudo( type ) {
 	};
 }
 
-/**
- * Returns a function to use in pseudos for buttons
- * @param {String} type
- */
+///**
+// * Returns a function to use in pseudos for buttons
+// * @param {String} type
+// */
 function createButtonPseudo( type ) {
 	return function( elem ) {
 		var name = elem.nodeName.toLowerCase();
@@ -959,10 +960,10 @@ function createButtonPseudo( type ) {
 	};
 }
 
-/**
- * Returns a function to use in pseudos for :enabled/:disabled
- * @param {Boolean} disabled true for :disabled; false for :enabled
- */
+///**
+// * Returns a function to use in pseudos for :enabled/:disabled
+// * @param {Boolean} disabled true for :disabled; false for :enabled
+// */
 function createDisabledPseudo( disabled ) {
 
 	// Known :disabled false positives: fieldset[disabled] > legend:nth-of-type(n+2) :can-disable
@@ -1015,10 +1016,10 @@ function createDisabledPseudo( disabled ) {
 	};
 }
 
-/**
- * Returns a function to use in pseudos for positionals
- * @param {Function} fn
- */
+///**
+// * Returns a function to use in pseudos for positionals
+// * @param {Function} fn
+// */
 function createPositionalPseudo( fn ) {
 	return markFunction(function( argument ) {
 		argument = +argument;
@@ -1037,11 +1038,11 @@ function createPositionalPseudo( fn ) {
 	});
 }
 
-/**
- * Checks a node for validity as a Sizzle context
- * @param {Element|Object=} context
- * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
- */
+///**
+// * Checks a node for validity as a Sizzle context
+// * @param {Element|Object=} context
+// * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
+// */
 function testContext( context ) {
 	return context && typeof context.getElementsByTagName !== "undefined" && context;
 }
@@ -1061,11 +1062,11 @@ isXML = Sizzle.isXML = function( elem ) {
 	return documentElement ? documentElement.nodeName !== "HTML" : false;
 };
 
-/**
- * Sets document-related variables once based on the current document
- * @param {Element|Object} [doc] An element or document object to use to set the document
- * @returns {Object} Returns the current document
- */
+///**
+// * Sets document-related variables once based on the current document
+// * @param {Element|Object} [doc] An element or document object to use to set the document
+// * @returns {Object} Returns the current document
+// */
 setDocument = Sizzle.setDocument = function( node ) {
 	var hasCompare, subWindow,
 		doc = node ? node.ownerDocument || node : preferredDoc;
@@ -1498,7 +1499,7 @@ Sizzle.matchesSelector = function( elem, expr ) {
 					elem.document && elem.document.nodeType !== 11 ) {
 				return ret;
 			}
-		} catch (e) {}
+        } catch (e) { return false;}
 	}
 
 	return Sizzle( expr, document, null, [ elem ] ).length > 0;
@@ -1541,10 +1542,10 @@ Sizzle.error = function( msg ) {
 	throw new Error( "Syntax error, unrecognized expression: " + msg );
 };
 
-/**
- * Document sorting and removing duplicates
- * @param {ArrayLike} results
- */
+///**
+// * Document sorting and removing duplicates
+// * @param {ArrayLike} results
+// */
 Sizzle.uniqueSort = function( results ) {
 	var elem,
 		duplicates = [],
@@ -1574,10 +1575,10 @@ Sizzle.uniqueSort = function( results ) {
 	return results;
 };
 
-/**
- * Utility function for retrieving the text value of an array of DOM nodes
- * @param {Array|Element} elem
- */
+///**
+// * Utility function for retrieving the text value of an array of DOM nodes
+// * @param {Array|Element} elem
+// */
 getText = Sizzle.getText = function( elem ) {
 	var node,
 		ret = "",
@@ -1729,7 +1730,7 @@ Expr = Sizzle.selectors = {
 			return function( elem ) {
 				var result = Sizzle.attr( elem, name );
 
-				if ( result == null ) {
+				if ( result === null ) {
 					return operator === "!=";
 				}
 				if ( !operator ) {
@@ -2063,7 +2064,7 @@ Expr = Sizzle.selectors = {
 
 				// Support: IE<8
 				// New HTML5 attribute values (e.g., "search") appear with elem.type === "text"
-				( (attr = elem.getAttribute("type")) == null || attr.toLowerCase() === "text" );
+				( (attr = elem.getAttribute("type")) === null || attr.toLowerCase() === "text" );
 		},
 
 		// Position-in-collection
@@ -2297,7 +2298,7 @@ function condense( unmatched, map, filter, context, xml ) {
 		newUnmatched = [],
 		i = 0,
 		len = unmatched.length,
-		mapped = map != null;
+		mapped = map !== null;
 
 	for ( ; i < len; i++ ) {
 		if ( (elem = unmatched[i]) ) {
@@ -2477,7 +2478,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				// We must always have either seed elements or outermost context
 				elems = seed || byElement && Expr.find["TAG"]( "*", outermost ),
 				// Use integer dirruns iff this is the outermost matcher
-				dirrunsUnique = (dirruns += contextBackup == null ? 1 : Math.random() || 0.1),
+				dirrunsUnique = (dirruns += contextBackup === null ? 1 : Math.random() || 0.1),
 				len = elems.length;
 
 			if ( outermost ) {
@@ -2487,7 +2488,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 			// Add elements passing elementMatchers directly to results
 			// Support: IE<9, Safari
 			// Tolerate NodeList properties (IE: "length"; Safari: <number>) matching elements by id
-			for ( ; i !== len && (elem = elems[i]) != null; i++ ) {
+			for ( ; i !== len && (elem = elems[i]) !== null; i++ ) {
 				if ( byElement && elem ) {
 					j = 0;
 					if ( !context && elem.ownerDocument !== document ) {
@@ -2605,15 +2606,15 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
 	return cached;
 };
 
-/**
- * A low-level selection function that works with Sizzle's compiled
- *  selector functions
- * @param {String|Function} selector A selector or a pre-compiled
- *  selector function built with Sizzle.compile
- * @param {Element} context
- * @param {Array} [results]
- * @param {Array} [seed] A set of elements to match against
- */
+///**
+// * A low-level selection function that works with Sizzle's compiled
+// *  selector functions
+// * @param {String|Function} selector A selector or a pre-compiled
+// *  selector function built with Sizzle.compile
+// * @param {Element} context
+// * @param {Array} [results]
+// * @param {Array} [seed] A set of elements to match against
+// */
 select = Sizzle.select = function( selector, context, results, seed ) {
 	var i, tokens, token, type, find,
 		compiled = typeof selector === "function" && selector,
@@ -2734,7 +2735,7 @@ if ( !support.attributes || !assert(function( el ) {
 // Support: IE<9
 // Use getAttributeNode to fetch booleans when getAttribute lies
 if ( !assert(function( el ) {
-	return el.getAttribute("disabled") == null;
+	return el.getAttribute("disabled") === null;
 }) ) {
 	addHandle( booleans, function( elem, name, isXML ) {
 		var val;
@@ -3099,7 +3100,7 @@ jQuery.fn.extend( {
 	},
 
 	addBack: function( selector ) {
-		return this.add( selector == null ?
+		return this.add( selector === null ?
 			this.prevObject : this.prevObject.filter( selector )
 		);
 	}
@@ -3683,7 +3684,7 @@ jQuery.extend( {
 				// Get a promise for this deferred
 				// If obj is provided, the promise aspect is added to the object
 				promise: function( obj ) {
-					return obj != null ? jQuery.extend( obj, promise ) : promise;
+					return obj !== null ? jQuery.extend( obj, promise ) : promise;
 				}
 			},
 			deferred = {};
@@ -3915,7 +3916,7 @@ if ( document.readyState === "complete" ||
 var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 	var i = 0,
 		len = elems.length,
-		bulk = key == null;
+		bulk = key === null;
 
 	// Sets many values
 	if ( toType( key ) === "object" ) {
@@ -4638,7 +4639,7 @@ function showHide( elements, show ) {
 
 	// Set the display of the elements in a second loop to avoid constant reflow
 	for ( index = 0; index < length; index++ ) {
-		if ( values[ index ] != null ) {
+		if ( values[ index ] !== null ) {
 			elements[ index ].style.display = values[ index ];
 		}
 	}
@@ -4876,7 +4877,7 @@ function returnFalse() {
 function safeActiveElement() {
 	try {
 		return document.activeElement;
-	} catch ( err ) { }
+    } catch (err) { return false;}
 }
 
 function on( elem, types, selector, data, fn, one ) {
@@ -4898,12 +4899,12 @@ function on( elem, types, selector, data, fn, one ) {
 		return elem;
 	}
 
-	if ( data == null && fn == null ) {
+	if ( data === null && fn === null ) {
 
 		// ( types, fn )
 		fn = selector;
 		data = selector = undefined;
-	} else if ( fn == null ) {
+	} else if ( fn === null ) {
 		if ( typeof selector === "string" ) {
 
 			// ( types, selector, fn )
@@ -5480,8 +5481,8 @@ jQuery.each( {
 		var button = event.button;
 
 		// Add which for key events
-		if ( event.which == null && rkeyEvent.test( event.type ) ) {
-			return event.charCode != null ? event.charCode : event.keyCode;
+		if ( event.which === null && rkeyEvent.test( event.type ) ) {
+			return event.charCode !== null ? event.charCode : event.keyCode;
 		}
 
 		// Add which for click: 1 === left; 2 === middle; 3 === right
@@ -5775,7 +5776,7 @@ function remove( elem, selector, keepData ) {
 		nodes = selector ? jQuery.filter( selector, elem ) : elem,
 		i = 0;
 
-	for ( ; ( node = nodes[ i ] ) != null; i++ ) {
+	for ( ; ( node = nodes[ i ] ) !== null; i++ ) {
 		if ( !keepData && node.nodeType === 1 ) {
 			jQuery.cleanData( getAll( node ) );
 		}
@@ -5932,7 +5933,7 @@ jQuery.fn.extend( {
 		var elem,
 			i = 0;
 
-		for ( ; ( elem = this[ i ] ) != null; i++ ) {
+		for ( ; ( elem = this[ i ] ) !== null; i++ ) {
 			if ( elem.nodeType === 1 ) {
 
 				// Prevent memory leaks
@@ -5947,8 +5948,8 @@ jQuery.fn.extend( {
 	},
 
 	clone: function( dataAndEvents, deepDataAndEvents ) {
-		dataAndEvents = dataAndEvents == null ? false : dataAndEvents;
-		deepDataAndEvents = deepDataAndEvents == null ? dataAndEvents : deepDataAndEvents;
+		dataAndEvents = dataAndEvents === null ? false : dataAndEvents;
+		deepDataAndEvents = deepDataAndEvents === null ? dataAndEvents : deepDataAndEvents;
 
 		return this.map( function() {
 			return jQuery.clone( this, dataAndEvents, deepDataAndEvents );
@@ -6474,7 +6475,7 @@ jQuery.extend( {
 			}
 
 			// Make sure that null and NaN values aren't set (#7116)
-			if ( value == null || value !== value ) {
+			if ( value === null || value !== value ) {
 				return;
 			}
 
@@ -6777,7 +6778,7 @@ jQuery.extend( {
 		ret = jQuery.find.attr( elem, name );
 
 		// Non-existent attributes return null, we normalize to undefined
-		return ret == null ? undefined : ret;
+		return ret === null ? undefined : ret;
 	},
 
 	attrHooks: {
@@ -6838,7 +6839,7 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) 
 			// Avoid an infinite loop by temporarily removing this function from the getter
 			handle = attrHandle[ lowercaseName ];
 			attrHandle[ lowercaseName ] = ret;
-			ret = getter( elem, name, isXML ) != null ?
+			ret = getter( elem, name, isXML ) !== null ?
 				lowercaseName :
 				null;
 			attrHandle[ lowercaseName ] = handle;
@@ -7198,7 +7199,7 @@ jQuery.fn.extend( {
 				}
 
 				// Handle cases where value is null/undef or number
-				return ret == null ? "" : ret;
+				return ret === null ? "" : ret;
 			}
 
 			return;
@@ -7220,7 +7221,7 @@ jQuery.fn.extend( {
 			}
 
 			// Treat null/undefined as ""; convert numbers to string
-			if ( val == null ) {
+			if ( val === null ) {
 				val = "";
 
 			} else if ( typeof val === "number" ) {
@@ -7228,7 +7229,7 @@ jQuery.fn.extend( {
 
 			} else if ( Array.isArray( val ) ) {
 				val = jQuery.map( val, function( value ) {
-					return value == null ? "" : value + "";
+					return value === null ? "" : value + "";
 				} );
 			}
 
@@ -7248,7 +7249,7 @@ jQuery.extend( {
 			get: function( elem ) {
 
 				var val = jQuery.find.attr( elem, "value" );
-				return val != null ?
+				return val !== null ?
 					val :
 
 					// Support: IE <=10 - 11 only
@@ -7412,7 +7413,7 @@ jQuery.extend( jQuery.event, {
 		}
 
 		// Clone any incoming data and prepend the event, creating the handler arg list
-		data = data == null ?
+		data = data === null ?
 			[ event ] :
 			jQuery.makeArray( data, [ event ] );
 
@@ -7608,7 +7609,7 @@ function buildParams( prefix, obj, traditional, add ) {
 
 				// Item is non-scalar (array or object), encode its numeric index.
 				buildParams(
-					prefix + "[" + ( typeof v === "object" && v != null ? i : "" ) + "]",
+					prefix + "[" + ( typeof v === "object" && v !== null ? i : "" ) + "]",
 					v,
 					traditional,
 					add
@@ -7643,7 +7644,7 @@ jQuery.param = function( a, traditional ) {
 				valueOrFunction;
 
 			s[ s.length ] = encodeURIComponent( key ) + "=" +
-				encodeURIComponent( value == null ? "" : value );
+				encodeURIComponent( value === null ? "" : value );
 		};
 
 	// If an array was passed in, assume that it is an array of form elements.
@@ -7689,7 +7690,7 @@ jQuery.fn.extend( {
 		.map( function( i, elem ) {
 			var val = jQuery( this ).val();
 
-			if ( val == null ) {
+			if ( val === null ) {
 				return null;
 			}
 
@@ -7881,10 +7882,10 @@ jQuery.offset = {
 			options = options.call( elem, i, jQuery.extend( {}, curOffset ) );
 		}
 
-		if ( options.top != null ) {
+		if ( options.top !== null ) {
 			props.top = ( options.top - curOffset.top ) + curTop;
 		}
-		if ( options.left != null ) {
+		if ( options.left !== null ) {
 			props.left = ( options.left - curOffset.left ) + curLeft;
 		}
 

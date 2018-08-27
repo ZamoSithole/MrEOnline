@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap v4.1.2 (https://getbootstrap.com/)
+  * Bootstrap v4.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -44,7 +44,7 @@
 
   function _objectSpread(target) {
     for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i] != null ? arguments[i] : {};
+      var source = arguments[i] !== null ? arguments[i] : {};
       var ownKeys = Object.keys(source);
 
       if (typeof Object.getOwnPropertySymbols === 'function') {
@@ -69,7 +69,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): util.js
+   * Bootstrap (v4.1.3): util.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -201,7 +201,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): alert.js
+   * Bootstrap (v4.1.3): alert.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -213,7 +213,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'alert';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.alert';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -376,7 +376,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): button.js
+   * Bootstrap (v4.1.3): button.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -388,7 +388,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'button';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.button';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -540,7 +540,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): carousel.js
+   * Bootstrap (v4.1.3): carousel.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -552,7 +552,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'carousel';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.carousel';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -1044,7 +1044,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): collapse.js
+   * Bootstrap (v4.1.3): collapse.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -1056,7 +1056,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'collapse';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.collapse';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -1497,13 +1497,13 @@
     return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
   }
 
-  /**
-   * Get CSS computed property of the given element
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Eement} element
-   * @argument {String} property
-   */
+  ///**
+  // * Get CSS computed property of the given element
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Eement} element
+  // * @argument {String} property
+  // */
   function getStyleComputedProperty(element, property) {
     if (element.nodeType !== 1) {
       return [];
@@ -1513,13 +1513,13 @@
     return property ? css[property] : css;
   }
 
-  /**
-   * Returns the parentNode or the host of the element
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Element} element
-   * @returns {Element} parent
-   */
+  ///**
+  // * Returns the parentNode or the host of the element
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Element} element
+  // * @returns {Element} parent
+  // */
   function getParentNode(element) {
     if (element.nodeName === 'HTML') {
       return element;
@@ -1527,13 +1527,13 @@
     return element.parentNode || element.host;
   }
 
-  /**
-   * Returns the scrolling parent of the given element
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Element} element
-   * @returns {Element} scroll parent
-   */
+  ///**
+  // * Returns the scrolling parent of the given element
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Element} element
+  // * @returns {Element} scroll parent
+  // */
   function getScrollParent(element) {
     // Return body, `getScroll` will take care to get the correct `scrollTop` from it
     if (!element) {
@@ -1582,13 +1582,13 @@
     return isIE11 || isIE10;
   }
 
-  /**
-   * Returns the offset parent of the given element
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Element} element
-   * @returns {Element} offset parent
-   */
+  ///**
+  // * Returns the offset parent of the given element
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Element} element
+  // * @returns {Element} offset parent
+  // */
   function getOffsetParent(element) {
     if (!element) {
       return document.documentElement;
@@ -1627,13 +1627,13 @@
     return nodeName === 'HTML' || getOffsetParent(element.firstElementChild) === element;
   }
 
-  /**
-   * Finds the root node (document, shadowDOM root) of the given element
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Element} node
-   * @returns {Element} root node
-   */
+  ///**
+  // * Finds the root node (document, shadowDOM root) of the given element
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Element} node
+  // * @returns {Element} root node
+  // */
   function getRoot(node) {
     if (node.parentNode !== null) {
       return getRoot(node.parentNode);
@@ -1642,14 +1642,14 @@
     return node;
   }
 
-  /**
-   * Finds the offset parent common to the two provided nodes
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Element} element1
-   * @argument {Element} element2
-   * @returns {Element} common offset parent
-   */
+  ///**
+  // * Finds the offset parent common to the two provided nodes
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Element} element1
+  // * @argument {Element} element2
+  // * @returns {Element} common offset parent
+  // */
   function findCommonOffsetParent(element1, element2) {
     // This check is needed to avoid errors in case one of the elements isn't defined for any reason
     if (!element1 || !element1.nodeType || !element2 || !element2.nodeType) {
@@ -1686,14 +1686,14 @@
     }
   }
 
-  /**
-   * Gets the scroll value of the given element in the given side (top and left)
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Element} element
-   * @argument {String} side `top` or `left`
-   * @returns {number} amount of scrolled pixels
-   */
+  ///**
+  // * Gets the scroll value of the given element in the given side (top and left)
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Element} element
+  // * @argument {String} side `top` or `left`
+  // * @returns {number} amount of scrolled pixels
+  // */
   function getScroll(element) {
     var side = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'top';
 
@@ -1820,13 +1820,13 @@
     return target;
   };
 
-  /**
-   * Given element offsets, generate an output similar to getBoundingClientRect
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Object} offsets
-   * @returns {Object} ClientRect like output
-   */
+  ///**
+  // * Given element offsets, generate an output similar to getBoundingClientRect
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Object} offsets
+  // * @returns {Object} ClientRect like output
+  // */
   function getClientRect(offsets) {
     return _extends({}, offsets, {
       right: offsets.left + offsets.width,
@@ -1834,13 +1834,13 @@
     });
   }
 
-  /**
-   * Get bounding client rect of given element
-   * @method
-   * @memberof Popper.Utils
-   * @param {HTMLElement} element
-   * @return {Object} client rect
-   */
+  ///**
+  // * Get bounding client rect of given element
+  // * @method
+  // * @memberof Popper.Utils
+  // * @param {HTMLElement} element
+  // * @return {Object} client rect
+  // */
   function getBoundingClientRect(element) {
     var rect = {};
 
@@ -1859,7 +1859,9 @@
       } else {
         rect = element.getBoundingClientRect();
       }
-    } catch (e) {}
+    } catch (e) {
+        return false;
+    }
 
     var result = {
       left: rect.left,
@@ -1963,14 +1965,14 @@
     return getClientRect(offset);
   }
 
-  /**
-   * Check if the given element is fixed or is inside a fixed parent
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Element} element
-   * @argument {Element} customContainer
-   * @returns {Boolean} answer to "isFixed?"
-   */
+  ///**
+  // * Check if the given element is fixed or is inside a fixed parent
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Element} element
+  // * @argument {Element} customContainer
+  // * @returns {Boolean} answer to "isFixed?"
+  // */
   function isFixed(element) {
     var nodeName = element.nodeName;
     if (nodeName === 'BODY' || nodeName === 'HTML') {
@@ -2002,17 +2004,17 @@
     return el || document.documentElement;
   }
 
-  /**
-   * Computed the boundaries limits and return them
-   * @method
-   * @memberof Popper.Utils
-   * @param {HTMLElement} popper
-   * @param {HTMLElement} reference
-   * @param {number} padding
-   * @param {HTMLElement} boundariesElement - Element used to define the boundaries
-   * @param {Boolean} fixedPosition - Is in fixed position mode
-   * @returns {Object} Coordinates of the boundaries
-   */
+  ///**
+  // * Computed the boundaries limits and return them
+  // * @method
+  // * @memberof Popper.Utils
+  // * @param {HTMLElement} popper
+  // * @param {HTMLElement} reference
+  // * @param {number} padding
+  // * @param {HTMLElement} boundariesElement - Element used to define the boundaries
+  // * @param {Boolean} fixedPosition - Is in fixed position mode
+  // * @returns {Object} Coordinates of the boundaries
+  // */
   function getBoundaries(popper, reference, padding, boundariesElement) {
     var fixedPosition = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
 
@@ -2072,15 +2074,15 @@
     return width * height;
   }
 
-  /**
-   * Utility used to transform the `auto` placement to the placement with more
-   * available space.
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Object} data - The data object generated by update method
-   * @argument {Object} options - Modifiers configuration and options
-   * @returns {Object} The data object, properly modified
-   */
+  ///**
+  // * Utility used to transform the `auto` placement to the placement with more
+  // * available space.
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Object} data - The data object generated by update method
+  // * @argument {Object} options - Modifiers configuration and options
+  // * @returns {Object} The data object, properly modified
+  // */
   function computeAutoPlacement(placement, refRect, popper, reference, boundariesElement) {
     var padding = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0;
 
@@ -2132,16 +2134,16 @@
     return computedPlacement + (variation ? '-' + variation : '');
   }
 
-  /**
-   * Get offsets to the reference element
-   * @method
-   * @memberof Popper.Utils
-   * @param {Object} state
-   * @param {Element} popper - the popper element
-   * @param {Element} reference - the reference element (the popper will be relative to this)
-   * @param {Element} fixedPosition - is in fixed position mode
-   * @returns {Object} An object containing the offsets which will be applied to the popper
-   */
+  ///**
+  // * Get offsets to the reference element
+  // * @method
+  // * @memberof Popper.Utils
+  // * @param {Object} state
+  // * @param {Element} popper - the popper element
+  // * @param {Element} reference - the reference element (the popper will be relative to this)
+  // * @param {Element} fixedPosition - is in fixed position mode
+  // * @returns {Object} An object containing the offsets which will be applied to the popper
+  // */
   function getReferenceOffsets(state, popper, reference) {
     var fixedPosition = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
@@ -2149,13 +2151,13 @@
     return getOffsetRectRelativeToArbitraryNode(reference, commonOffsetParent, fixedPosition);
   }
 
-  /**
-   * Get the outer sizes of the given element (offset size + margins)
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Element} element
-   * @returns {Object} object containing width and height properties
-   */
+  ///**
+  // * Get the outer sizes of the given element (offset size + margins)
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Element} element
+  // * @returns {Object} object containing width and height properties
+  // */
   function getOuterSizes(element) {
     var styles = getComputedStyle(element);
     var x = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
@@ -2167,13 +2169,13 @@
     return result;
   }
 
-  /**
-   * Get the opposite placement of the given one
-   * @method
-   * @memberof Popper.Utils
-   * @argument {String} placement
-   * @returns {String} flipped placement
-   */
+  ///**
+  // * Get the opposite placement of the given one
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {String} placement
+  // * @returns {String} flipped placement
+  // */
   function getOppositePlacement(placement) {
     var hash = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
     return placement.replace(/left|right|bottom|top/g, function (matched) {
@@ -2181,16 +2183,16 @@
     });
   }
 
-  /**
-   * Get offsets to the popper
-   * @method
-   * @memberof Popper.Utils
-   * @param {Object} position - CSS position the Popper will get applied
-   * @param {HTMLElement} popper - the popper element
-   * @param {Object} referenceOffsets - the reference offsets (the popper will be relative to this)
-   * @param {String} placement - one of the valid placement options
-   * @returns {Object} popperOffsets - An object containing the offsets which will be applied to the popper
-   */
+  ///**
+  // * Get offsets to the popper
+  // * @method
+  // * @memberof Popper.Utils
+  // * @param {Object} position - CSS position the Popper will get applied
+  // * @param {HTMLElement} popper - the popper element
+  // * @param {Object} referenceOffsets - the reference offsets (the popper will be relative to this)
+  // * @param {String} placement - one of the valid placement options
+  // * @returns {Object} popperOffsets - An object containing the offsets which will be applied to the popper
+  // */
   function getPopperOffsets(popper, referenceOffsets, placement) {
     placement = placement.split('-')[0];
 
@@ -2220,15 +2222,15 @@
     return popperOffsets;
   }
 
-  /**
-   * Mimics the `find` method of Array
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Array} arr
-   * @argument prop
-   * @argument value
-   * @returns index or -1
-   */
+  ///**
+  // * Mimics the `find` method of Array
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Array} arr
+  // * @argument prop
+  // * @argument value
+  // * @returns index or -1
+  // */
   function find(arr, check) {
     // use native find if supported
     if (Array.prototype.find) {
@@ -2239,15 +2241,15 @@
     return arr.filter(check)[0];
   }
 
-  /**
-   * Return the index of the matching object
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Array} arr
-   * @argument prop
-   * @argument value
-   * @returns index or -1
-   */
+  ///**
+  // * Return the index of the matching object
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Array} arr
+  // * @argument prop
+  // * @argument value
+  // * @returns index or -1
+  // */
   function findIndex(arr, prop, value) {
     // use native findIndex if supported
     if (Array.prototype.findIndex) {
@@ -2263,16 +2265,16 @@
     return arr.indexOf(match);
   }
 
-  /**
-   * Loop trough the list of modifiers and run them in order,
-   * each of them will then edit the data object.
-   * @method
-   * @memberof Popper.Utils
-   * @param {dataObject} data
-   * @param {Array} modifiers
-   * @param {String} ends - Optional modifier name used as stopper
-   * @returns {dataObject}
-   */
+  ///**
+  // * Loop trough the list of modifiers and run them in order,
+  // * each of them will then edit the data object.
+  // * @method
+  // * @memberof Popper.Utils
+  // * @param {dataObject} data
+  // * @param {Array} modifiers
+  // * @param {String} ends - Optional modifier name used as stopper
+  // * @returns {dataObject}
+  // */
   function runModifiers(modifiers, data, ends) {
     var modifiersToRun = ends === undefined ? modifiers : modifiers.slice(0, findIndex(modifiers, 'name', ends));
 
@@ -2349,12 +2351,12 @@
     }
   }
 
-  /**
-   * Helper used to know if the given modifier is enabled.
-   * @method
-   * @memberof Popper.Utils
-   * @returns {Boolean}
-   */
+  ///**
+  // * Helper used to know if the given modifier is enabled.
+  // * @method
+  // * @memberof Popper.Utils
+  // * @returns {Boolean}
+  // */
   function isModifierEnabled(modifiers, modifierName) {
     return modifiers.some(function (_ref) {
       var name = _ref.name,
@@ -2384,11 +2386,11 @@
     return null;
   }
 
-  /**
-   * Destroy the popper
-   * @method
-   * @memberof Popper
-   */
+  ///**
+  // * Destroy the popper
+  // * @method
+  // * @memberof Popper
+  // */
   function destroy() {
     this.state.isDestroyed = true;
 
@@ -2414,11 +2416,11 @@
     return this;
   }
 
-  /**
-   * Get the window associated with the element
-   * @argument {Element} element
-   * @returns {Window}
-   */
+  ///**
+  // * Get the window associated with the element
+  // * @argument {Element} element
+  // * @returns {Window}
+  // */
   function getWindow(element) {
     var ownerDocument = element.ownerDocument;
     return ownerDocument ? ownerDocument.defaultView : window;
@@ -2435,12 +2437,12 @@
     scrollParents.push(target);
   }
 
-  /**
-   * Setup needed event listeners used to update the popper position
-   * @method
-   * @memberof Popper.Utils
-   * @private
-   */
+  ///**
+  // * Setup needed event listeners used to update the popper position
+  // * @method
+  // * @memberof Popper.Utils
+  // * @private
+  // */
   function setupEventListeners(reference, options, state, updateBound) {
     // Resize event listener on window
     state.updateBound = updateBound;
@@ -2467,12 +2469,12 @@
     }
   }
 
-  /**
-   * Remove event listeners used to update the popper position
-   * @method
-   * @memberof Popper.Utils
-   * @private
-   */
+  ///**
+  // * Remove event listeners used to update the popper position
+  // * @method
+  // * @memberof Popper.Utils
+  // * @private
+  // */
   function removeEventListeners(reference, state) {
     // Remove resize event listener on window
     getWindow(reference).removeEventListener('resize', state.updateBound);
@@ -2504,13 +2506,13 @@
     }
   }
 
-  /**
-   * Tells if a given input is a number
-   * @method
-   * @memberof Popper.Utils
-   * @param {*} input to check
-   * @return {Boolean}
-   */
+  ///**
+  // * Tells if a given input is a number
+  // * @method
+  // * @memberof Popper.Utils
+  // * @param {*} input to check
+  // * @return {Boolean}
+  // */
   function isNumeric(n) {
     return n !== '' && !isNaN(parseFloat(n)) && isFinite(n);
   }
@@ -2534,14 +2536,14 @@
     });
   }
 
-  /**
-   * Set the attributes to the given popper
-   * @method
-   * @memberof Popper.Utils
-   * @argument {Element} element - Element to apply the attributes to
-   * @argument {Object} styles
-   * Object with a list of properties and values which will be applied to the element
-   */
+  ///**
+  // * Set the attributes to the given popper
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {Element} element - Element to apply the attributes to
+  // * @argument {Object} styles
+  // * Object with a list of properties and values which will be applied to the element
+  // */
   function setAttributes(element, attributes) {
     Object.keys(attributes).forEach(function (prop) {
       var value = attributes[prop];
@@ -2581,16 +2583,16 @@
     return data;
   }
 
-  /**
-   * Set the x-placement attribute before everything else because it could be used
-   * to add margins to the popper margins needs to be calculated to get the
-   * correct popper offsets.
-   * @method
-   * @memberof Popper.modifiers
-   * @param {HTMLElement} reference - The reference element used to position the popper
-   * @param {HTMLElement} popper - The HTML element used as popper
-   * @param {Object} options - Popper.js options
-   */
+  ///**
+  // * Set the x-placement attribute before everything else because it could be used
+  // * to add margins to the popper margins needs to be calculated to get the
+  // * correct popper offsets.
+  // * @method
+  // * @memberof Popper.modifiers
+  // * @param {HTMLElement} reference - The reference element used to position the popper
+  // * @param {HTMLElement} popper - The HTML element used as popper
+  // * @param {Object} options - Popper.js options
+  // */
   function applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
     // compute reference element offsets
     var referenceOffsets = getReferenceOffsets(state, popper, reference, options.positionFixed);
@@ -2705,16 +2707,16 @@
     return data;
   }
 
-  /**
-   * Helper used to know if the given modifier depends from another one.<br />
-   * It checks if the needed modifier is listed and enabled.
-   * @method
-   * @memberof Popper.Utils
-   * @param {Array} modifiers - list of modifiers
-   * @param {String} requestingName - name of requesting modifier
-   * @param {String} requestedName - name of requested modifier
-   * @returns {Boolean}
-   */
+  ///**
+  // * Helper used to know if the given modifier depends from another one.<br />
+  // * It checks if the needed modifier is listed and enabled.
+  // * @method
+  // * @memberof Popper.Utils
+  // * @param {Array} modifiers - list of modifiers
+  // * @param {String} requestingName - name of requesting modifier
+  // * @param {String} requestedName - name of requested modifier
+  // * @returns {Boolean}
+  // */
   function isModifierRequired(modifiers, requestingName, requestedName) {
     var requesting = find(modifiers, function (_ref) {
       var name = _ref.name;
@@ -2815,13 +2817,13 @@
     return data;
   }
 
-  /**
-   * Get the opposite placement variation of the given one
-   * @method
-   * @memberof Popper.Utils
-   * @argument {String} placement variation
-   * @returns {String} flipped placement variation
-   */
+  ///**
+  // * Get the opposite placement variation of the given one
+  // * @method
+  // * @memberof Popper.Utils
+  // * @argument {String} placement variation
+  // * @returns {String} flipped placement variation
+  // */
   function getOppositeVariation(variation) {
     if (variation === 'end') {
       return 'start';
@@ -3010,18 +3012,18 @@
     return data;
   }
 
-  /**
-   * Converts a string containing value + unit into a px value number
-   * @function
-   * @memberof {modifiers~offset}
-   * @private
-   * @argument {String} str - Value + unit string
-   * @argument {String} measurement - `height` or `width`
-   * @argument {Object} popperOffsets
-   * @argument {Object} referenceOffsets
-   * @returns {Number|String}
-   * Value in pixels, or original string if no values were extracted
-   */
+  ///**
+  // * Converts a string containing value + unit into a px value number
+  // * @function
+  // * @memberof {modifiers~offset}
+  // * @private
+  // * @argument {String} str - Value + unit string
+  // * @argument {String} measurement - `height` or `width`
+  // * @argument {Object} popperOffsets
+  // * @argument {Object} referenceOffsets
+  // * @returns {Number|String}
+  // * Value in pixels, or original string if no values were extracted
+  // */
   function toValue(str, measurement, popperOffsets, referenceOffsets) {
     // separate value from unit
     var split = str.match(/((?:\-|\+)?\d*\.?\d*)(.*)/);
@@ -3063,17 +3065,17 @@
     }
   }
 
-  /**
-   * Parse an `offset` string to extrapolate `x` and `y` numeric offsets.
-   * @function
-   * @memberof {modifiers~offset}
-   * @private
-   * @argument {String} offset
-   * @argument {Object} popperOffsets
-   * @argument {Object} referenceOffsets
-   * @argument {String} basePlacement
-   * @returns {Array} a two cells array with x and y offsets in numbers
-   */
+  ///**
+  // * Parse an `offset` string to extrapolate `x` and `y` numeric offsets.
+  // * @function
+  // * @memberof {modifiers~offset}
+  // * @private
+  // * @argument {String} offset
+  // * @argument {Object} popperOffsets
+  // * @argument {Object} referenceOffsets
+  // * @argument {String} basePlacement
+  // * @returns {Array} a two cells array with x and y offsets in numbers
+  // */
   function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
     var offsets = [0, 0];
 
@@ -3141,15 +3143,15 @@
     return offsets;
   }
 
-  /**
-   * @function
-   * @memberof Modifiers
-   * @argument {Object} data - The data object generated by update method
-   * @argument {Object} options - Modifiers configuration and options
-   * @argument {Number|String} options.offset=0
-   * The offset value as described in the modifier description
-   * @returns {Object} The data object, properly modified
-   */
+  ///**
+  // * @function
+  // * @memberof Modifiers
+  // * @argument {Object} data - The data object generated by update method
+  // * @argument {Object} options - Modifiers configuration and options
+  // * @argument {Number|String} options.offset=0
+  // * The offset value as described in the modifier description
+  // * @returns {Object} The data object, properly modified
+  // */
   function offset(data, _ref) {
     var offset = _ref.offset;
     var placement = data.placement,
@@ -3737,22 +3739,22 @@
      */
     removeOnDestroy: false,
 
-    /**
-     * Callback called when the popper is created.<br />
-     * By default, is set to no-op.<br />
-     * Access Popper.js instance with `data.instance`.
-     * @prop {onCreate}
-     */
+    ///**
+    // * Callback called when the popper is created.<br />
+    // * By default, is set to no-op.<br />
+    // * Access Popper.js instance with `data.instance`.
+    // * @prop {onCreate}
+    // */
     onCreate: function onCreate() {},
 
-    /**
-     * Callback called when the popper is updated, this callback is not called
-     * on the initialization/creation of the popper, but only on subsequent
-     * updates.<br />
-     * By default, is set to no-op.<br />
-     * Access Popper.js instance with `data.instance`.
-     * @prop {onUpdate}
-     */
+    ///**
+    // * Callback called when the popper is updated, this callback is not called
+    // * on the initialization/creation of the popper, but only on subsequent
+    // * updates.<br />
+    // * By default, is set to no-op.<br />
+    // * Access Popper.js instance with `data.instance`.
+    // * @prop {onUpdate}
+    // */
     onUpdate: function onUpdate() {},
 
     /**
@@ -3776,14 +3778,14 @@
   // Utils
   // Methods
   var Popper = function () {
-    /**
-     * Create a new Popper.js instance
-     * @class Popper
-     * @param {HTMLElement|referenceObject} reference - The reference element used to position the popper
-     * @param {HTMLElement} popper - The HTML element used as popper.
-     * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
-     * @return {Object} instance - The generated Popper.js instance
-     */
+    ///**
+    // * Create a new Popper.js instance
+    // * @class Popper
+    // * @param {HTMLElement|referenceObject} reference - The reference element used to position the popper
+    // * @param {HTMLElement} popper - The HTML element used as popper.
+    // * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
+    // * @return {Object} instance - The generated Popper.js instance
+    // */
     function Popper(reference, popper) {
       var _this = this;
 
@@ -3930,7 +3932,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): dropdown.js
+   * Bootstrap (v4.1.3): dropdown.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -3942,7 +3944,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'dropdown';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.dropdown';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -4418,7 +4420,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): modal.js
+   * Bootstrap (v4.1.3): modal.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -4430,7 +4432,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'modal';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.modal';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -4989,7 +4991,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): tooltip.js
+   * Bootstrap (v4.1.3): tooltip.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -5001,7 +5003,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'tooltip';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.tooltip';
     var EVENT_KEY = "." + DATA_KEY;
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
@@ -5659,7 +5661,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): popover.js
+   * Bootstrap (v4.1.3): popover.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -5671,7 +5673,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'popover';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.popover';
     var EVENT_KEY = "." + DATA_KEY;
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
@@ -5856,7 +5858,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): scrollspy.js
+   * Bootstrap (v4.1.3): scrollspy.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -5868,7 +5870,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'scrollspy';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.scrollspy';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -6172,7 +6174,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): tab.js
+   * Bootstrap (v4.1.3): tab.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -6184,7 +6186,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'tab';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.tab';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -6421,7 +6423,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): index.js
+   * Bootstrap (v4.1.3): index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */

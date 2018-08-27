@@ -28,7 +28,7 @@ function extract(rows) {
         $(this).find("select,input[type='text']").each(function (index, elem) {
             if ($(elem).is("select")) {
                 rOptionId = $(elem).find("option:selected").val();
-                if (rOptionId != "") {
+                if (rOptionId !== "") {
                     object.ReponseOptionId = parseInt(rOptionId);
                     var textArea = $(elem).parent().find("textarea");
                     if (textArea) {
@@ -37,7 +37,7 @@ function extract(rows) {
                     responses.push(object);
                 }
             } else if ($(elem).is("input")) {
-                if ($(elem).val() != "") {
+                if ($(elem).val() !== "") {
                     object.ResponseText = $(elem).val();
                     responses.push(object);
                 }
@@ -70,7 +70,7 @@ function extractCommittee(rows) {
         $(this).find("select,input[type='text']").each(function (index, elem) {
             if ($(elem).is("select")) {
                 rOptionId = $(elem).find("option:selected").val();
-                if (rOptionId != "") {
+                if (rOptionId !== "") {
                     object.ReponseOptionId = parseInt(rOptionId);
                     var textArea = $(elem).parent().find("textarea");
                     if (textArea) {
@@ -79,7 +79,7 @@ function extractCommittee(rows) {
                     responses.push(object);
                 }
             } else if ($(elem).is("input")) {
-                if ($(elem).val() != "") {
+                if ($(elem).val() !== "") {
                     object.ResponseText = $(elem).val();
                     responses.push(object);
                 }
@@ -97,7 +97,7 @@ function isValid(rows) {
     controls.each(function (index) {  
         var option = undefined;
         if ($(this).is("select")) {
-            if ((option = $(this).find("option:selected").val()) == "") {
+            if ((option = $(this).find("option:selected").val()) === "") {
                 $(this).addClass("validation-highlight");
                 errorCounter++;
             } else {
@@ -110,7 +110,7 @@ function isValid(rows) {
                     }
                 }    
             }
-        } else if ($(this).is("input") && $(this).val() == "") {
+        } else if ($(this).is("input") && $(this).val() === "") {
             $(this).addClass("validation-highlight");
             errorCounter++;
         }
@@ -121,7 +121,7 @@ function isValid(rows) {
     else
         hideFeedback();
 
-    return errorCounter == 0
+    return errorCounter === 0
 }
 
 function reset(controls) {
@@ -131,9 +131,9 @@ function reset(controls) {
 }
 
 function getUrlBasePathName() {
-    if ($.trim(window.location.hostname) != "localhost") {
+    if ($.trim(window.location.hostname) !== "localhost") {
         var splitPathName = window.location.pathname.split("/");
-        return ((splitPathName != undefined || splitPathName.length > 2) ? ("/" + splitPathName[1]) : "");
+        return ((splitPathName !== undefined || splitPathName.length > 2) ? ("/" + splitPathName[1]) : "");
     }
     return "";
 }
@@ -173,7 +173,7 @@ function hideFeedback() {
 }
 
 function scrollToTop() {
-    verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
+    verticalOffset = typeof (verticalOffset) !== 'undefined' ? verticalOffset : 0;
     element = $('body');
     offset = element.offset();
     offsetTop = offset.top;
